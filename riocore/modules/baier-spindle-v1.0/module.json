@@ -24,7 +24,7 @@
       }
     },
     {
-        "name": "encoder",
+        "name": "spindle-encoder",
         "type": "quadencoderz",
         "pins": {
             "a": {
@@ -39,6 +39,7 @@
         }
     },
     {
+        "name": "spindle-modbus",
         "type": "modbus",
         "pins": {
             "tx": {

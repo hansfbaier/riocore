@@ -3,7 +3,7 @@
     "plugins": [
         {
             "type": "bitin",
-            "name": "input0",
+            "name": "direct-input0",
             "pins": {
                 "bit": {
                     "pin": "S3",
@@ -18,7 +18,7 @@
         },
         {
             "type": "bitin",
-            "name": "input1",
+            "name": "direct-input1",
             "pins": {
                 "bit": {
                     "pin": "S2",
@@ -33,7 +33,7 @@
         },
         {
             "type": "bitin",
-            "name": "input2",
+            "name": "direct-input2",
             "pins": {
                 "bit": {
                     "pin": "S1",
@@ -48,7 +48,7 @@
         },
         {
             "type": "bitin",
-            "name": "input3",
+            "name": "direct-input3",
             "pins": {
                 "bit": {
                     "pin": "S0",
@@ -63,7 +63,7 @@
         },
         {
             "type": "bitin",
-            "name": "input4",
+            "name": "direct-input4",
             "pins": {
                 "bit": {
                     "pin": "S4",
@@ -78,7 +78,7 @@
         },
         {
             "type": "bitin",
-            "name": "input5",
+            "name": "direct-input5",
             "pins": {
                 "bit": {
                     "pin": "S5",
@@ -93,7 +93,7 @@
         },
         {
             "type": "bitin",
-            "name": "input6",
+            "name": "direct-input6",
             "pins": {
                 "bit": {
                     "pin": "S6",
@@ -108,7 +108,7 @@
         },
         {
             "type": "bitin",
-            "name": "input7",
+            "name": "direct-input7",
             "pins": {
                 "bit": {
                     "pin": "S7",
@@ -123,7 +123,7 @@
         },
         {
             "type": "bitout",
-            "name": "output0",
+            "name": "direct-output0",
             "pins": {
                 "bit": {
                     "pin": "S11"
@@ -132,7 +132,7 @@
         },
         {
             "type": "bitout",
-            "name": "output1",
+            "name": "direct-output1",
             "pins": {
                 "bit": {
                     "pin": "S10"
@@ -141,7 +141,7 @@
         },
         {
             "type": "bitout",
-            "name": "output2",
+            "name": "direct-output2",
             "pins": {
                 "bit": {
                     "pin": "S9"
@@ -150,7 +150,7 @@
         },
         {
             "type": "bitout",
-            "name": "output3",
+            "name": "direct-output3",
             "pins": {
                 "bit": {
                     "pin": "S8"
