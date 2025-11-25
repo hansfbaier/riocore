@@ -2,7 +2,7 @@
     "comment": "baier-shiftio-v1.0\n16 optically isolated outputs in banks of 8\n32 optically isolated inputs in banks of 8\n 1 quadrature encoder input",
     "plugins": [
         {
-            "name": "encoder",
+            "name": "io-board-encoder",
             "type": "quadencoderz",
             "pins": {
                 "a": {
@@ -34,7 +34,7 @@
         },
         {
             "type": "shiftreg",
-            "name": "shiftin0",
+            "name": "shiftina",
             "pins": {
                 "in": {
                     "pin": "S5"
@@ -53,7 +53,7 @@
             "name": "input0",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[7]",
+                    "pin": "SHIFTINA_INPUT[7]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -67,7 +67,7 @@
             "name": "input1",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[6]",
+                    "pin": "SHIFTINA_INPUT[6]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -81,7 +81,7 @@
             "name": "input2",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[5]",
+                    "pin": "SHIFTINA_INPUT[5]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -95,7 +95,7 @@
             "name": "input3",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[4]",
+                    "pin": "SHIFTINA_INPUT[4]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -109,7 +109,7 @@
             "name": "input4",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[3]",
+                    "pin": "SHIFTINA_INPUT[3]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -123,7 +123,7 @@
             "name": "input5",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[2]",
+                    "pin": "SHIFTINA_INPUT[2]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -137,7 +137,7 @@
             "name": "input6",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[1]",
+                    "pin": "SHIFTINA_INPUT[1]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -151,7 +151,7 @@
             "name": "input7",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[0]",
+                    "pin": "SHIFTINA_INPUT[0]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -165,7 +165,7 @@
             "name": "input8",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[15]",
+                    "pin": "SHIFTINA_INPUT[15]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -179,7 +179,7 @@
             "name": "input9",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[14]",
+                    "pin": "SHIFTINA_INPUT[14]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -193,7 +193,7 @@
             "name": "input10",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[13]",
+                    "pin": "SHIFTINA_INPUT[13]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -207,7 +207,7 @@
             "name": "input11",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[12]",
+                    "pin": "SHIFTINA_INPUT[12]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -221,7 +221,7 @@
             "name": "input12",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[11]",
+                    "pin": "SHIFTINA_INPUT[11]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -235,7 +235,7 @@
             "name": "input13",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[10]",
+                    "pin": "SHIFTINA_INPUT[10]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -249,7 +249,7 @@
             "name": "input14",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[9]",
+                    "pin": "SHIFTINA_INPUT[9]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -263,7 +263,7 @@
             "name": "input15",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN0_INPUT[8]",
+                    "pin": "SHIFTINA_INPUT[8]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -274,7 +274,7 @@
         },
         {
             "type": "shiftreg",
-            "name": "shiftin1",
+            "name": "shiftinb",
             "pins": {
                 "in": {
                     "pin": "S7"
@@ -290,10 +290,10 @@
         },
         {
             "type": "bitin",
-            "name": "input0",
+            "name": "input16",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[7]",
+                    "pin": "SHIFTINB_INPUT[7]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -304,10 +304,10 @@
         },
         {
             "type": "bitin",
-            "name": "input1",
+            "name": "input17",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[6]",
+                    "pin": "SHIFTINB_INPUT[6]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -318,10 +318,10 @@
         },
         {
             "type": "bitin",
-            "name": "input2",
+            "name": "input18",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[5]",
+                    "pin": "SHIFTINB_INPUT[5]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -332,10 +332,10 @@
         },
         {
             "type": "bitin",
-            "name": "input3",
+            "name": "input19",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[4]",
+                    "pin": "SHIFTINB_INPUT[4]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -346,10 +346,10 @@
         },
         {
             "type": "bitin",
-            "name": "input4",
+            "name": "input20",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[3]",
+                    "pin": "SHIFTINB_INPUT[3]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -360,10 +360,10 @@
         },
         {
             "type": "bitin",
-            "name": "input5",
+            "name": "input21",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[2]",
+                    "pin": "SHIFTINB_INPUT[2]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -374,10 +374,10 @@
         },
         {
             "type": "bitin",
-            "name": "input6",
+            "name": "input22",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[1]",
+                    "pin": "SHIFTINB_INPUT[1]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -388,10 +388,10 @@
         },
         {
             "type": "bitin",
-            "name": "input7",
+            "name": "input23",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[0]",
+                    "pin": "SHIFTINB_INPUT[0]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -402,10 +402,10 @@
         },
         {
             "type": "bitin",
-            "name": "input8",
+            "name": "input24",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[15]",
+                    "pin": "SHIFTINB_INPUT[15]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -416,10 +416,10 @@
         },
         {
             "type": "bitin",
-            "name": "input9",
+            "name": "input25",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[14]",
+                    "pin": "SHIFTINB_INPUT[14]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -430,10 +430,10 @@
         },
         {
             "type": "bitin",
-            "name": "input10",
+            "name": "input26",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[13]",
+                    "pin": "SHIFTINB_INPUT[13]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -444,10 +444,10 @@
         },
         {
             "type": "bitin",
-            "name": "input11",
+            "name": "input27",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[12]",
+                    "pin": "SHIFTINB_INPUT[12]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -458,10 +458,10 @@
         },
         {
             "type": "bitin",
-            "name": "input12",
+            "name": "input28",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[11]",
+                    "pin": "SHIFTINB_INPUT[11]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -472,10 +472,10 @@
         },
         {
             "type": "bitin",
-            "name": "input13",
+            "name": "input29",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[10]",
+                    "pin": "SHIFTINB_INPUT[10]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -486,10 +486,10 @@
         },
         {
             "type": "bitin",
-            "name": "input14",
+            "name": "input30",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[9]",
+                    "pin": "SHIFTINB_INPUT[9]",
                     "modifier": [
                         {
                             "type": "invert"
@@ -500,10 +500,10 @@
         },
         {
             "type": "bitin",
-            "name": "input15",
+            "name": "input31",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTIN1_INPUT[8]",
+                    "pin": "SHIFTINB_INPUT[8]",
                     "modifier": [
                         {
                             "type": "invert"
