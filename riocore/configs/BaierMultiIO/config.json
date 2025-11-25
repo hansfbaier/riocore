@@ -1,5 +1,5 @@
 {
-    "name": "rioctrl with Baier Technik IO boards",
+    "name": "rioctrl-with-baiertechnik-io",
     "boardcfg": "rioctrl",
     "flashcmd": "openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
     "plugins": [
