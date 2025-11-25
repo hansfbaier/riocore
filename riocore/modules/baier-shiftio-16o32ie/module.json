@@ -6,13 +6,13 @@
             "type": "quadencoderz",
             "pins": {
                 "a": {
-                    "pin": "S2"
+                    "pin": "S8"
                 },
                 "b": {
-                    "pin": "S1"
+                    "pin": "S7"
                 },
                 "z": {
-                    "pin": "S0"
+                    "pin": "S6"
                 }
             }
         },
@@ -21,13 +21,13 @@
             "name": "shiftout",
             "pins": {
                 "out": {
-                    "pin": "S9"
+                    "pin": "S3"
                 },
                 "sclk": {
-                    "pin": "S10"
+                    "pin": "S4"
                 },
                 "load": {
-                    "pin": "S11"
+                    "pin": "S5"
                 }
             },
             "bits": 16
@@ -37,13 +37,13 @@
             "name": "shiftina",
             "pins": {
                 "in": {
-                    "pin": "S5"
+                    "pin": "S11"
                 },
                 "sclk": {
-                    "pin": "S4"
+                    "pin": "S9"
                 },
                 "load": {
-                    "pin": "S3"
+                    "pin": "S10"
                 }
             },
             "bits": 16
@@ -277,13 +277,13 @@
             "name": "shiftinb",
             "pins": {
                 "in": {
-                    "pin": "S7"
+                    "pin": "S1"
                 },
                 "sclk": {
-                    "pin": "S8"
+                    "pin": "S2"
                 },
                 "load": {
-                    "pin": "S6"
+                    "pin": "S0"
                 }
             },
             "bits": 16
