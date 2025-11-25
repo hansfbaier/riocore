@@ -75,125 +75,6 @@
     "protocol": "UDP",
     "modules": [
         {
-            "slot": "SC",
-            "module": "baier-spindle-v1.0",
-            "setup": {
-                "spindle": {
-                    "type": "pwmout",
-                    "name": "spindle",
-                    "pins": {
-                        "pwm": {
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        },
-                        "en": {
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "pwmout0",
-                    "signals": {
-                        "dty": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "enable": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "encoder": {
-                    "name": "encoder",
-                    "type": "quadencoderz",
-                    "uid": "quadencoderz1",
-                    "signals": {
-                        "indexenable": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "indexout": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "position": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "rps": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "rpm": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "null": {
-                    "type": "spindle-modbus",
-                    "uid": "spindle-modbus0"
-                },
-                "spindle-encoder": {
-                    "name": "spindle-encoder",
-                    "type": "quadencoderz",
-                    "uid": "quadencoderz0",
-                    "signals": {
-                        "indexenable": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "indexout": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "position": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "rps": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "rpm": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "spindle-modbus": {
-                    "name": "spindle-modbus",
-                    "type": "modbus",
-                    "uid": "modbus0",
-                    "signals": {
-                        "temperature": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                }
-            }
-        },
-        {
             "slot": "SA",
             "module": "baier-stepdir4-v1.0",
             "setup": {
@@ -602,7 +483,7 @@
                 "direct-output0": {
                     "type": "bitout",
                     "name": "direct-output0",
-                    "uid": "directout8",
+                    "uid": "directout0",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -614,7 +495,7 @@
                 "direct-output1": {
                     "type": "bitout",
                     "name": "direct-output1",
-                    "uid": "directout9",
+                    "uid": "directout1",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -626,7 +507,7 @@
                 "direct-output2": {
                     "type": "bitout",
                     "name": "direct-output2",
-                    "uid": "directout10",
+                    "uid": "directout2",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -638,7 +519,7 @@
                 "direct-output3": {
                     "type": "bitout",
                     "name": "direct-output3",
-                    "uid": "directout11",
+                    "uid": "directout3",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -656,7 +537,7 @@
                 "io-board-encoder": {
                     "name": "io-board-encoder",
                     "type": "quadencoderz",
-                    "uid": "quadencoderz0",
+                    "uid": "io_board_encoder",
                     "signals": {
                         "indexenable": {
                             "net": "",
@@ -710,7 +591,7 @@
                             "pin": "SHIFTINA_INPUT[7]"
                         }
                     },
-                    "uid": "bitin3",
+                    "uid": "bitin0",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -732,7 +613,7 @@
                             "pin": "SHIFTINA_INPUT[6]"
                         }
                     },
-                    "uid": "bitin4",
+                    "uid": "bitin1",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -754,7 +635,7 @@
                             "pin": "SHIFTINA_INPUT[5]"
                         }
                     },
-                    "uid": "bitin5",
+                    "uid": "bitin2",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -776,7 +657,7 @@
                             "pin": "SHIFTINA_INPUT[4]"
                         }
                     },
-                    "uid": "bitin6",
+                    "uid": "bitin3",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -798,7 +679,7 @@
                             "pin": "SHIFTINA_INPUT[3]"
                         }
                     },
-                    "uid": "bitin7",
+                    "uid": "bitin4",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -820,7 +701,7 @@
                             "pin": "SHIFTINA_INPUT[2]"
                         }
                     },
-                    "uid": "bitin8",
+                    "uid": "bitin5",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -842,7 +723,7 @@
                             "pin": "SHIFTINA_INPUT[1]"
                         }
                     },
-                    "uid": "bitin9",
+                    "uid": "bitin6",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -864,7 +745,7 @@
                             "pin": "SHIFTINA_INPUT[0]"
                         }
                     },
-                    "uid": "bitin10",
+                    "uid": "bitin7",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -886,7 +767,7 @@
                             "pin": "SHIFTINA_INPUT[15]"
                         }
                     },
-                    "uid": "bitin11",
+                    "uid": "bitin8",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -908,7 +789,7 @@
                             "pin": "SHIFTINA_INPUT[14]"
                         }
                     },
-                    "uid": "bitin12",
+                    "uid": "bitin9",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -930,7 +811,7 @@
                             "pin": "SHIFTINA_INPUT[13]"
                         }
                     },
-                    "uid": "bitin13",
+                    "uid": "bitin10",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -952,7 +833,7 @@
                             "pin": "SHIFTINA_INPUT[12]"
                         }
                     },
-                    "uid": "bitin14",
+                    "uid": "bitin11",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -974,7 +855,7 @@
                             "pin": "SHIFTINA_INPUT[11]"
                         }
                     },
-                    "uid": "bitin15",
+                    "uid": "bitin12",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -996,7 +877,7 @@
                             "pin": "SHIFTINA_INPUT[10]"
                         }
                     },
-                    "uid": "bitin16",
+                    "uid": "bitin13",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1018,7 +899,7 @@
                             "pin": "SHIFTINA_INPUT[9]"
                         }
                     },
-                    "uid": "bitin17",
+                    "uid": "bitin14",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1040,7 +921,7 @@
                             "pin": "SHIFTINA_INPUT[8]"
                         }
                     },
-                    "uid": "bitin18",
+                    "uid": "bitin15",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1068,7 +949,7 @@
                             "pin": "SHIFTINB_INPUT[7]"
                         }
                     },
-                    "uid": "bitin20",
+                    "uid": "bitin16",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1090,7 +971,7 @@
                             "pin": "SHIFTINB_INPUT[6]"
                         }
                     },
-                    "uid": "bitin21",
+                    "uid": "bitin17",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1112,7 +993,7 @@
                             "pin": "SHIFTINB_INPUT[5]"
                         }
                     },
-                    "uid": "bitin22",
+                    "uid": "bitin18",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1134,7 +1015,7 @@
                             "pin": "SHIFTINB_INPUT[4]"
                         }
                     },
-                    "uid": "bitin23",
+                    "uid": "bitin19",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1156,7 +1037,7 @@
                             "pin": "SHIFTINB_INPUT[3]"
                         }
                     },
-                    "uid": "bitin24",
+                    "uid": "bitin20",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1178,7 +1059,7 @@
                             "pin": "SHIFTINB_INPUT[2]"
                         }
                     },
-                    "uid": "bitin25",
+                    "uid": "bitin21",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1200,7 +1081,7 @@
                             "pin": "SHIFTINB_INPUT[1]"
                         }
                     },
-                    "uid": "bitin26",
+                    "uid": "bitin22",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1222,7 +1103,7 @@
                             "pin": "SHIFTINB_INPUT[0]"
                         }
                     },
-                    "uid": "bitin27",
+                    "uid": "bitin23",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1244,7 +1125,7 @@
                             "pin": "SHIFTINB_INPUT[15]"
                         }
                     },
-                    "uid": "bitin28",
+                    "uid": "bitin24",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1266,7 +1147,7 @@
                             "pin": "SHIFTINB_INPUT[14]"
                         }
                     },
-                    "uid": "bitin29",
+                    "uid": "bitin25",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1288,7 +1169,7 @@
                             "pin": "SHIFTINB_INPUT[13]"
                         }
                     },
-                    "uid": "bitin30",
+                    "uid": "bitin26",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1310,7 +1191,7 @@
                             "pin": "SHIFTINB_INPUT[12]"
                         }
                     },
-                    "uid": "bitin31",
+                    "uid": "bitin27",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1332,7 +1213,7 @@
                             "pin": "SHIFTINB_INPUT[11]"
                         }
                     },
-                    "uid": "bitin32",
+                    "uid": "bitin28",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1354,7 +1235,7 @@
                             "pin": "SHIFTINB_INPUT[10]"
                         }
                     },
-                    "uid": "bitin33",
+                    "uid": "bitin29",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1376,7 +1257,7 @@
                             "pin": "SHIFTINB_INPUT[9]"
                         }
                     },
-                    "uid": "bitin34",
+                    "uid": "bitin30",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1398,7 +1279,7 @@
                             "pin": "SHIFTINB_INPUT[8]"
                         }
                     },
-                    "uid": "bitin35",
+                    "uid": "bitin31",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1415,7 +1296,7 @@
                             "pin": "SHIFTOUT_OUTPUT[0]"
                         }
                     },
-                    "uid": "bitout36",
+                    "uid": "bitout0",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1432,7 +1313,7 @@
                             "pin": "SHIFTOUT_OUTPUT[1]"
                         }
                     },
-                    "uid": "bitout37",
+                    "uid": "bitout1",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1449,7 +1330,7 @@
                             "pin": "SHIFTOUT_OUTPUT[2]"
                         }
                     },
-                    "uid": "bitout38",
+                    "uid": "bitout2",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1466,7 +1347,7 @@
                             "pin": "SHIFTOUT_OUTPUT[3]"
                         }
                     },
-                    "uid": "bitout39",
+                    "uid": "bitout3",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1483,7 +1364,7 @@
                             "pin": "SHIFTOUT_OUTPUT[4]"
                         }
                     },
-                    "uid": "bitout40",
+                    "uid": "bitout4",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1500,7 +1381,7 @@
                             "pin": "SHIFTOUT_OUTPUT[5]"
                         }
                     },
-                    "uid": "bitout41",
+                    "uid": "bitout5",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1517,7 +1398,7 @@
                             "pin": "SHIFTOUT_OUTPUT[6]"
                         }
                     },
-                    "uid": "bitout42",
+                    "uid": "bitout6",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1534,7 +1415,7 @@
                             "pin": "SHIFTOUT_OUTPUT[7]"
                         }
                     },
-                    "uid": "bitout43",
+                    "uid": "bitout7",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1551,7 +1432,7 @@
                             "pin": "SHIFTOUT_OUTPUT[8]"
                         }
                     },
-                    "uid": "bitout44",
+                    "uid": "bitout8",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1568,7 +1449,7 @@
                             "pin": "SHIFTOUT_OUTPUT[9]"
                         }
                     },
-                    "uid": "bitout45",
+                    "uid": "bitout9",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1585,7 +1466,7 @@
                             "pin": "SHIFTOUT_OUTPUT[10]"
                         }
                     },
-                    "uid": "bitout46",
+                    "uid": "bitout10",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1602,7 +1483,7 @@
                             "pin": "SHIFTOUT_OUTPUT[11]"
                         }
                     },
-                    "uid": "bitout47",
+                    "uid": "bitout11",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1619,7 +1500,7 @@
                             "pin": "SHIFTOUT_OUTPUT[12]"
                         }
                     },
-                    "uid": "bitout48",
+                    "uid": "bitout12",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1636,7 +1517,7 @@
                             "pin": "SHIFTOUT_OUTPUT[13]"
                         }
                     },
-                    "uid": "bitout49",
+                    "uid": "bitout13",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1653,7 +1534,7 @@
                             "pin": "SHIFTOUT_OUTPUT[14]"
                         }
                     },
-                    "uid": "bitout50",
+                    "uid": "bitout14",
                     "signals": {
                         "bit": {
                             "net": "",
@@ -1670,9 +1551,92 @@
                             "pin": "SHIFTOUT_OUTPUT[15]"
                         }
                     },
-                    "uid": "bitout51",
+                    "uid": "bitout15",
                     "signals": {
                         "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "slot": "SC",
+            "module": "baier-spindle-v1.0",
+            "setup": {
+                "spindle": {
+                    "type": "pwmout",
+                    "name": "spindle",
+                    "pins": {
+                        "pwm": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        },
+                        "en": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "pwmout0",
+                    "signals": {
+                        "dty": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "enable": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "spindle-encoder": {
+                    "name": "spindle-encoder",
+                    "type": "quadencoderz",
+                    "uid": "spindle_encoder",
+                    "signals": {
+                        "indexenable": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "indexout": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "position": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "rps": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "rpm": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "spindle-modbus": {
+                    "name": "spindle-modbus",
+                    "type": "modbus",
+                    "uid": "modbus2",
+                    "signals": {
+                        "temperature": {
                             "net": "",
                             "function": "",
                             "setp": ""
