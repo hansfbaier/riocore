@@ -1,0 +1,161 @@
+{
+    "comment": "baier-directio-v1.0\n4 optically isolated outputs\n8 optically isolated inputs\nall directly connected to the FPGA",
+    "plugins": [
+        {
+            "type": "bitin",
+            "name": "input0",
+            "pins": {
+                "bit": {
+                    "pin": "S3",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input1",
+            "pins": {
+                "bit": {
+                    "pin": "S2",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input2",
+            "pins": {
+                "bit": {
+                    "pin": "S1",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input3",
+            "pins": {
+                "bit": {
+                    "pin": "S0",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input4",
+            "pins": {
+                "bit": {
+                    "pin": "S4",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input5",
+            "pins": {
+                "bit": {
+                    "pin": "S5",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input6",
+            "pins": {
+                "bit": {
+                    "pin": "S6",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input7",
+            "pins": {
+                "bit": {
+                    "pin": "S7",
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output0",
+            "pins": {
+                "bit": {
+                    "pin": "S11"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output1",
+            "pins": {
+                "bit": {
+                    "pin": "S10"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output2",
+            "pins": {
+                "bit": {
+                    "pin": "S9"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output3",
+            "pins": {
+                "bit": {
+                    "pin": "S8"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+  "comment": "baier-spindle-v1.0",
+  "plugins": [
+    {
+      "type": "pwmout",
+      "name": "spindle",
+      "pins": {
+        "pwm": {
+          "pin": "S0",
+          "modifier": [
+            {
+              "type": "invert"
+            }
+          ]
+        },
+        "en": {
+          "pin": "S5",
+          "modifier": [
+            {
+              "type": "invert"
+            }
+          ]
+        },
+        "dir": {
+        }
+      }
+    },
+    {
+        "name": "encoder",
+        "type": "quadencoderz",
+        "pins": {
+            "a": {
+                "pin": "S7"
+            },
+            "b": {
+                "pin": "S8"
+            },
+            "z": {
+                "pin": "S9"
+            }
+        }
+    },
+    {
+        "type": "modbus",
+        "pins": {
+            "tx": {
+                "pin": "S2"
+            },
+            "rx": {
+                "pin": "S3"
+            },
+            "tx_enable": {
+                "pin": "S4"
+            }
+        }
+    }
+  ]
+}
