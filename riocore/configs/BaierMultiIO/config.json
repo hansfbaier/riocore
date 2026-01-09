@@ -610,6 +610,21 @@
                             "setp": ""
                         }
                     }
+                },
+                "": {
+                    "type": "bitcopy",
+                    "origin": "pwm",
+                    "name": "",
+                    "pins": {
+                        "bit": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "bitcopy0"
                 }
             }
         },
