@@ -1,0 +1,1591 @@
+{
+    "name": "baier-mill",
+    "boardcfg": "rioctrl",
+    "flashcmd": "openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
+    "plugins": [
+        {
+            "type": "blink",
+            "pins": {
+                "led": {
+                    "pin": "LED:ERR",
+                    "modifier": [
+                        {
+                            "type": "onerror",
+                            "invert": true
+                        }
+                    ]
+                }
+            },
+            "frequency": 1.0,
+            "uid": "blinkerr"
+        },
+        {
+            "type": "blink",
+            "pins": {
+                "led": {
+                    "pin": "LED:OK",
+                    "modifier": [
+                        {
+                            "type": "onerror",
+                            "invert": false
+                        }
+                    ]
+                }
+            },
+            "frequency": 2.0,
+            "uid": "blinkok"
+        },
+        {
+            "type": "bitout",
+            "name": "SlotEN",
+            "pins": {
+                "bit": {
+                    "pin": "SlotControl:EN"
+                }
+            },
+            "uid": "slotcontrol",
+            "signals": {
+                "bit": {
+                    "net": "halui.machine.is-on"
+                }
+            }
+        },
+        {
+            "type": "w5500",
+            "pins": {
+                "mosi": {
+                    "pin": "SPI:MOSI"
+                },
+                "miso": {
+                    "pin": "SPI:MISO"
+                },
+                "sclk": {
+                    "pin": "SPI:SCLK"
+                },
+                "sel": {
+                    "pin": "SPI:SEL"
+                },
+                "rst": {
+                    "pin": "SPI:RST"
+                },
+                "int": {
+                    "pin": "SPI:INT"
+                }
+            },
+            "gw": "192.168.66.1",
+            "ip": "192.168.66.49",
+            "uid": "w55000"
+        },
+        {
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir0",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "step": {
+                    "pin": "SA:S0"
+                },
+                "dir": {
+                    "pin": "SA:S1"
+                },
+                "en": {
+                    "pin": "SA:S2"
+                }
+            },
+            "axis": "X",
+            "name": "x-joint"
+        },
+        {
+            "name": "y-joint",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir1",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "step": {
+                    "pin": "SA:S3"
+                },
+                "dir": {
+                    "pin": "SA:S4"
+                },
+                "en": {
+                    "pin": "SA:S5"
+                }
+            },
+            "axis": "Y"
+        },
+        {
+            "name": "z-joint",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir2",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "step": {
+                    "pin": "SA:S6"
+                },
+                "dir": {
+                    "pin": "SA:S7"
+                },
+                "en": {
+                    "pin": "SA:S8"
+                }
+            },
+            "axis": "Z"
+        },
+        {
+            "type": "shiftreg",
+            "name": "shiftout",
+            "bits": 16,
+            "uid": "shiftreg1",
+            "pins": {
+                "out": {
+                    "pin": "SF:S3"
+                },
+                "sclk": {
+                    "pin": "SF:S4"
+                },
+                "load": {
+                    "pin": "SF:S5"
+                }
+            }
+        },
+        {
+            "type": "shiftreg",
+            "name": "shiftina",
+            "bits": 16,
+            "uid": "shiftreg2",
+            "pins": {
+                "in": {
+                    "pin": "SF:S11"
+                },
+                "sclk": {
+                    "pin": "SF:S9"
+                },
+                "load": {
+                    "pin": "SF:S10"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input0",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[15]"
+                }
+            },
+            "uid": "bitin0",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input1",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[14]"
+                }
+            },
+            "uid": "bitin1",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input2",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[13]"
+                }
+            },
+            "uid": "bitin2",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input3",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[12]"
+                }
+            },
+            "uid": "bitin3",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input4",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[11]"
+                }
+            },
+            "uid": "bitin4",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input5",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[10]"
+                }
+            },
+            "uid": "bitin5",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input6",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[9]"
+                }
+            },
+            "uid": "bitin6",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input7",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[8]"
+                }
+            },
+            "uid": "bitin7",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input8",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[7]"
+                }
+            },
+            "uid": "bitin8",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input9",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[6]"
+                }
+            },
+            "uid": "bitin9",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input10",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[5]"
+                }
+            },
+            "uid": "bitin10",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input11",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[4]"
+                }
+            },
+            "uid": "bitin11",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input12",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[3]"
+                }
+            },
+            "uid": "bitin12",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input13",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[2]"
+                }
+            },
+            "uid": "bitin13",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input14",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[1]"
+                }
+            },
+            "uid": "bitin14",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input15",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[0]"
+                }
+            },
+            "uid": "bitin15",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "shiftreg",
+            "name": "shiftinb",
+            "bits": 16,
+            "uid": "shiftreg19",
+            "pins": {
+                "in": {
+                    "pin": "SF:S1"
+                },
+                "sclk": {
+                    "pin": "SF:S2"
+                },
+                "load": {
+                    "pin": "SF:S0"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input16",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[15]"
+                }
+            },
+            "uid": "bitin16",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input17",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[14]"
+                }
+            },
+            "uid": "bitin17",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input18",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[13]"
+                }
+            },
+            "uid": "bitin18",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input19",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[12]"
+                }
+            },
+            "uid": "bitin19",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input20",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[11]"
+                }
+            },
+            "uid": "bitin20",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input21",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[10]"
+                }
+            },
+            "uid": "bitin21",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input22",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[9]"
+                }
+            },
+            "uid": "bitin22",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input23",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[8]"
+                }
+            },
+            "uid": "bitin23",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input24",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[7]"
+                }
+            },
+            "uid": "bitin24",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input25",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[6]"
+                }
+            },
+            "uid": "bitin25",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input26",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[5]"
+                }
+            },
+            "uid": "bitin26",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input27",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[4]"
+                }
+            },
+            "uid": "bitin27",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input28",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[3]"
+                }
+            },
+            "uid": "bitin28",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input29",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[2]"
+                }
+            },
+            "uid": "bitin29",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input30",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[1]"
+                }
+            },
+            "uid": "bitin30",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "input31",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[0]"
+                }
+            },
+            "uid": "bitin31",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output0",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[8]"
+                }
+            },
+            "uid": "bitout0",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output1",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[9]"
+                }
+            },
+            "uid": "bitout1",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output2",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[10]"
+                }
+            },
+            "uid": "bitout2",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output3",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[11]"
+                }
+            },
+            "uid": "bitout3",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output4",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[12]"
+                }
+            },
+            "uid": "bitout4",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output5",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[13]"
+                }
+            },
+            "uid": "bitout5",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output6",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[14]"
+                }
+            },
+            "uid": "bitout6",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output7",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[15]"
+                }
+            },
+            "uid": "bitout7",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output8",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[0]"
+                }
+            },
+            "uid": "bitout8",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output9",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[1]"
+                }
+            },
+            "uid": "bitout9",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output10",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[2]"
+                }
+            },
+            "uid": "bitout10",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output11",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[3]"
+                }
+            },
+            "uid": "bitout11",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output12",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[4]"
+                }
+            },
+            "uid": "bitout12",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output13",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[5]"
+                }
+            },
+            "uid": "bitout13",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output14",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[6]"
+                }
+            },
+            "uid": "bitout14",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "output15",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[7]"
+                }
+            },
+            "uid": "bitout15",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "pins": {
+                "bit": {
+                    "pin": "SF:S8"
+                }
+            },
+            "uid": "alarm_x",
+            "name": "alarm-x"
+        },
+        {
+            "type": "bitin",
+            "pins": {
+                "bit": {
+                    "pin": "SF:S7"
+                }
+            },
+            "uid": "alarm_y",
+            "name": "alarm-y"
+        },
+        {
+            "type": "bitin",
+            "pins": {
+                "bit": {
+                    "pin": "SF:S6"
+                }
+            },
+            "uid": "alarm_z",
+            "name": "alarm-z"
+        }
+    ],
+    "protocol": "UDP",
+    "modules": [
+        {
+            "slot": "SD",
+            "module": "baier-directio-v1.0",
+            "setup": {
+                "direct-input0": {
+                    "type": "bitin",
+                    "name": "home-x",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin0",
+                    "signals": {
+                        "bit": {
+                            "net": "joint.0.home-sw-in",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input1": {
+                    "type": "bitin",
+                    "name": "home-y",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin1",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input2": {
+                    "type": "bitin",
+                    "name": "home-z",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin2",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input3": {
+                    "type": "bitin",
+                    "name": "direct-input3",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin3",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input4": {
+                    "type": "bitin",
+                    "name": "direct-input4",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin4",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input5": {
+                    "type": "bitin",
+                    "name": "direct-input5",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin5",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input6": {
+                    "type": "bitin",
+                    "name": "direct-input6",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin6",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-input7": {
+                    "type": "bitin",
+                    "name": "direct-input7",
+                    "pins": {
+                        "bit": {
+                            "pull": "up",
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "directin7",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-output0": {
+                    "type": "bitout",
+                    "name": "direct-output0",
+                    "uid": "directout0",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-output1": {
+                    "type": "bitout",
+                    "name": "direct-output1",
+                    "uid": "directout1",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-output2": {
+                    "type": "bitout",
+                    "name": "direct-output2",
+                    "uid": "directout2",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "direct-output3": {
+                    "type": "bitout",
+                    "name": "direct-output3",
+                    "uid": "directout3",
+                    "signals": {
+                        "bit": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "slot": "SC",
+            "module": "baier-spindle-v1.0",
+            "setup": {
+                "spindle": {
+                    "type": "pwmout",
+                    "name": "spindle",
+                    "pins": {
+                        "pwm": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        },
+                        "en": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "pwmout0",
+                    "signals": {
+                        "dty": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "enable": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "spindle-encoder": {
+                    "name": "spindle-encoder",
+                    "type": "quadencoderz",
+                    "uid": "spindle_encoder",
+                    "signals": {
+                        "indexenable": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "indexout": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "position": {
+                            "net": "",
+                            "function": "",
+                            "scale": -2500,
+                            "setp": ""
+                        },
+                        "rps": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "rpm": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "spindle-modbus": {
+                    "name": "spindle-modbus",
+                    "type": "modbus",
+                    "uid": "modbus2",
+                    "signals": {
+                        "temperature": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    }
+                },
+                "": {
+                    "type": "bitcopy",
+                    "origin": "pwm",
+                    "name": "",
+                    "pins": {
+                        "bit": {
+                            "modifier": [
+                                {
+                                    "type": "invert"
+                                }
+                            ]
+                        }
+                    },
+                    "uid": "bitcopy0"
+                },
+                "pwm_n": {
+                    "type": "bitcopy",
+                    "origin": "PINOUT_PWMOUT0_PWM_RAW",
+                    "name": "pwm_n",
+                    "uid": "bitcopy0"
+                }
+            }
+        }
+    ],
+    "linuxcnc": {
+        "ini": {
+            "EMC": {
+                "MACHINE": "BaierMill",
+                "VERSION": 1.1
+            },
+            "DISPLAY": {
+                "TITLE": "BaierMill"
+            }
+        }
+    }
+}
