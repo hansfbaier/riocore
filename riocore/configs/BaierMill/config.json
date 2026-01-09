@@ -1283,7 +1283,7 @@
                     "uid": "directin1",
                     "signals": {
                         "bit": {
-                            "net": "",
+                            "net": "joint.1.home-sw-in",
                             "function": "",
                             "setp": ""
                         }
@@ -1305,7 +1305,7 @@
                     "uid": "directin2",
                     "signals": {
                         "bit": {
-                            "net": "",
+                            "net": "joint.2.home-sw-in",
                             "function": "",
                             "setp": ""
                         }
