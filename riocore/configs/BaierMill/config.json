@@ -1237,6 +1237,138 @@
             },
             "uid": "alarm_z",
             "name": "alarm-z"
+        },
+        {
+            "name": "encoder-x",
+            "type": "quadencoderz",
+            "pins": {
+                "a": {
+                    "pin": "SB:S5"
+                },
+                "b": {
+                    "pin": "SB:S4"
+                },
+                "z": {
+                    "pin": "SB:S3"
+                }
+            },
+            "is_joint": true,
+            "uid": "quadencoderz1",
+            "signals": {
+                "indexenable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "indexout": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rps": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rpm": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "name": "encoder-y",
+            "type": "quadencoderz",
+            "pins": {
+                "a": {
+                    "pin": "SB:S8"
+                },
+                "b": {
+                    "pin": "SB:S7"
+                },
+                "z": {
+                    "pin": "SB:S6"
+                }
+            },
+            "is_joint": true,
+            "uid": "quadencoderz2",
+            "signals": {
+                "indexenable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "indexout": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rps": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rpm": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "name": "encoder-z",
+            "type": "quadencoderz",
+            "pins": {
+                "a": {
+                    "pin": "SB:S11"
+                },
+                "b": {
+                    "pin": "SB:S10"
+                },
+                "z": {
+                    "pin": "SB:S9"
+                }
+            },
+            "is_joint": true,
+            "uid": "quadencoderz3",
+            "signals": {
+                "indexenable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "indexout": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rps": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rpm": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
         }
     ],
     "protocol": "UDP",
