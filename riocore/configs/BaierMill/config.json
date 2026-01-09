@@ -217,7 +217,7 @@
         },
         {
             "type": "bitin",
-            "name": "input0",
+            "name": "min-x",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -231,7 +231,7 @@
             "uid": "bitin0",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.0.neg-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
@@ -239,7 +239,7 @@
         },
         {
             "type": "bitin",
-            "name": "input1",
+            "name": "max-x",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -253,7 +253,7 @@
             "uid": "bitin1",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.0.pos-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
@@ -261,7 +261,7 @@
         },
         {
             "type": "bitin",
-            "name": "input2",
+            "name": "min-y",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -275,7 +275,7 @@
             "uid": "bitin2",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.1.neg-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
@@ -283,7 +283,7 @@
         },
         {
             "type": "bitin",
-            "name": "input3",
+            "name": "max-y",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -297,7 +297,7 @@
             "uid": "bitin3",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.1.pos-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
@@ -305,7 +305,7 @@
         },
         {
             "type": "bitin",
-            "name": "input4",
+            "name": "min-z",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -319,7 +319,7 @@
             "uid": "bitin4",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.2.neg-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
@@ -327,7 +327,7 @@
         },
         {
             "type": "bitin",
-            "name": "input5",
+            "name": "max-z",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -341,7 +341,7 @@
             "uid": "bitin5",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.2.pos-lim-sw-in",
                     "function": "",
                     "setp": ""
                 }
