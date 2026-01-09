@@ -6,12 +6,7 @@
       "name": "spindle",
       "pins": {
         "pwm": {
-          "pin": "S0",
-          "modifier": [
-            {
-              "type": "invert"
-            }
-          ]
+          "pin": "S0"
         },
         "en": {
           "pin": "S5",
@@ -22,6 +17,17 @@
           ]
         }
       }
+    },
+    {
+        "type": "bitcopy",
+        "origin": "PINOUT_PWMOUT0_PWM_RAW",
+        "name": "pwm_n",
+        "pins": {
+            "bit": {
+                "pin": "S1"
+            }
+        },
+        "signals": {}
     },
     {
         "name": "spindle-encoder",
