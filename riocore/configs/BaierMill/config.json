@@ -1445,7 +1445,7 @@
                 },
                 "direct-input3": {
                     "type": "bitin",
-                    "name": "direct-input3",
+                    "name": "spindle-alarm",
                     "pins": {
                         "bit": {
                             "pull": "up",
@@ -1467,7 +1467,7 @@
                 },
                 "direct-input4": {
                     "type": "bitin",
-                    "name": "direct-input4",
+                    "name": "spindle-fault",
                     "pins": {
                         "bit": {
                             "pull": "up",
@@ -1555,7 +1555,7 @@
                 },
                 "direct-output0": {
                     "type": "bitout",
-                    "name": "direct-output0",
+                    "name": "z-brake",
                     "uid": "directout0",
                     "signals": {
                         "bit": {
@@ -1567,7 +1567,7 @@
                 },
                 "direct-output1": {
                     "type": "bitout",
-                    "name": "direct-output1",
+                    "name": "z-servo-enable",
                     "uid": "directout1",
                     "signals": {
                         "bit": {
@@ -1579,7 +1579,7 @@
                 },
                 "direct-output2": {
                     "type": "bitout",
-                    "name": "direct-output2",
+                    "name": "z-servo-power",
                     "uid": "directout2",
                     "signals": {
                         "bit": {
@@ -1678,10 +1678,207 @@
                     "type": "modbus",
                     "uid": "modbus2",
                     "signals": {
-                        "temperature": {
+                        "set-spindle-speed": {
                             "net": "",
                             "function": "",
                             "setp": ""
+                        },
+                        "spindle-speed": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-speed_valid": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-speed_errors": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-load": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-load_valid": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-load_errors": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-position": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-position_valid": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-position_errors": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-status": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-status_valid": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-status_errors": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-forward": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-reverse": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        },
+                        "spindle-stop": {
+                            "net": "",
+                            "function": "",
+                            "setp": ""
+                        }
+                    },
+                    "config": {
+                        "set-spindle-speed": {
+                            "address": 1,
+                            "type": 6,
+                            "register": 40768,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "RPM",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "output"
+                        },
+                        "spindle-speed": {
+                            "address": 1,
+                            "type": 4,
+                            "register": 40256,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "RPM",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "input"
+                        },
+                        "spindle-load": {
+                            "address": 1,
+                            "type": 4,
+                            "register": 40278,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "%",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "input"
+                        },
+                        "spindle-position": {
+                            "address": 1,
+                            "type": 4,
+                            "register": 40274,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "input"
+                        },
+                        "spindle-status": {
+                            "address": 1,
+                            "type": 4,
+                            "register": 41536,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "",
+                            "error_values": "",
+                            "format": "x",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "input"
+                        },
+                        "spindle-forward": {
+                            "address": 1,
+                            "type": 6,
+                            "register": 42561,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "output"
+                        },
+                        "spindle-reverse": {
+                            "address": 1,
+                            "type": 6,
+                            "register": 42562,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "output"
+                        },
+                        "spindle-stop": {
+                            "address": 1,
+                            "type": 6,
+                            "register": 42563,
+                            "values": 1,
+                            "datatype": "int",
+                            "scale": 1.0,
+                            "unit": "",
+                            "error_values": "",
+                            "format": "d",
+                            "timeout": 100,
+                            "delay": 0,
+                            "priority": 0,
+                            "direction": "output"
                         }
                     }
                 },
