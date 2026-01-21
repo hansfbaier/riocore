@@ -1267,7 +1267,7 @@
                     "pin": "SB:S3"
                 }
             },
-            "is_joint": true,
+            "is_joint": false,
             "uid": "quadencoderz1",
             "signals": {
                 "indexenable": {
@@ -1312,7 +1312,7 @@
                     "pin": "SB:S6"
                 }
             },
-            "is_joint": true,
+            "is_joint": false,
             "uid": "quadencoderz2",
             "signals": {
                 "indexenable": {
@@ -1357,7 +1357,7 @@
                     "pin": "SB:S9"
                 }
             },
-            "is_joint": true,
+            "is_joint": false,
             "uid": "quadencoderz3",
             "signals": {
                 "indexenable": {
@@ -1387,231 +1387,258 @@
                     "setp": ""
                 }
             }
+        },
+        {
+            "type": "bitin",
+            "name": "home-x",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S3"
+                }
+            },
+            "uid": "directin0",
+            "signals": {
+                "bit": {
+                    "net": "joint.0.home-sw-in",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "home-y",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S2"
+                }
+            },
+            "uid": "directin1",
+            "signals": {
+                "bit": {
+                    "net": "joint.1.home-sw-in",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "home-z",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S1"
+                }
+            },
+            "uid": "directin2",
+            "signals": {
+                "bit": {
+                    "net": "joint.2.home-sw-in",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "spindle-alarm",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S0"
+                }
+            },
+            "uid": "directin3",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "spindle-fault",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S4"
+                }
+            },
+            "uid": "directin4",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S5"
+                }
+            },
+            "uid": "directin5",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "name": "servo-driver-brake"
+        },
+        {
+            "type": "bitin",
+            "name": "direct-input6",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S6"
+                }
+            },
+            "uid": "directin6",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "direct-input7",
+            "pins": {
+                "bit": {
+                    "pull": "up",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SD:S7"
+                }
+            },
+            "uid": "directin7",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "z-servo-enable",
+            "uid": "directout1",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "bit": {
+                    "pin": "SD:S10"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "z-servo-power",
+            "uid": "directout2",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "bit": {
+                    "pin": "SD:S9"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "direct-output3",
+            "uid": "directout3",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "bit": {
+                    "pin": "SD:S8"
+                }
+            }
+        },
+        {
+            "type": "bitcopy",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                    ],
+                    "pin": "SD:S11"
+                }
+            },
+            "uid": "bitcopy1",
+            "origin": "PININ_DIRECTIN5_BIT",
+            "name": "driverbrake_feedthrough"
         }
     ],
     "protocol": "UDP",
     "modules": [
-        {
-            "slot": "SD",
-            "module": "baier-directio-v1.0",
-            "setup": {
-                "direct-input0": {
-                    "type": "bitin",
-                    "name": "home-x",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                            ]
-                        }
-                    },
-                    "uid": "directin0",
-                    "signals": {
-                        "bit": {
-                            "net": "joint.0.home-sw-in",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input1": {
-                    "type": "bitin",
-                    "name": "home-y",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                            ]
-                        }
-                    },
-                    "uid": "directin1",
-                    "signals": {
-                        "bit": {
-                            "net": "joint.1.home-sw-in",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input2": {
-                    "type": "bitin",
-                    "name": "home-z",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                            ]
-                        }
-                    },
-                    "uid": "directin2",
-                    "signals": {
-                        "bit": {
-                            "net": "joint.2.home-sw-in",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input3": {
-                    "type": "bitin",
-                    "name": "spindle-alarm",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "directin3",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input4": {
-                    "type": "bitin",
-                    "name": "spindle-fault",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "directin4",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input5": {
-                    "type": "bitin",
-                    "name": "direct-input5",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "directin5",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input6": {
-                    "type": "bitin",
-                    "name": "direct-input6",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "directin6",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-input7": {
-                    "type": "bitin",
-                    "name": "direct-input7",
-                    "pins": {
-                        "bit": {
-                            "pull": "up",
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "directin7",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-output0": {
-                    "type": "bitout",
-                    "name": "z-brake",
-                    "uid": "directout0",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-output1": {
-                    "type": "bitout",
-                    "name": "z-servo-enable",
-                    "uid": "directout1",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-output2": {
-                    "type": "bitout",
-                    "name": "z-servo-power",
-                    "uid": "directout2",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                },
-                "direct-output3": {
-                    "type": "bitout",
-                    "name": "direct-output3",
-                    "uid": "directout3",
-                    "signals": {
-                        "bit": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
-                }
-            }
-        },
         {
             "slot": "SC",
             "module": "baier-spindle-v1.0",
@@ -1687,89 +1714,89 @@
                     "type": "modbus",
                     "uid": "modbus2",
                     "signals": {
-                        "set-spindle-speed": {
+                        "set_spindle_speed": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-speed": {
+                        "spindle_speed": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-speed_valid": {
+                        "spindle_speed_valid": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-speed_errors": {
+                        "spindle_speed_errors": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-load": {
+                        "spindle_load": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-load_valid": {
+                        "spindle_load_valid": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-load_errors": {
+                        "spindle_load_errors": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-position": {
+                        "spindle_position": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-position_valid": {
+                        "spindle_position_valid": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-position_errors": {
+                        "spindle_position_errors": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-status": {
+                        "spindle_status": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-status_valid": {
+                        "spindle_status_valid": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-status_errors": {
+                        "spindle_status_errors": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-forward": {
+                        "spindle_forward": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-reverse": {
+                        "spindle_reverse": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         },
-                        "spindle-stop": {
+                        "spindle_stop": {
                             "net": "",
                             "function": "",
                             "setp": ""
                         }
                     },
                     "config": {
-                        "set-spindle-speed": {
+                        "set_spindle_speed": {
                             "address": 1,
                             "type": 6,
                             "register": 40768,
@@ -1784,7 +1811,7 @@
                             "priority": 0,
                             "direction": "output"
                         },
-                        "spindle-speed": {
+                        "spindle_speed": {
                             "address": 1,
                             "type": 4,
                             "register": 40256,
@@ -1799,7 +1826,7 @@
                             "priority": 0,
                             "direction": "input"
                         },
-                        "spindle-load": {
+                        "spindle_load": {
                             "address": 1,
                             "type": 4,
                             "register": 40278,
@@ -1814,7 +1841,7 @@
                             "priority": 0,
                             "direction": "input"
                         },
-                        "spindle-position": {
+                        "spindle_position": {
                             "address": 1,
                             "type": 4,
                             "register": 40274,
@@ -1829,7 +1856,7 @@
                             "priority": 0,
                             "direction": "input"
                         },
-                        "spindle-status": {
+                        "spindle_status": {
                             "address": 1,
                             "type": 4,
                             "register": 41536,
@@ -1838,13 +1865,13 @@
                             "scale": 1.0,
                             "unit": "",
                             "error_values": "",
-                            "format": "x",
+                            "format": "d",
                             "timeout": 100,
                             "delay": 0,
                             "priority": 0,
                             "direction": "input"
                         },
-                        "spindle-forward": {
+                        "spindle_forward": {
                             "address": 1,
                             "type": 6,
                             "register": 42561,
@@ -1859,7 +1886,7 @@
                             "priority": 0,
                             "direction": "output"
                         },
-                        "spindle-reverse": {
+                        "spindle_reverse": {
                             "address": 1,
                             "type": 6,
                             "register": 42562,
@@ -1874,7 +1901,7 @@
                             "priority": 0,
                             "direction": "output"
                         },
-                        "spindle-stop": {
+                        "spindle_stop": {
                             "address": 1,
                             "type": 6,
                             "register": 42563,
@@ -1923,6 +1950,13 @@
             },
             "DISPLAY": {
                 "TITLE": "BaierMill"
+            },
+            "KINS": {
+                "JOINTS": 3,
+                "KINEMATICS": "trivkins coordinates=XYZ"
+            },
+            "TRAJ": {
+                "COORDINATES": "XYZ"
             }
         }
     }
