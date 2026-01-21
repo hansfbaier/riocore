@@ -1212,6 +1212,11 @@
             "type": "bitin",
             "pins": {
                 "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
                     "pin": "SF:S8"
                 }
             },
@@ -1222,6 +1227,11 @@
             "type": "bitin",
             "pins": {
                 "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
                     "pin": "SF:S7"
                 }
             },
@@ -1232,6 +1242,11 @@
             "type": "bitin",
             "pins": {
                 "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
                     "pin": "SF:S6"
                 }
             },
@@ -1387,9 +1402,6 @@
                         "bit": {
                             "pull": "up",
                             "modifier": [
-                                {
-                                    "type": "invert"
-                                }
                             ]
                         }
                     },
@@ -1409,9 +1421,6 @@
                         "bit": {
                             "pull": "up",
                             "modifier": [
-                                {
-                                    "type": "invert"
-                                }
                             ]
                         }
                     },
@@ -1431,9 +1440,6 @@
                         "bit": {
                             "pull": "up",
                             "modifier": [
-                                {
-                                    "type": "invert"
-                                }
                             ]
                         }
                     },
