@@ -349,7 +349,7 @@
         },
         {
             "type": "bitin",
-            "name": "input6",
+            "name": "ls-a",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -371,7 +371,7 @@
         },
         {
             "type": "bitin",
-            "name": "input7",
+            "name": "ls-b",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -1268,6 +1268,7 @@
                 "position": {
                     "net": "",
                     "function": "",
+                    "scale": 2500,
                     "setp": ""
                 },
                 "rps": {
@@ -1312,6 +1313,7 @@
                 "position": {
                     "net": "",
                     "function": "",
+                    "scale": 2500,
                     "setp": ""
                 },
                 "rps": {
@@ -1356,6 +1358,7 @@
                 "position": {
                     "net": "",
                     "function": "",
+                    "scale": 2500,
                     "setp": ""
                 },
                 "rps": {
