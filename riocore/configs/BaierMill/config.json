@@ -1047,7 +1047,7 @@
         },
         {
             "type": "bitout",
-            "name": "output5",
+            "name": "tool-change",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[13]"
@@ -1064,7 +1064,7 @@
         },
         {
             "type": "bitout",
-            "name": "output6",
+            "name": "coolant",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[14]"
@@ -1081,7 +1081,7 @@
         },
         {
             "type": "bitout",
-            "name": "output7",
+            "name": "oil-lube",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[15]"
@@ -1098,7 +1098,7 @@
         },
         {
             "type": "bitout",
-            "name": "output8",
+            "name": "spindle-forward",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[0]"
@@ -1115,7 +1115,7 @@
         },
         {
             "type": "bitout",
-            "name": "output9",
+            "name": "spindle-reverse",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[1]"
