@@ -962,7 +962,6 @@
         },
         {
             "type": "bitout",
-            "name": "output0",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[8]"
@@ -975,11 +974,12 @@
                     "function": "",
                     "setp": ""
                 }
-            }
+            },
+            "name": "spindle-power-off"
         },
         {
             "type": "bitout",
-            "name": "output1",
+            "name": "x-power-off",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[9]"
@@ -996,7 +996,7 @@
         },
         {
             "type": "bitout",
-            "name": "output2",
+            "name": "y-power-off",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[10]"
@@ -1013,7 +1013,7 @@
         },
         {
             "type": "bitout",
-            "name": "output3",
+            "name": "z-power-off",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[11]"
@@ -1598,28 +1598,11 @@
         },
         {
             "type": "bitout",
-            "name": "z-servo-enable",
-            "uid": "directout1",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            },
-            "pins": {
-                "bit": {
-                    "pin": "SD:S10"
-                }
-            }
-        },
-        {
-            "type": "bitout",
             "name": "z-servo-power",
             "uid": "directout2",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "halui.machine.is-on",
                     "function": "",
                     "setp": ""
                 }
