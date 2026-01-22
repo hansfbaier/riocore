@@ -1418,11 +1418,6 @@
             "pins": {
                 "bit": {
                     "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
                     "pin": "SD:S3"
                 }
             },
@@ -1441,11 +1436,6 @@
             "pins": {
                 "bit": {
                     "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
                     "pin": "SD:S2"
                 }
             },
@@ -1464,11 +1454,6 @@
             "pins": {
                 "bit": {
                     "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
                     "pin": "SD:S1"
                 }
             },
@@ -1634,8 +1619,6 @@
             "type": "bitcopy",
             "pins": {
                 "bit": {
-                    "modifier": [
-                    ],
                     "pin": "SD:S11"
                 }
             },
