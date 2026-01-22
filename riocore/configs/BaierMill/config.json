@@ -109,7 +109,15 @@
                 }
             },
             "axis": "X",
-            "name": "x-joint"
+            "name": "x-joint",
+            "joint": {
+                "scale": 500.0,
+                "min_limit": 0.0,
+                "max_limit": 290.0,
+                "home_search_vel": 30.0,
+                "home_ignore_limits": "NO",
+                "feedback": "x-joint:position"
+            }
         },
         {
             "name": "y-joint",
@@ -144,7 +152,15 @@
                     "pin": "SA:S5"
                 }
             },
-            "axis": "Y"
+            "axis": "Y",
+            "joint": {
+                "scale": 500.0,
+                "min_ferror": 0.0,
+                "min_limit": 0.0,
+                "max_limit": 320.0,
+                "home_search_vel": 30.0,
+                "home_ignore_limits": "NO"
+            }
         },
         {
             "name": "z-joint",
@@ -179,7 +195,15 @@
                     "pin": "SA:S8"
                 }
             },
-            "axis": "Z"
+            "axis": "Z",
+            "joint": {
+                "scale": 250.0,
+                "min_ferror": 0.0,
+                "max_limit": 0.0,
+                "min_limit": -240.0,
+                "home_search_vel": 30.0,
+                "home_ignore_limits": "NO"
+            }
         },
         {
             "type": "shiftreg",
