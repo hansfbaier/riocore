@@ -115,8 +115,7 @@
                 "min_limit": 0.0,
                 "max_limit": 290.0,
                 "home_search_vel": 30.0,
-                "home_ignore_limits": "NO",
-                "feedback": "x-joint:position"
+                "home_ignore_limits": "NO"
             }
         },
         {
@@ -199,7 +198,7 @@
             "joint": {
                 "scale": 250.0,
                 "min_ferror": 0.0,
-                "max_limit": 0.0,
+                "max_limit": 2.0,
                 "min_limit": -240.0,
                 "home_search_vel": 30.0,
                 "home_ignore_limits": "NO"
@@ -1625,313 +1624,334 @@
             "uid": "bitcopy1",
             "origin": "PININ_DIRECTIN5_BIT",
             "name": "driverbrake_feedthrough"
-        }
-    ],
-    "protocol": "UDP",
-    "modules": [
+        },
         {
-            "slot": "SC",
-            "module": "baier-spindle-v1.0",
-            "setup": {
-                "spindle": {
-                    "type": "pwmout",
-                    "name": "spindle",
-                    "pins": {
-                        "pwm": {
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        },
-                        "en": {
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "pwmout0",
-                    "signals": {
-                        "dty": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "enable": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    }
+            "type": "pwmout",
+            "name": "spindle",
+            "pins": {
+                "pwm": {
+                    "pin": "SC:S0"
                 },
-                "spindle-encoder": {
-                    "name": "spindle-encoder",
-                    "type": "quadencoderz",
-                    "uid": "spindle_encoder",
-                    "signals": {
-                        "indexenable": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "indexout": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "position": {
-                            "net": "",
-                            "function": "",
-                            "scale": -2500,
-                            "setp": ""
-                        },
-                        "rps": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "rpm": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
+                "en": {
+                    "modifier": [
+                        {
+                            "type": "invert"
                         }
-                    }
+                    ],
+                    "pin": "SC:S5"
+                }
+            },
+            "uid": "pwmout0",
+            "signals": {
+                "dty": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
                 },
-                "spindle-modbus": {
-                    "name": "spindle-modbus",
-                    "type": "modbus",
-                    "uid": "modbus2",
-                    "signals": {
-                        "set_spindle_speed": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_speed": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_speed_valid": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_speed_errors": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_load": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_load_valid": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_load_errors": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_position": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_position_valid": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_position_errors": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_status": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_status_valid": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_status_errors": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_forward": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_reverse": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        },
-                        "spindle_stop": {
-                            "net": "",
-                            "function": "",
-                            "setp": ""
-                        }
-                    },
-                    "config": {
-                        "set_spindle_speed": {
-                            "address": 1,
-                            "type": 6,
-                            "register": 40768,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "RPM",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "output"
-                        },
-                        "spindle_speed": {
-                            "address": 1,
-                            "type": 4,
-                            "register": 40256,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "RPM",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "input"
-                        },
-                        "spindle_load": {
-                            "address": 1,
-                            "type": 4,
-                            "register": 40278,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "%",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "input"
-                        },
-                        "spindle_position": {
-                            "address": 1,
-                            "type": 4,
-                            "register": 40274,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "input"
-                        },
-                        "spindle_status": {
-                            "address": 1,
-                            "type": 4,
-                            "register": 41536,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "input"
-                        },
-                        "spindle_forward": {
-                            "address": 1,
-                            "type": 6,
-                            "register": 42561,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "output"
-                        },
-                        "spindle_reverse": {
-                            "address": 1,
-                            "type": 6,
-                            "register": 42562,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "output"
-                        },
-                        "spindle_stop": {
-                            "address": 1,
-                            "type": 6,
-                            "register": 42563,
-                            "values": 1,
-                            "datatype": "int",
-                            "scale": 1.0,
-                            "unit": "",
-                            "error_values": "",
-                            "format": "d",
-                            "timeout": 100,
-                            "delay": 0,
-                            "priority": 0,
-                            "direction": "output"
-                        }
-                    }
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "name": "spindle-encoder",
+            "type": "quadencoderz",
+            "uid": "spindle_encoder",
+            "signals": {
+                "indexenable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
                 },
-                "": {
-                    "type": "bitcopy",
-                    "origin": "pwm",
-                    "name": "",
-                    "pins": {
-                        "bit": {
-                            "modifier": [
-                                {
-                                    "type": "invert"
-                                }
-                            ]
-                        }
-                    },
-                    "uid": "bitcopy0"
+                "indexout": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
                 },
-                "pwm_n": {
-                    "type": "bitcopy",
-                    "origin": "PINOUT_PWMOUT0_PWM_RAW",
-                    "name": "pwm_n",
-                    "uid": "bitcopy0"
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": "",
+                    "scale": 1024.0
+                },
+                "rps": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "rpm": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "a": {
+                    "pin": "SC:S7"
+                },
+                "b": {
+                    "pin": "SC:S8"
+                },
+                "z": {
+                    "pin": "SC:S9"
+                }
+            }
+        },
+        {
+            "name": "spindle-modbus",
+            "type": "modbus",
+            "uid": "modbus2",
+            "signals": {
+                "set_spindle_speed": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_speed": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_speed_valid": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_speed_errors": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_load": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_load_valid": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_load_errors": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_position_valid": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_position_errors": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_status": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_status_valid": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_status_errors": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_forward": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_reverse": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "spindle_stop": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "config": {
+                "set_spindle_speed": {
+                    "address": 1,
+                    "type": 6,
+                    "register": 40768,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "RPM",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "output"
+                },
+                "spindle_speed": {
+                    "address": 1,
+                    "type": 4,
+                    "register": 40256,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "RPM",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "input"
+                },
+                "spindle_load": {
+                    "address": 1,
+                    "type": 4,
+                    "register": 40278,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "%",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "input"
+                },
+                "spindle_position": {
+                    "address": 1,
+                    "type": 4,
+                    "register": 40274,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "input"
+                },
+                "spindle_status": {
+                    "address": 1,
+                    "type": 4,
+                    "register": 41536,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "input"
+                },
+                "spindle_forward": {
+                    "address": 1,
+                    "type": 6,
+                    "register": 42561,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "output"
+                },
+                "spindle_reverse": {
+                    "address": 1,
+                    "type": 6,
+                    "register": 42562,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "output"
+                },
+                "spindle_stop": {
+                    "address": 1,
+                    "type": 6,
+                    "register": 42563,
+                    "values": 1,
+                    "datatype": "int",
+                    "scale": 1.0,
+                    "unit": "",
+                    "error_values": "",
+                    "format": "d",
+                    "timeout": 100,
+                    "delay": 0,
+                    "priority": 0,
+                    "direction": "output"
+                }
+            },
+            "pins": {
+                "tx": {
+                    "pin": "SC:S2"
+                },
+                "rx": {
+                    "pin": "SC:S3"
+                },
+                "tx_enable": {
+                    "pin": "SC:S4"
+                }
+            }
+        },
+        {
+            "type": "bitcopy",
+            "origin": "pwm",
+            "name": "",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
+                }
+            },
+            "uid": "bitcopy0"
+        },
+        {
+            "type": "bitcopy",
+            "origin": "PINOUT_PWMOUT0_PWM_RAW",
+            "name": "pwm_n",
+            "uid": "bitcopy0",
+            "pins": {
+                "bit": {
+                    "pin": "SC:S1",
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ]
                 }
             }
         }
     ],
+    "protocol": "UDP",
     "linuxcnc": {
         "ini": {
             "EMC": {
