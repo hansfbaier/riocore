@@ -737,7 +737,7 @@
             "uid": "bitout8",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "spindle.0.forward",
                     "function": "",
                     "setp": ""
                 }
@@ -754,7 +754,7 @@
             "uid": "bitout9",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "spindle.0.reverse",
                     "function": "",
                     "setp": ""
                 }
@@ -1275,12 +1275,13 @@
             "uid": "pwmout0",
             "signals": {
                 "dty": {
-                    "net": "",
+                    "net": "spindle.0.speed-out",
                     "function": "",
-                    "setp": ""
+                    "setp": "",
+                    "scale": 0.00833
                 },
                 "enable": {
-                    "net": "",
+                    "net": "spindle.0.on",
                     "function": "",
                     "setp": ""
                 }
