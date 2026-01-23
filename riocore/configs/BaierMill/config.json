@@ -733,7 +733,7 @@
             "uid": "bitin21",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.0.amp-fault-in",
                     "function": "",
                     "setp": ""
                 }
@@ -755,7 +755,7 @@
             "uid": "bitin22",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.1.amp-fault-in",
                     "function": "",
                     "setp": ""
                 }
@@ -777,7 +777,7 @@
             "uid": "bitin23",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "joint.2.amp-fault-in",
                     "function": "",
                     "setp": ""
                 }
