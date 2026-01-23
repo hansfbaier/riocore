@@ -719,7 +719,7 @@
         },
         {
             "type": "bitin",
-            "name": "input21",
+            "name": "alarm-x",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -741,7 +741,7 @@
         },
         {
             "type": "bitin",
-            "name": "input22",
+            "name": "alarm-y",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -763,7 +763,7 @@
         },
         {
             "type": "bitin",
-            "name": "input23",
+            "name": "alarm-z",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -1230,36 +1230,6 @@
                     "setp": ""
                 }
             }
-        },
-        {
-            "type": "bitin",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SF:S8"
-                }
-            },
-            "uid": "alarm_x",
-            "name": "alarm-x"
-        },
-        {
-            "type": "bitin",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SF:S7"
-                }
-            },
-            "uid": "alarm_y",
-            "name": "alarm-y"
         },
         {
             "type": "bitin",
