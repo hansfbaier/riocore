@@ -1056,21 +1056,6 @@
             }
         },
         {
-            "type": "bitin",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SF:S6"
-                }
-            },
-            "uid": "alarm_z",
-            "name": "alarm-z"
-        },
-        {
             "name": "encoder-x",
             "type": "quadencoderz",
             "pins": {
