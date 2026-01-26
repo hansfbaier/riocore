@@ -1452,7 +1452,7 @@
                     "setp": ""
                 },
                 "rpm": {
-                    "net": "",
+                    "net": "spindle.0.speed-in",
                     "function": "",
                     "setp": ""
                 }
