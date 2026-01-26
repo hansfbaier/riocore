@@ -896,7 +896,7 @@
             "uid": "bitout6",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "iocontrol.0.coolant-flood",
                     "function": "",
                     "setp": ""
                 }
@@ -913,7 +913,7 @@
             "uid": "bitout7",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "iocontrol.0.lube",
                     "function": "",
                     "setp": ""
                 }
