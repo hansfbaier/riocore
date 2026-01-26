@@ -879,7 +879,7 @@
             "uid": "bitout5",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "iocontrol.0.tool-change",
                     "function": "",
                     "setp": ""
                 }
@@ -1250,18 +1250,13 @@
             "pins": {
                 "bit": {
                     "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
                     "pin": "SD:S0"
                 }
             },
             "uid": "directin3",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "spindle.0.amp-fault-in",
                     "function": "",
                     "setp": ""
                 }
@@ -1273,11 +1268,6 @@
             "pins": {
                 "bit": {
                     "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
                     "pin": "SD:S4"
                 }
             },
