@@ -415,6 +415,50 @@
             }
         },
         {
+            "type": "bitin",
+            "name": "spindle-alarm",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[7]"
+                }
+            },
+            "uid": "bitin8",
+            "signals": {
+                "bit": {
+                    "net": "spindle.0.amp-fault-in",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "name": "spindle-fault",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[6]"
+                }
+            },
+            "uid": "bitin9",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
             "type": "shiftreg",
             "name": "shiftinb",
             "bits": 16,
@@ -1246,7 +1290,7 @@
         },
         {
             "type": "bitin",
-            "name": "spindle-alarm",
+            "name": "directin3",
             "pins": {
                 "bit": {
                     "pull": "up",
@@ -1256,7 +1300,7 @@
             "uid": "directin3",
             "signals": {
                 "bit": {
-                    "net": "spindle.0.amp-fault-in",
+                    "net": "",
                     "function": "",
                     "setp": ""
                 }
@@ -1264,7 +1308,7 @@
         },
         {
             "type": "bitin",
-            "name": "spindle-fault",
+            "name": "directin4",
             "pins": {
                 "bit": {
                     "pull": "up",
@@ -1472,7 +1516,7 @@
         {
             "name": "spindle-modbus",
             "type": "modbus",
-            "uid": "modbus2",
+            "uid": "modbus0",
             "signals": {
                 "set_spindle_speed": {
                     "net": "",
@@ -1538,28 +1582,13 @@
                     "net": "",
                     "function": "",
                     "setp": ""
-                },
-                "spindle_forward": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                },
-                "spindle_reverse": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                },
-                "spindle_stop": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
                 }
             },
             "config": {
                 "set_spindle_speed": {
                     "address": 1,
                     "type": 6,
-                    "register": 40768,
+                    "register": 526,
                     "values": 1,
                     "datatype": "int",
                     "scale": 1.0,
@@ -1574,7 +1603,7 @@
                 "spindle_speed": {
                     "address": 1,
                     "type": 4,
-                    "register": 40256,
+                    "register": 257,
                     "values": 1,
                     "datatype": "int",
                     "scale": 1.0,
@@ -1589,7 +1618,7 @@
                 "spindle_load": {
                     "address": 1,
                     "type": 4,
-                    "register": 40278,
+                    "register": 279,
                     "values": 1,
                     "datatype": "int",
                     "scale": 1.0,
@@ -1604,7 +1633,7 @@
                 "spindle_position": {
                     "address": 1,
                     "type": 4,
-                    "register": 40274,
+                    "register": 275,
                     "values": 1,
                     "datatype": "int",
                     "scale": 1.0,
@@ -1619,7 +1648,7 @@
                 "spindle_status": {
                     "address": 1,
                     "type": 4,
-                    "register": 41536,
+                    "register": 1537,
                     "values": 1,
                     "datatype": "int",
                     "scale": 1.0,
@@ -1630,51 +1659,6 @@
                     "delay": 0,
                     "priority": 0,
                     "direction": "input"
-                },
-                "spindle_forward": {
-                    "address": 1,
-                    "type": 6,
-                    "register": 42561,
-                    "values": 1,
-                    "datatype": "int",
-                    "scale": 1.0,
-                    "unit": "",
-                    "error_values": "",
-                    "format": "d",
-                    "timeout": 100,
-                    "delay": 0,
-                    "priority": 0,
-                    "direction": "output"
-                },
-                "spindle_reverse": {
-                    "address": 1,
-                    "type": 6,
-                    "register": 42562,
-                    "values": 1,
-                    "datatype": "int",
-                    "scale": 1.0,
-                    "unit": "",
-                    "error_values": "",
-                    "format": "d",
-                    "timeout": 100,
-                    "delay": 0,
-                    "priority": 0,
-                    "direction": "output"
-                },
-                "spindle_stop": {
-                    "address": 1,
-                    "type": 6,
-                    "register": 42563,
-                    "values": 1,
-                    "datatype": "int",
-                    "scale": 1.0,
-                    "unit": "",
-                    "error_values": "",
-                    "format": "d",
-                    "timeout": 100,
-                    "delay": 0,
-                    "priority": 0,
-                    "direction": "output"
                 }
             },
             "pins": {
@@ -1687,7 +1671,10 @@
                 "tx_enable": {
                     "pin": "SC:S4"
                 }
-            }
+            },
+            "rx_buffersize": 128,
+            "tx_buffersize": 128,
+            "baud": 19200
         },
         {
             "type": "bitcopy",
