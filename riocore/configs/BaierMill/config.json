@@ -653,74 +653,6 @@
         },
         {
             "type": "bitout",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[8]"
-                }
-            },
-            "uid": "bitout0",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            },
-            "name": "spindle-power-off"
-        },
-        {
-            "type": "bitout",
-            "name": "x-power-off",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[9]"
-                }
-            },
-            "uid": "bitout1",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "y-power-off",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[10]"
-                }
-            },
-            "uid": "bitout2",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "z-power-off",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[11]"
-                }
-            },
-            "uid": "bitout3",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
             "name": "output4",
             "pins": {
                 "bit": {
@@ -823,7 +755,7 @@
         },
         {
             "type": "bitout",
-            "name": "output10",
+            "name": "spindle-estop-disabled",
             "pins": {
                 "bit": {
                     "pin": "SHIFTOUT_OUTPUT[2]"
@@ -832,7 +764,7 @@
             "uid": "bitout10",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "halui.machine.is-on",
                     "function": "",
                     "setp": ""
                 }
@@ -1219,11 +1151,45 @@
         },
         {
             "type": "bitout",
-            "name": "z-servo-power",
+            "name": "spindle-power-off",
+            "uid": "directout0",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "bit": {
+                    "pin": "SD:S11"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "x-power-off",
+            "uid": "directout1",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pins": {
+                "bit": {
+                    "pin": "SD:S10"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "name": "y-power-off",
             "uid": "directout2",
             "signals": {
                 "bit": {
-                    "net": "halui.machine.is-on",
+                    "net": "",
                     "function": "",
                     "setp": ""
                 }
@@ -1236,7 +1202,7 @@
         },
         {
             "type": "bitout",
-            "name": "direct-output3",
+            "name": "z-power-off",
             "uid": "directout3",
             "signals": {
                 "bit": {
@@ -1250,17 +1216,6 @@
                     "pin": "SD:S8"
                 }
             }
-        },
-        {
-            "type": "bitcopy",
-            "pins": {
-                "bit": {
-                    "pin": "SD:S11"
-                }
-            },
-            "uid": "bitcopy1",
-            "origin": "PININ_DIRECTIN5_BIT",
-            "name": "driverbrake_feedthrough"
         },
         {
             "type": "pwmout",
