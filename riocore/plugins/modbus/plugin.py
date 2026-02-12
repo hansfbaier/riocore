@@ -134,17 +134,31 @@ class Plugin(PluginBase):
                                 "plugin_setup": config,
                             }
                 else:
-                    self.SIGNALS[signal_name] = {
-                        "direction": config["direction"],
-                        "unit": config.get("unit", ""),
-                        "scale": config.get("scale", 1.0),
-                        "format": config.get("format", "07d"),
-                        "plugin_setup": config,
-                        "min": vmin,
-                        "max": vmax,
-                        "bool": is_bool,
-                        "display": {"section": "modbus", "title": signal_name.title()},
-                    }
+                    if config.get("cmdmapping"):
+                        cmdmapping = config["cmdmapping"]
+                        for cmdsig in cmdmapping.split(","):
+                            cmdname = cmdsig.split(":")[0].strip()
+                            if cmdname[0] == "!":
+                                cmdname = cmdname[1:]
+                            self.SIGNALS[f"{signal_name}_{cmdname}"] = {
+                                "direction": config["direction"],
+                                "plugin_setup": config,
+                                "bool": True,
+                                "display": {"section": "modbus", "title": cmdname},
+                            }
+                    else:
+                        self.SIGNALS[signal_name] = {
+                            "direction": config["direction"],
+                            "unit": config.get("unit", ""),
+                            "scale": config.get("scale", 1.0),
+                            "format": config.get("format", "07d"),
+                            "plugin_setup": config,
+                            "min": vmin,
+                            "max": vmax,
+                            "bool": is_bool,
+                            "display": {"section": "modbus", "title": signal_name.title()},
+                        }
+
                     if config["direction"] == "input":
                         self.SIGNALS[f"{signal_name}_valid"] = {
                             "direction": "input",
@@ -218,6 +232,8 @@ class Plugin(PluginBase):
         self.signal_active = 0
         self.signal_values = 0
         self.signal_name = None
+        self.tx_signal_name = None
+        self.tx_frame_map = {}  # Maps frame_id to signal_name for proper response matching
 
     def cfg_info(self):
         baud = int(self.plugin_setup.get("baud", self.OPTIONS["baud"]["default"]))
@@ -361,12 +377,18 @@ class Plugin(PluginBase):
     def frameio_rx(self, frame_new, frame_id, frame_len, frame_data):
         if "config" not in self.plugin_setup:
             return
-        signal_name = list(self.plugin_setup["config"])[self.signal_active]
+        # Use txframe_id_ack (the acknowledged frame_id) to look up the signal
+        # txframe_id_ack is stored in self.txframe_id_ack by the base plugin
+        tx_ack_id = getattr(self, 'txframe_id_ack', frame_id)
+        signal_name = self.tx_frame_map.pop(tx_ack_id, None)
+        if signal_name is None:
+            # Fallback to current signal_name if mapping not found
+            signal_name = self.tx_signal_name
+        self.signal_name = signal_name
         config = self.plugin_setup["config"][signal_name]
         if config["type"] == 101:
             config["instance"].frameio_rx(frame_new, frame_id, frame_len, frame_data)
         elif frame_new:
-            # print(f"rx frame {self.signal_active} {frame_id} {frame_len}: {frame_data}")
 
             if frame_len > 4:
                 address = frame_data[0]
@@ -451,11 +473,16 @@ class Plugin(PluginBase):
             elif f"{self.signal_name}_valid" in self.SIGNALS:
                 self.SIGNALS[f"{self.signal_name}_valid"]["value"] = 0
                 self.SIGNALS[f"{self.signal_name}_errors"]["value"] += 1
+        signal_name = list(self.plugin_setup["config"])[self.signal_active]
+        self.tx_signal_name = signal_name
+        # Map the current frame_id to the signal_name so we can match responses correctly
+        self.tx_frame_map[self.txframe_id] = signal_name
+
         if self.signal_active < len(self.plugin_setup.get("config", {})) - 1:
             self.signal_active += 1
         else:
             self.signal_active = 0
-        signal_name = list(self.plugin_setup["config"])[self.signal_active]
+
         config = self.plugin_setup["config"][signal_name]
 
         if config["type"] == 101:
@@ -862,6 +889,25 @@ class Plugin(PluginBase):
                             output.append(f"                frame_data[{7 + vn * 2}] = (uint16_t)value_{value_name} & 0xFF;")
                         output.append(f"                frame_len = {8 + vn * 2};")
                 else:
+                    if signal_config.get("cmdmapping"):
+                        cmdmapping = signal_config["cmdmapping"]
+                        output.append("                // cmdmapping")
+                        default_value = signal_config.get("error_values") or 0
+                        output.append(f"                static uint16_t value_{signal_name} = {default_value};")
+                        for cmd_n, cmdsig in enumerate(cmdmapping.split(",")):
+                            cmdname = cmdsig.split(":")[0].strip()
+                            checkvalue = 1
+                            if cmdname[0] == "!":
+                                cmdname = cmdname[1:]
+                                checkvalue = 0
+                            cmdvalue = cmdsig.split(":")[1].strip()
+                            if cmd_n == 0:
+                                output.append(f"                if (value_{signal_name}_{cmdname} == {checkvalue}) {{")
+                            else:
+                                output.append(f"                }} else if (value_{signal_name}_{cmdname} == {checkvalue}) {{")
+                            output.append(f"                    value_{signal_name} = {cmdvalue};")
+                        output.append("                }")
+
                     if ctype == 5:
                         output.append("                // set coil value")
                     else:
