@@ -1381,7 +1381,7 @@
                 },
                 "spindle_speed": {
                     "address": 1,
-                    "type": 4,
+                    "type": 3,
                     "register": 257,
                     "values": 1,
                     "datatype": "int",
@@ -1396,7 +1396,7 @@
                 },
                 "spindle_load": {
                     "address": 1,
-                    "type": 4,
+                    "type": 3,
                     "register": 279,
                     "values": 1,
                     "datatype": "int",
@@ -1411,7 +1411,7 @@
                 },
                 "spindle_position": {
                     "address": 1,
-                    "type": 4,
+                    "type": 3,
                     "register": 275,
                     "values": 1,
                     "datatype": "int",
@@ -1426,7 +1426,7 @@
                 },
                 "spindle_status": {
                     "address": 1,
-                    "type": 4,
+                    "type": 3,
                     "register": 1537,
                     "values": 1,
                     "datatype": "int",
@@ -1451,8 +1451,6 @@
                     "pin": "SC:S4"
                 }
             },
-            "rx_buffersize": 128,
-            "tx_buffersize": 128,
             "baud": 19200
         },
         {
