@@ -1375,7 +1375,7 @@
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
-                    "delay": 0,
+                    "delay": 60,
                     "priority": 0,
                     "direction": "output"
                 },
@@ -1390,7 +1390,7 @@
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
-                    "delay": 0,
+                    "delay": 60,
                     "priority": 0,
                     "direction": "input"
                 },
@@ -1405,7 +1405,7 @@
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
-                    "delay": 0,
+                    "delay": 60,
                     "priority": 0,
                     "direction": "input"
                 },
@@ -1420,7 +1420,7 @@
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
-                    "delay": 0,
+                    "delay": 60,
                     "priority": 0,
                     "direction": "input"
                 },
@@ -1435,7 +1435,7 @@
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
-                    "delay": 0,
+                    "delay": 60,
                     "priority": 0,
                     "direction": "input"
                 }
