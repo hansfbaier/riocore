@@ -112,8 +112,8 @@
             "name": "x-joint",
             "joint": {
                 "scale": 2000.0,
-                "min_limit": -278.0,
-                "max_limit": 0.0,
+                "min_limit": -375.0,
+                "max_limit": 20.0,
                 "home_search_vel": 30.0,
                 "home_ignore_limits": "NO"
             }
@@ -155,8 +155,8 @@
             "joint": {
                 "scale": 2000.0,
                 "min_ferror": 0.0,
-                "min_limit": -330.0,
-                "max_limit": 0.0,
+                "min_limit": -365.0,
+                "max_limit": 24.0,
                 "home_search_vel": 30.0,
                 "home_ignore_limits": "NO"
             }
@@ -198,7 +198,7 @@
             "joint": {
                 "scale": 1000.0,
                 "min_ferror": 0.0,
-                "max_limit": 2.0,
+                "max_limit": 20.0,
                 "min_limit": -253.0,
                 "home_search_vel": 30.0,
                 "home_ignore_limits": "NO"
