@@ -371,8 +371,11 @@ class Plugin(PluginBase):
     def int2list(self, value):
         return [(value >> 8) & 0xFF, value & 0xFF]
 
-    def list2int(self, data):
-        return (data[0] << 8) + data[1]
+    def list2int(self, data, signed=False):
+        value = (data[0] << 8) + data[1]
+        if signed and value >= 0x8000:  # If signed and MSB is set, convert from two's complement
+            value = value - 0x10000
+        return value
 
     def frameio_rx(self, frame_new, frame_id, frame_len, frame_data):
         if "config" not in self.plugin_setup:
@@ -432,7 +435,9 @@ class Plugin(PluginBase):
                                             if self.datatype == "float" and value_list and len(value_list) == vlen:
                                                 self.SIGNALS[value_name]["value"] = unpack(">f", bytearray(value_list))[0]
                                             else:
-                                                self.SIGNALS[value_name]["value"] = self.list2int(value_list)
+                                                signal_config = self.SIGNALS[value_name].get("plugin_setup", {})
+                                                signed = signal_config.get("signed", False)
+                                                self.SIGNALS[value_name]["value"] = self.list2int(value_list, signed=signed)
                                             if vscale:
                                                 self.SIGNALS[value_name]["value"] *= vscale
                                             if direction == "input":
@@ -451,7 +456,8 @@ class Plugin(PluginBase):
                                 if self.datatype == "float":
                                     self.SIGNALS[self.signal_name]["value"] = unpack(">f", bytearray(frame_data[3:-2]))[0]
                                 else:
-                                    self.SIGNALS[self.signal_name]["value"] = self.list2int(frame_data[3:-2])
+                                    signed = signal_config.get("signed", False)
+                                    self.SIGNALS[self.signal_name]["value"] = self.list2int(frame_data[3:-2], signed=signed)
 
                                 if vscale:
                                     self.SIGNALS[self.signal_name]["value"] *= vscale
@@ -610,6 +616,7 @@ class Plugin(PluginBase):
             self.signal_values = signal_config.get("values", 1)
             self.signal_name = signal_name
             self.signal_address = address
+            self.signed = signal_config.get("signed", False)
             if ctype == 101:
                 output.append(f"                case {sn}: {{")
                 output += signal_config["instance"].frameio_rx_c()
@@ -637,6 +644,8 @@ class Plugin(PluginBase):
                         for vn in range(0, self.signal_values):
                             value_name = f"value_{self.signal_name}_{vn}"
                             output.append(f"                        {value_name} = (frame_data[{3 + vn * 2}]<<8) + (frame_data[{4 + vn * 2}] & 0xFF);")
+                            if self.signed:
+                                output.append(f"                        if ({value_name} >= 0x8000) {{ {value_name} = {value_name} - 0x10000; }}")
                             if vscale:
                                 output.append(f"                        {value_name} *= {vscale};")
                             output.append(f"                        {value_name}_valid = 1;")
@@ -668,6 +677,8 @@ class Plugin(PluginBase):
                         output.append("                    data_len = frame_data[2];")
                         output.append(f"                    if (data_addr == {address} && data_len == {self.signal_values * 2}) {{")
                         output.append(f"                        value_{self.signal_name} = (frame_data[{3}]<<8) + (frame_data[{4}] & 0xFF);")
+                        if self.signed:
+                            output.append(f"                        if (value_{self.signal_name} >= 0x8000) {{ value_{self.signal_name} = value_{self.signal_name} - 0x10000; }}")
                         if vscale:
                             output.append(f"                        value_{self.signal_name} *= {vscale};")
                         output.append(f"                        value_{self.signal_name}_valid = 1;")
