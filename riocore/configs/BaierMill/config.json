@@ -1381,6 +1381,7 @@
                     "register": 278,
                     "values": 1,
                     "datatype": "int",
+                    "signed": true,
                     "scale": 1,
                     "unit": "%",
                     "error_values": "",
