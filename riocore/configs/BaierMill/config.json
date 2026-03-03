@@ -1364,80 +1364,69 @@
                 }
             },
             "config": {
-                "set_spindle_speed": {
-                    "address": 1,
-                    "type": 6,
-                    "register": 526,
-                    "values": 1,
-                    "datatype": "int",
-                    "scale": 1.0,
-                    "unit": "RPM",
-                    "error_values": "",
-                    "format": "d",
-                    "timeout": 100,
-                    "delay": 60,
-                    "priority": 0,
-                    "direction": "output"
-                },
                 "spindle_speed": {
                     "address": 1,
                     "type": 3,
-                    "register": 257,
+                    "register": 256,
                     "values": 1,
                     "datatype": "int",
-                    "scale": 1.0,
+                    "scale": 1,
                     "unit": "RPM",
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 },
                 "spindle_load": {
                     "address": 1,
                     "type": 3,
-                    "register": 279,
+                    "register": 278,
                     "values": 1,
                     "datatype": "int",
-                    "scale": 1.0,
+                    "scale": 1,
                     "unit": "%",
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 },
                 "spindle_position": {
                     "address": 1,
                     "type": 3,
-                    "register": 275,
+                    "register": 274,
                     "values": 1,
                     "datatype": "int",
-                    "scale": 1.0,
+                    "scale": 1,
                     "unit": "",
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 },
                 "spindle_status": {
                     "address": 1,
                     "type": 3,
-                    "register": 1537,
+                    "register": 1536,
                     "values": 1,
                     "datatype": "int",
-                    "scale": 1.0,
+                    "scale": 1,
                     "unit": "",
                     "error_values": "",
                     "format": "d",
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 }
             },
             "pins": {
