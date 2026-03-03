@@ -1404,7 +1404,8 @@
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 },
                 "spindle_status": {
                     "address": 1,
@@ -1419,7 +1420,8 @@
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 }
             },
             "pins": {
