@@ -1373,7 +1373,8 @@
                     "delay": 60,
                     "priority": 0,
                     "direction": "input",
-                    "cmdmapping": ""
+                    "cmdmapping": "",
+                    "signed": true
                 },
                 "spindle_load": {
                     "address": 1,
@@ -1406,7 +1407,8 @@
                     "delay": 60,
                     "priority": 0,
                     "direction": "input",
-                    "cmdmapping": ""
+                    "cmdmapping": "",
+                    "signed": true
                 },
                 "spindle_status": {
                     "address": 1,
