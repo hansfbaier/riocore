@@ -477,7 +477,7 @@
         },
         {
             "type": "bitin",
-            "name": "input16",
+            "name": "machine-on",
             "pins": {
                 "bit": {
                     "modifier": [
@@ -491,7 +491,7 @@
             "uid": "bitin16",
             "signals": {
                 "bit": {
-                    "net": "",
+                    "net": "halui.machine.on",
                     "function": "",
                     "setp": ""
                 }
