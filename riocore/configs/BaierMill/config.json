@@ -499,94 +499,6 @@
         },
         {
             "type": "bitin",
-            "name": "input17",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SHIFTINB_INPUT[14]"
-                }
-            },
-            "uid": "bitin17",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "input18",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SHIFTINB_INPUT[13]"
-                }
-            },
-            "uid": "bitin18",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "input19",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SHIFTINB_INPUT[12]"
-                }
-            },
-            "uid": "bitin19",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "input20",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SHIFTINB_INPUT[11]"
-                }
-            },
-            "uid": "bitin20",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
             "name": "alarm-x",
             "pins": {
                 "bit": {
@@ -646,23 +558,6 @@
             "signals": {
                 "bit": {
                     "net": "joint.2.amp-fault-in",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output4",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[12]"
-                }
-            },
-            "uid": "bitout4",
-            "signals": {
-                "bit": {
-                    "net": "",
                     "function": "",
                     "setp": ""
                 }
@@ -765,91 +660,6 @@
             "signals": {
                 "bit": {
                     "net": "halui.machine.is-on",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output11",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[3]"
-                }
-            },
-            "uid": "bitout11",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output12",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[4]"
-                }
-            },
-            "uid": "bitout12",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output13",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[5]"
-                }
-            },
-            "uid": "bitout13",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output14",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[6]"
-                }
-            },
-            "uid": "bitout14",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitout",
-            "name": "output15",
-            "pins": {
-                "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[7]"
-                }
-            },
-            "uid": "bitout15",
-            "signals": {
-                "bit": {
-                    "net": "",
                     "function": "",
                     "setp": ""
                 }
@@ -1046,42 +856,6 @@
         },
         {
             "type": "bitin",
-            "name": "directin3",
-            "pins": {
-                "bit": {
-                    "pull": "up",
-                    "pin": "SD:S0"
-                }
-            },
-            "uid": "directin3",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "directin4",
-            "pins": {
-                "bit": {
-                    "pull": "up",
-                    "pin": "SD:S4"
-                }
-            },
-            "uid": "directin4",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
             "pins": {
                 "bit": {
                     "pull": "up",
@@ -1102,52 +876,6 @@
                 }
             },
             "name": "servo-driver-brake"
-        },
-        {
-            "type": "bitin",
-            "name": "direct-input6",
-            "pins": {
-                "bit": {
-                    "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SD:S6"
-                }
-            },
-            "uid": "directin6",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "direct-input7",
-            "pins": {
-                "bit": {
-                    "pull": "up",
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SD:S7"
-                }
-            },
-            "uid": "directin7",
-            "signals": {
-                "bit": {
-                    "net": "",
-                    "function": "",
-                    "setp": ""
-                }
-            }
         },
         {
             "type": "bitout",
