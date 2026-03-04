@@ -1111,7 +1111,7 @@
                     "values": 1,
                     "datatype": "int",
                     "signed": true,
-                    "scale": 1,
+                    "scale": -0.1,
                     "unit": "%",
                     "error_values": "",
                     "format": "d",
@@ -1136,7 +1136,7 @@
                     "priority": 0,
                     "direction": "input",
                     "cmdmapping": "",
-                    "signed": true
+                    "signed": false
                 },
                 "spindle_status": {
                     "address": 1,
