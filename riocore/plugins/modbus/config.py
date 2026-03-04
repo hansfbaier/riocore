@@ -335,6 +335,13 @@ class config:
                 "on_special": False,
                 "tab": "general",
             },
+            "signed": {
+                "description": "signed integer (two's complement)",
+                "type": bool,
+                "default": False,
+                "on_special": False,
+                "tab": "general",
+            },
             "scale": {
                 "description": "Value-Scale",
                 "type": float,

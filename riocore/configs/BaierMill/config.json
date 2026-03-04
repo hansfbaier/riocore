@@ -1373,7 +1373,8 @@
                     "delay": 60,
                     "priority": 0,
                     "direction": "input",
-                    "cmdmapping": ""
+                    "cmdmapping": "",
+                    "signed": true
                 },
                 "spindle_load": {
                     "address": 1,
@@ -1381,6 +1382,7 @@
                     "register": 278,
                     "values": 1,
                     "datatype": "int",
+                    "signed": true,
                     "scale": 1,
                     "unit": "%",
                     "error_values": "",
@@ -1404,7 +1406,9 @@
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": "",
+                    "signed": true
                 },
                 "spindle_status": {
                     "address": 1,
@@ -1419,7 +1423,8 @@
                     "timeout": 100,
                     "delay": 60,
                     "priority": 0,
-                    "direction": "input"
+                    "direction": "input",
+                    "cmdmapping": ""
                 }
             },
             "pins": {
