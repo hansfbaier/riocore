@@ -213,9 +213,12 @@ class cbase:
                             direction = signal_config["direction"]
                             boolean = signal_config.get("bool")
                             helper = signal_config.get("helper")
+                            hal_type = signal_config.get("userconfig", {}).get("hal_type", signal_config.get("hal_type", "float"))
                             output.append(f"    *data->{varname} = value_{signal_name};")
                             if not helper and not boolean and direction == "input":
                                 output.append(f"    *data->{varname}_S32 = (int)value_{signal_name};")
+                                output.append(f"    *data->{varname}_ABS = fabs(value_{signal_name});")
+                                output.append(f"    *data->{varname}_U32_ABS = (unsigned int)fabs(value_{signal_name});")
                         output.append("")
                         output.append("    /**************************/")
                         output.append("}")
