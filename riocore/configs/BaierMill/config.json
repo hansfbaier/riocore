@@ -477,7 +477,7 @@
         },
         {
             "type": "bitin",
-            "name": "machine-on",
+            "name": "machine-on-switch",
             "pins": {
                 "bit": {
                     "modifier": [
