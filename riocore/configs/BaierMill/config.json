@@ -574,7 +574,7 @@
             "uid": "bitout5",
             "signals": {
                 "bit": {
-                    "net": "iocontrol.0.tool-change",
+                    "net": "",
                     "function": "",
                     "setp": ""
                 }
@@ -653,7 +653,7 @@
             "name": "spindle-estop-disabled",
             "pins": {
                 "bit": {
-                    "pin": "SHIFTOUT_OUTPUT[2]"
+                    "pin": "SHIFTOUT_OUTPUT[3]"
                 }
             },
             "uid": "bitout10",
