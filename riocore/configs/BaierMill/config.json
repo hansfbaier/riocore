@@ -1198,6 +1198,22 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "bitin",
+            "pins": {
+                "bit": {
+                    "pin": "SE:S5",
+                    "pull": "up"
+                }
+            },
+            "uid": "estop",
+            "signals": {
+                "bit": {
+                    "net": "halui.estop.activate"
+                }
+            },
+            "name": "estop-in"
         }
     ],
     "protocol": "UDP",
