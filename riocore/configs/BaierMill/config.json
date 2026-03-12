@@ -499,6 +499,28 @@
         },
         {
             "type": "bitin",
+            "name": "probe",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINB_INPUT[13]"
+                }
+            },
+            "uid": "bitin18",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitin",
             "name": "alarm-x",
             "pins": {
                 "bit": {
