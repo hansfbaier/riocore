@@ -459,6 +459,28 @@
             }
         },
         {
+            "type": "bitin",
+            "name": "probe",
+            "pins": {
+                "bit": {
+                    "modifier": [
+                        {
+                            "type": "invert"
+                        }
+                    ],
+                    "pin": "SHIFTINA_INPUT[0]"
+                }
+            },
+            "uid": "bitin15",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
             "type": "shiftreg",
             "name": "shiftinb",
             "bits": 16,
@@ -492,28 +514,6 @@
             "signals": {
                 "bit": {
                     "net": "halui.machine.on",
-                    "function": "",
-                    "setp": ""
-                }
-            }
-        },
-        {
-            "type": "bitin",
-            "name": "probe",
-            "pins": {
-                "bit": {
-                    "modifier": [
-                        {
-                            "type": "invert"
-                        }
-                    ],
-                    "pin": "SHIFTINB_INPUT[13]"
-                }
-            },
-            "uid": "bitin18",
-            "signals": {
-                "bit": {
-                    "net": "",
                     "function": "",
                     "setp": ""
                 }
