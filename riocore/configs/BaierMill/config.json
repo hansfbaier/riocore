@@ -688,6 +688,23 @@
             }
         },
         {
+            "type": "bitout",
+            "name": "spindle-position-mode",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[4]"
+                }
+            },
+            "uid": "bitout10",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
             "name": "encoder-x",
             "type": "quadencoderz",
             "pins": {
@@ -1004,7 +1021,7 @@
             "uid": "spindle_encoder",
             "signals": {
                 "indexenable": {
-                    "net": "",
+                    "net": "spindle.0.index-enable",
                     "function": "",
                     "setp": ""
                 },
@@ -1014,18 +1031,18 @@
                     "setp": ""
                 },
                 "position": {
-                    "net": "",
+                    "net": "spindle.0.revs",
                     "function": "",
                     "setp": "",
                     "scale": 1024.0
                 },
                 "rps": {
-                    "net": "",
+                    "net": "spindle.0.speed-in",
                     "function": "",
                     "setp": ""
                 },
                 "rpm": {
-                    "net": "spindle.0.speed-in",
+                    "net": "",
                     "function": "",
                     "setp": ""
                 }
