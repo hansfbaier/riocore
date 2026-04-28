@@ -587,6 +587,23 @@
         },
         {
             "type": "bitout",
+            "name": "worklamp",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[12]"
+                }
+            },
+            "uid": "bitout4",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
+            "type": "bitout",
             "name": "tool-change",
             "pins": {
                 "bit": {
@@ -695,7 +712,7 @@
                     "pin": "SHIFTOUT_OUTPUT[4]"
                 }
             },
-            "uid": "bitout10",
+            "uid": "bitout11",
             "signals": {
                 "bit": {
                     "net": "",
