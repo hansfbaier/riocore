@@ -27,12 +27,11 @@ class Pins:
                 # slew = pin_config.get("slew", "SLOW").upper()
                 data.append(f"set_io {' '.join(options)}")
 
-                if shrike:
-                    if pin_config.get("direction") == "output":
-                        options = []
-                        options.append(f'{pin_config["varname"]}_OE')
-                        options.append(f'{pin_config["pin"]}_OE')
-                        data.append(f"set_io {' '.join(options)}")
+                if shrike and pin_config.get("direction") == "output":
+                    options = []
+                    options.append(f"{pin_config['varname']}_OE")
+                    options.append(f"{pin_config['pin']}_OE")
+                    data.append(f"set_io {' '.join(options)}")
 
             data.append("")
 

@@ -1,8 +1,6 @@
 import importlib
 import os
-import re
 import shutil
-import subprocess
 import sys
 
 
@@ -27,14 +25,14 @@ using https://github.com/trholding/shrike-gen for makefile support
 
     def generate(self, path):
         shrike_path = os.path.join(path, "shrike")
-        os.makedirs(shrike_path, exist_ok=True)
+        shrike_gen = os.path.join(os.path.dirname(__file__), "shrike_gen")
+        if not os.path.exists(shrike_path):
+            shutil.copytree(shrike_gen, shrike_path)
+
         src_path = os.path.join(shrike_path, "ffpga", "src")
         os.makedirs(src_path, exist_ok=True)
         build_path = os.path.join(shrike_path, "ffpga", "build")
         os.makedirs(build_path, exist_ok=True)
-        shrike_gen = os.path.join(os.path.dirname(__file__), "shrike_gen")
-        if not os.path.exists(os.path.join(shrike_path, "shrike_gen")):
-            shutil.copytree(shrike_gen, os.path.join(shrike_path, "shrike_gen"))
 
         pins_generator = importlib.import_module(".pins", "riocore.plugins.fpga.generator.pins.pcf")
         pins_generator.Pins(self.config).generate(path, shrike=True)
@@ -44,8 +42,6 @@ using https://github.com/trholding/shrike-gen for makefile support
             if ngdbuild is None:
                 print("WARNING: can not found toolchain installation in PATH: GreenPack (GPLauncher)")
                 print("  example: export PATH=$PATH:/opt/GreenPack/bin/")
-
-        verilogs = " ".join(self.config["verilog_files"])
 
         ffpga_data = """<?xml version="1.0" encoding="UTF-8"?>
 <GPDProject version="40" oldestCompatibleVersion="32" GPDVersion="6.53.003" lastChange="1 Jun 2026 00:00:00" projectChecksumState="0" projectChecksum="00000000">
@@ -90,7 +86,11 @@ using https://github.com/trholding/shrike-gen for makefile support
         </settings>
         <modules>
             <scr>
-                <module filename="main.v"/>
+                <module filename="rio.v"/>
+                <module filename="uart_baud.v"/>
+                <module filename="uart_rx.v"/>
+                <module filename="uart_tx.v"/>
+                <module filename="uart.v"/>
             </scr>
         </modules>
         <io-spec-tool></io-spec-tool>
@@ -138,16 +138,15 @@ using https://github.com/trholding/shrike-gen for makefile support
         smk_data.append("")
         open(os.path.join(shrike_path, "shrike.mk"), "w").write("\n".join(smk_data))
 
-
         makefile_data = []
         makefile_data.append("")
         makefile_data.append("all: build")
         makefile_data.append("")
         makefile_data.append("clean:")
-        makefile_data.append("	ls")
+        makefile_data.append("	cd shrike/ffpga/build/ && rm -rf *.v *.edif *.ys *.txt *.log *.bin *.sdc *.vm *.prj bitstream minplacer ta_message")
         makefile_data.append("")
         makefile_data.append("build:")
-        makefile_data.append("	cat *.v > shrike/ffpga/src/main.v")
+        makefile_data.append("	ln -f *.v shrike/ffpga/src/")
         makefile_data.append("	cd shrike && make update pnr")
         makefile_data.append("")
         open(os.path.join(path, "Makefile"), "w").write("\n".join(makefile_data))
@@ -159,309 +158,9 @@ using https://github.com/trholding/shrike-gen for makefile support
         floorplan_data.append("")
         open(os.path.join(shrike_path, "ffpga", "build", "floorplanspec.fp"), "w").write("\n".join(floorplan_data))
 
-        smake_data = """# Vulcan's Makefile for SLG47910V / Shrike Lite, part of shrike-gen
-#
-# Role-aware: automatically detects workspace vs project context.
-# A project directory is identified by the presence of a *.ffpga file.
-#
-# ── WORKSPACE MODE (no *.ffpga here) ─────────────────────────────────────────
-#   make init                  create ./shrike-gen symlink (optional)
-#   make project ProjectName   create a new project skeleton
-#   make project NAME=Name     (alternative syntax)
-#   make list                  list existing projects
-#   make help                  show this message
-#
-# ── PROJECT MODE (*.ffpga present) ───────────────────────────────────────────
-#   make              update + full build
-#   make update       regenerate .ffpga and io_spec_in.txt from io_map.pcf
-#   make build        lint → synth → pnr → collect (skip update)
-#   make lint         verilator lint only
-#   make synth        synthesis only
-#   make clean        remove all build outputs (keeps source + constraints)
-#   make help         show this message
-
-# ── Context detection ─────────────────────────────────────────────────────────
-# The presence of a *.ffpga file is the canonical marker for a project dir.
-_FFPGA_FILE := $(firstword $(wildcard *.ffpga))
-
-ifeq (,$(_FFPGA_FILE))
-# =============================================================================
-# WORKSPACE MODE
-# =============================================================================
-
-SHRIKE_GEN := shrike_gen/shrike-gen.py
-
-.DEFAULT_GOAL := help
-
-.PHONY: init project _project list help
-
-# ── make init ─────────────────────────────────────────────────────────────────
-init:
-	@if [ -e shrike-gen ]; then \
-		echo "  shrike-gen already exists — skipping"; \
-	else \
-		chmod +x shrike_gen/shrike-gen.py; \
-		ln -sf shrike_gen/shrike-gen.py shrike-gen; \
-		echo "  Symlink created: ./shrike-gen → shrike_gen/shrike-gen.py"; \
-	fi
-
-# ── make project [NAME=]ProjectName ──────────────────────────────────────────
-# Also supports positional form: make project MyBlink
-# The word after "project" on the command line is captured as a Make target
-# (which would normally fail); the catch-all rule below silences it.
-_POSITIONAL_NAME := $(filter-out project,$(MAKECMDGOALS))
-
-project: _project
-_project:
-	@name="$(or $(NAME),$(_POSITIONAL_NAME))"; \
-	if [ -z "$$name" ]; then \
-		echo ""; \
-		echo "  Usage:  make project NAME=<ProjectName>"; \
-		echo "          make project <ProjectName>"; \
-		echo ""; \
-		exit 1; \
-	fi; \
-	python3 $(SHRIKE_GEN) "$$name"
-
-# Swallow the positional project name so Make doesn't error on an unknown target
-$(filter-out project list help _project init,$(MAKECMDGOALS)):
-	@:
-
-# ── make list ─────────────────────────────────────────────────────────────────
-list:
-	@echo ""
-	@echo "  Projects in $(CURDIR):"
-	@for d in */Makefile; do \
-		proj=$$(dirname $$d); \
-		ffpga=$$proj/*.ffpga; \
-		[ -f $$ffpga ] && echo "    $$proj" || true; \
-	done
-	@echo ""
-
-# ── make help ─────────────────────────────────────────────────────────────────
-help:
-	@echo ""
-	@echo "  Shrike Lite / SLG47910V shrike-gen"
-	@echo ""
-	@echo "  make init                  create ./shrike-gen symlink (optional)"
-	@echo "  make project ProjectName   create a new project"
-	@echo "  make project NAME=Name     (alternative syntax)"
-	@echo "  make list                  list existing projects"
-	@echo ""
-	@echo " cd ProjectName"
-	@echo ""
-	@echo " Then, inside the project:"
-	@echo "    Edit ffpga/src/main.v           edit Verilog"
-	@echo "    Edit io_map.pcf                 edit pin constraints"
-	@echo "    make                            update + full build"
-	@echo "    make update                     regenerate .ffpga + io_spec_in.txt"
-	@echo "    make build                      build only (skip update)"
-	@echo "    make clean                      clean build outputs"
-	@echo ""
-	@echo "  Bitstreams land in: ProjectName/ffpga/build/bitstream/"
-	@echo "    FPGA_bitstream_MCU.bin"
-	@echo "    FPGA_bitstream_OTP.bin"
-	@echo "    FPGA_bitstream_FLASH_MEM.bin"
-	@echo ""
-
-else
-# =============================================================================
-# PROJECT MODE  —  identity comes from shrike.mk (written by shrike-gen)
-# =============================================================================
-
-include shrike.mk
-
-# ── Directories ───────────────────────────────────────────────────────────────
-PROJECT_DIR := $(CURDIR)
-SRC_DIR     := $(PROJECT_DIR)/ffpga/src
-BUILD_DIR   := $(PROJECT_DIR)/ffpga/build
-TOOLS_DIR   := $(PROJECT_DIR)/shrike_gen
-
-# ── Generator scripts ─────────────────────────────────────────────────────────
-GEN_IO_SPEC    := $(TOOLS_DIR)/gen_io_spec.py
-GEN_FFPGA      := $(TOOLS_DIR)/gen_ffpga.py
-GEN_FPGA_DATA  := $(TOOLS_DIR)/gen_fpga_data.py
-GEN_BITSTREAMS := $(TOOLS_DIR)/gen_bitstreams.py
-
-# ── Tool binaries (Go Configure Software Hub) ─────────────────────────────────
-GCSW        := /usr/local/go-configure-sw-hub/bin/external
-YOSYS       := $(GCSW)/yosys/v59/yosys
-VERILATOR   := $(GCSW)/verilator/bin/verilator_bin
-EDA_PLACER  := $(GCSW)/eda-placer/v23/eda-placer
-
-VERILATOR_ROOT         := $(GCSW)/verilator
-EFLX_COMPILER_INSTALL  := $(GCSW)/eda-placer/v23
-export VERILATOR_ROOT
-export EFLX_COMPILER_INSTALL
-
-# ── Sources / constraints / outputs ───────────────────────────────────────────
-VSRC       := main.v
-PCF        := $(PROJECT_DIR)/io_map.pcf
-IO_SPEC    := $(BUILD_DIR)/io_spec_in.txt
-FLOOR_PLAN := $(BUILD_DIR)/floorplanspec.fp
-FFPGA      := $(PROJECT_DIR)/$(PROJECT).ffpga
-NETLIST    := $(BUILD_DIR)/netlist.edif
-SYNTH_YS   := $(BUILD_DIR)/synth_script.ys
-
-.DEFAULT_GOAL := all
-
-.PHONY: all update build lint synth pnr collect clean check-tools help
-
-# ── all: update then full build ───────────────────────────────────────────────
-all: update build
-
-# ── update: regenerate .ffpga and io_spec_in.txt from io_map.pcf ──────────────
-update: $(PCF) $(BUILD_DIR)
-	@echo "=== Update: generating io_spec_in.txt and $(PROJECT).ffpga ==="
-	python3 $(GEN_IO_SPEC) \
-		--pcf        $(PCF) \
-		--out-iospec $(IO_SPEC)
-	python3 $(GEN_FFPGA) \
-		--project    $(PROJECT) \
-		--sources    $(VSRC) \
-		--pcf        $(PCF) \
-		--max-cpu    $$(nproc) \
-		--out        $(FFPGA)
-	@echo "Update OK"
-
-# ── build: full pipeline (lint → synth → pnr → collect) ──────────────────────
-build: check-tools pnr
-
-# ── check-tools: verify external binaries and generated inputs exist ──────────
-check-tools:
-	@test -x $(YOSYS)      || (echo "ERROR: yosys not found at $(YOSYS)";           exit 1)
-	@test -x $(VERILATOR)  || (echo "ERROR: verilator not found at $(VERILATOR)";   exit 1)
-	@test -x $(EDA_PLACER) || (echo "ERROR: eda-placer not found at $(EDA_PLACER)"; exit 1)
-	@test -f $(IO_SPEC)    || (echo "ERROR: io_spec_in.txt missing — run: make update"; exit 1)
-	@test -f $(FLOOR_PLAN) || (echo "ERROR: floorplanspec.fp missing in $(BUILD_DIR)"; exit 1)
-	@echo "Tools OK"
-
-# ── lint ──────────────────────────────────────────────────────────────────────
-lint: check-tools
-	@echo "=== Lint ==="
-	cd $(SRC_DIR) && verilator \
-		+1364-2005ext+.v \
-		-I$(SRC_DIR) \
-		--lint-only \
-		--timing \
-		$(VSRC) || true
-	@echo "Lint OK"
-
-# ── synth ─────────────────────────────────────────────────────────────────────
-define SYNTH_SCRIPT
-read_verilog -sv "../src/main.v"
-hierarchy -check
-flatten -noscopeinfo
-synth_xilinx -nobram -noiopad -nodsp -abc9
-clean
-autoname
-write_verilog "post_synth_results.v"
-write_edif "netlist.edif"
-tee -q -o post_synth_report.txt stat
-endef
-
-synth: lint $(NETLIST)
-
-$(NETLIST): $(SRC_DIR)/$(VSRC) | $(BUILD_DIR)
-	@echo "=== Synthesis ==="
-	$(file >$(SYNTH_YS),$(SYNTH_SCRIPT))
-	cd $(BUILD_DIR) && $(YOSYS) \
-		-e '(.*)is implicitly declared\.' \
-		-Q \
-		-s synth_script.ys
-	@echo "Synthesis OK — netlist: $(NETLIST)"
-
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)/bitstream $(BUILD_DIR)/ta_message
-
-# ── pnr: place & route, then collect ─────────────────────────────────────────
-pnr: synth
-	@echo "=== Place & Route ==="
-	$(eval RUNDIR := $(shell mktemp -d /tmp/eflx_XXXXXXXX))
-	mkdir -p $(RUNDIR)/config $(RUNDIR)/out
-	cp $(IO_SPEC)    $(RUNDIR)/config/io_spec_in.txt
-	cp $(FLOOR_PLAN) $(RUNDIR)/config/floorplanspec.fp
-	$(eval FPGA_DATA_BLOB := $(shell python3 $(GEN_FPGA_DATA) \
-		--netlist $(NETLIST) \
-		--fp      $(RUNDIR)/config/floorplanspec.fp \
-		--io      $(RUNDIR)/config/io_spec_in.txt))
-	@set -o pipefail; \
-	 cd $(RUNDIR)/out && $(EDA_PLACER) FPGA_DATA '$(FPGA_DATA_BLOB)' 0 \
-		2>&1 | tee $(BUILD_DIR)/PNR_STDOUT.log \
-	|| { echo "ERROR: eda-placer failed — see $(BUILD_DIR)/PNR_STDOUT.log"; exit 1; }
-	@echo "=== Collecting results ==="
-	$(MAKE) collect RUNDIR=$(RUNDIR)
-	@echo "PnR OK"
-
-# ── collect: gather eda-placer outputs into ffpga/build/ ─────────────────────
-collect:
-	@test -n "$(RUNDIR)" || (echo "ERROR: RUNDIR not set"; exit 1)
-	@for eflx in $(RUNDIR)/out/EFLX_*.bin $(RUNDIR)/out/EFLX_*.log $(RUNDIR)/out/EFLX_*.sdc; do \
-		[ -f "$$eflx" ] || continue; \
-		base=$$(basename "$$eflx"); \
-		fpga=$$(echo "$$base" | sed 's/EFLX_/FPGA_/'); \
-		cp "$$eflx" "$(BUILD_DIR)/$$fpga"; \
-		echo "  $$base → $$fpga"; \
-	done
-	@for f in \
-		FPGA_bitstream.bin FPGA_bitstream.log FPGA_bitstream_AXI.log \
-		FPGA_case_analysis_RBB.sdc FPGA_case_analysis_top1per.sdc \
-		PNR_PACK_PLACE.log PNR_TIMING.log PNR_ROUTE.log PNR_IO.log \
-		PNR_PLACER_REGION.log PNR_PLACER_RESOURCE.log PNR_PLACER_TIMING.log \
-		clock_tree.txt resource-utilization-report.log \
-		$(TOP)_eflx_array_wrapper.vm; do \
-		test -f $(RUNDIR)/out/$$f && cp $(RUNDIR)/out/$$f $(BUILD_DIR)/ || true; \
-	done
-	@if [ -d $(RUNDIR)/out/minplacer ]; then \
-		mkdir -p $(BUILD_DIR)/minplacer; \
-		cp -r $(RUNDIR)/out/minplacer/. $(BUILD_DIR)/minplacer/; \
-	fi
-	@if [ -d $(RUNDIR)/out/ta_message ]; then \
-		mkdir -p $(BUILD_DIR)/ta_message; \
-		cp -r $(RUNDIR)/out/ta_message/. $(BUILD_DIR)/ta_message/; \
-	fi
-	@if [ -f "$(BUILD_DIR)/FPGA_bitstream_AXI.log" ]; then \
-		mkdir -p $(BUILD_DIR)/bitstream; \
-		python3 $(GEN_BITSTREAMS) \
-			--axi     $(BUILD_DIR)/FPGA_bitstream_AXI.log \
-			--outdir  $(BUILD_DIR)/bitstream \
-			--project $(PROJECT) \
-			--netlist netlist.edif; \
-	fi
-	@echo "Collected outputs to $(BUILD_DIR)"
-
-# ── clean ─────────────────────────────────────────────────────────────────────
-clean:
-	rm -f  $(BUILD_DIR)/netlist.edif $(BUILD_DIR)/post_synth_results.v
-	rm -f  $(BUILD_DIR)/post_synth_report.txt $(BUILD_DIR)/synth_script.ys
-	rm -f  $(BUILD_DIR)/FPGA_bitstream* $(BUILD_DIR)/EFLX_bitstream* $(BUILD_DIR)/PNR_*.log
-	rm -f  $(BUILD_DIR)/clock_tree.txt $(BUILD_DIR)/resource-utilization-report.log
-	rm -f  $(BUILD_DIR)/FPGA_case_analysis_*.sdc $(BUILD_DIR)/*.vm
-	rm -rf $(BUILD_DIR)/minplacer $(BUILD_DIR)/ta_message $(BUILD_DIR)/bitstream
-	@echo "Clean OK"
-
-# ── help ──────────────────────────────────────────────────────────────────────
-help:
-	@echo ""
-	@echo "  $(PROJECT) — SLG47910V (Shrike Lite) build"
-	@echo ""
-	@echo "  make          update + full build"
-	@echo "  make update   regenerate .ffpga and io_spec_in.txt from io_map.pcf"
-	@echo "  make build    lint → synth → pnr → collect (skip update)"
-	@echo "  make lint     verilator lint only"
-	@echo "  make synth    synthesis only"
-	@echo "  make clean    remove build outputs"
-	@echo ""
-	@echo "  Edit files:"
-	@echo "    ffpga/src/main.v    Verilog source"
-	@echo "    io_map.pcf          pin constraints"
-	@echo ""
-	@echo "  Bitstreams land in: ffpga/build/bitstream/"
-	@echo "    FPGA_bitstream_MCU.bin"
-	@echo "    FPGA_bitstream_OTP.bin"
-	@echo "    FPGA_bitstream_FLASH_MEM.bin"
-	@echo ""
-
-endif
-"""
+        smake_data = open(os.path.join(shrike_gen, "Makefile"), "r").read()
+        smake_data = smake_data.replace("synth: lint", "synth:")
+        smake_data = smake_data.replace("/opt/go-configure-sw-hub", "/usr/local/go-configure-sw-hub")
+        smake_data = smake_data.replace('read_verilog -sv "../src/main.v"', f"read_verilog -sv ../src/{' ../src/'.join(self.config['verilog_files'])}")
+        smake_data = smake_data.replace("VSRC       := main.v", "VSRC       := rio.v")
         open(os.path.join(shrike_path, "Makefile"), "w").write(smake_data)

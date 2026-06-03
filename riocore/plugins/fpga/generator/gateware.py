@@ -486,9 +486,8 @@ class gateware(generator_base):
                     else:
                         arguments_list.append(f"{pin_config['direction'].lower()} {pin_config['varname']}")
                         existing_pins[pin_config["pin"]] = pin_config["varname"]
-                        if self.jdata.get("toolchain") == "greenpak":
-                            if pin_config["direction"] == "output":
-                                arguments_list.append(f"output {pin_config['varname']}_OE")
+                        if self.jdata.get("toolchain") == "greenpak" and pin_config["direction"] == "output":
+                            arguments_list.append(f"output {pin_config['varname']}_OE")
 
         output.append("/*")
         output.append(f"    ######### {self.jdata['name']} #########")

@@ -11,10 +11,10 @@ format:
 	ruff format bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins
 
 check:
-	ruff check bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins
+	ruff check bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins --exclude riocore/plugins/fpga/generator/toolchains/greenpak/shrike_gen/
 
 check_fix:
-	ruff check --fix bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins
+	ruff check --fix bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins --exclude riocore/plugins/fpga/generator/toolchains/greenpak/shrike_gen/
 
 unittests:
 	python3 -m pytest -vv -v tests/unit/
