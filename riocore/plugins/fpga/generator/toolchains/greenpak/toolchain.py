@@ -87,10 +87,6 @@ using https://github.com/trholding/shrike-gen for makefile support
         <modules>
             <scr>
                 <module filename="rio.v"/>
-                <module filename="uart_baud.v"/>
-                <module filename="uart_rx.v"/>
-                <module filename="uart_tx.v"/>
-                <module filename="uart.v"/>
             </scr>
         </modules>
         <io-spec-tool></io-spec-tool>
@@ -138,6 +134,8 @@ using https://github.com/trholding/shrike-gen for makefile support
         smk_data.append("")
         open(os.path.join(shrike_path, "shrike.mk"), "w").write("\n".join(smk_data))
 
+        verilogs_xml = '<module filename="' + '"/><module filename="'.join(self.config["verilog_files"]) + '"/>'
+
         makefile_data = []
         makefile_data.append("")
         makefile_data.append("all: build")
@@ -145,9 +143,21 @@ using https://github.com/trholding/shrike-gen for makefile support
         makefile_data.append("clean:")
         makefile_data.append("	cd shrike/ffpga/build/ && rm -rf *.v *.edif *.ys *.txt *.log *.bin *.sdc *.vm *.prj bitstream minplacer ta_message")
         makefile_data.append("")
-        makefile_data.append("build:")
+        makefile_data.append("build: update pnr usage")
+        makefile_data.append("")
+        makefile_data.append("update:")
         makefile_data.append("	ln -f *.v shrike/ffpga/src/")
-        makefile_data.append("	cd shrike && make update pnr")
+        makefile_data.append("	cd shrike && make update")
+        makefile_data.append(f"	sed -i 's|<module filename=\"rio.v\"/>|{verilogs_xml}|g' shrike/rio.ffpga")
+        makefile_data.append("")
+        makefile_data.append("pnr:")
+        makefile_data.append("	cd shrike && make pnr")
+        makefile_data.append("")
+        makefile_data.append("usage:")
+        makefile_data.append("	@echo ''")
+        makefile_data.append("	@echo 'USAGE:'")
+        makefile_data.append("	@grep '%' shrike/ffpga/build/PNR_RESOURCE.log")
+        makefile_data.append("	@echo ''")
         makefile_data.append("")
         open(os.path.join(path, "Makefile"), "w").write("\n".join(makefile_data))
 

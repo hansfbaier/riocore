@@ -312,7 +312,7 @@
           "marker": true
         },
         "F17": {
-          "pin": "PIN_17",
+          "pin": "PIN_8",
           "pos": [
             259.5,
             137
@@ -321,7 +321,7 @@
           "direction": "all"
         },
         "F18": {
-          "pin": "PIN_18",
+          "pin": "PIN_9",
           "pos": [
             274.0,
             137
@@ -330,7 +330,7 @@
           "direction": "all"
         },
         "F0": {
-          "pin": "PIN_0",
+          "pin": "PIN_13",
           "pos": [
             288.5,
             137
@@ -339,7 +339,7 @@
           "direction": "all"
         },
         "F1": {
-          "pin": "PIN_1",
+          "pin": "PIN_14",
           "pos": [
             303.0,
             137
@@ -348,7 +348,7 @@
           "direction": "all"
         },
         "F2": {
-          "pin": "PIN_2",
+          "pin": "PIN_15",
           "pos": [
             317.5,
             137
@@ -357,7 +357,7 @@
           "direction": "all"
         },
         "F7": {
-          "pin": "PIN_7",
+          "pin": "PIN_20",
           "pos": [
             332.0,
             137
@@ -371,7 +371,7 @@
       "name": "PMOD",
       "pins": {
         "F14": {
-          "pin": "PIN_14",
+          "pin": "PIN_5",
           "pos": [
             317,
             37
@@ -380,7 +380,7 @@
           "direction": "all"
         },
         "F12": {
-          "pin": "PIN_12",
+          "pin": "PIN_3",
           "pos": [
             317,
             51.5
@@ -389,7 +389,7 @@
           "direction": "all"
         },
         "F10": {
-          "pin": "PIN_10",
+          "pin": "PIN_1",
           "pos": [
             317,
             66.0
@@ -398,7 +398,7 @@
           "direction": "all"
         },
         "F8": {
-          "pin": "PIN_8",
+          "pin": "PIN_23",
           "pos": [
             317,
             80.5
@@ -427,7 +427,7 @@
           "marker": true
         },
         "F15": {
-          "pin": "PIN_15",
+          "pin": "PIN_6",
           "pos": [
             332,
             37
@@ -436,7 +436,7 @@
           "direction": "all"
         },
         "F13": {
-          "pin": "PIN_13",
+          "pin": "PIN_4",
           "pos": [
             332,
             51.5
@@ -445,7 +445,7 @@
           "direction": "all"
         },
         "F11": {
-          "pin": "PIN_11",
+          "pin": "PIN_2",
           "pos": [
             332,
             66.0
@@ -454,7 +454,7 @@
           "direction": "all"
         },
         "F9": {
-          "pin": "PIN_9",
+          "pin": "PIN_24",
           "pos": [
             332,
             80.5
@@ -481,6 +481,20 @@
           "comment": "",
           "direction": "all",
           "marker": true
+        }
+      }
+    },
+    {
+      "name": "BLUE",
+      "pins": {
+        "L1": {
+          "pin": "PIN_7",
+          "pos": [
+            262,
+            65
+          ],
+          "comment": "F_GPIO16",
+          "direction": "all"
         }
       }
     }

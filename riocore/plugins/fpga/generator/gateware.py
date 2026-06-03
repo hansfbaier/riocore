@@ -517,6 +517,8 @@ class gateware(generator_base):
         output.append("")
         output.append("/* verilator lint_off UNUSEDSIGNAL */")
         output.append("")
+        if self.jdata.get("toolchain") == "greenpak":
+            output.append("(* top *)")
         output.append("module rio (")
 
         for plugin_instance in self.parent.project.plugin_instances:

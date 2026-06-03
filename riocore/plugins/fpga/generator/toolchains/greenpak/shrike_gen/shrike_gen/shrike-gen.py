@@ -90,8 +90,7 @@ def _check_tools():
 
 
 def _render(template_name: str, **subs) -> str:
-    """Read shrike_gen/templates/<template_name> and substitute {{KEY}} placeholders.
-    """
+    """Read shrike_gen/templates/<template_name> and substitute {{KEY}} placeholders."""
     text = (_TEMPLATES_DIR / template_name).read_text()
     for key, val in subs.items():
         text = text.replace("{{" + key + "}}", val)

@@ -20,7 +20,13 @@ class Pins:
                         print('WARNING: please change your pin-config to : "pull": "up"')
                         options.append("-pullup yes")
                 options.append(pin_config["varname"])
-                options.append(pin_config["pin"])
+                if shrike and pin_config["pin"] not in {"CLK", "OSC_EN"}:
+                    if pin_config.get("direction") == "output":
+                        options.append(f"{pin_config['pin']}")
+                    else:
+                        options.append(f"{pin_config['pin']}_IN")
+                else:
+                    options.append(pin_config["pin"])
 
                 # iostandard = pin_config.get("iostandard", "LVTTL").upper()
                 # drive = pin_config.get("drive", "4")
