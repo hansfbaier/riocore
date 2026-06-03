@@ -23,7 +23,7 @@
 | [Numato-Spartan6](boards/Numato-Spartan6.md) | xc6 | xc6slx9-2tqg144 | 50.00Mhz | ise | Spartan6 - only for testing the toolchain | <img width="300" src="boards/Numato-Spartan6.png"> |
 | [OctoBot](boards/OctoBot.md) | ice40 | hx8k | 60.00Mhz | icestorm | RIO-OctoBot board | <img width="300" src="boards/OctoBot.png"> |
 | [Olimex-ICE40HX8K-EVB](boards/Olimex-ICE40HX8K-EVB.md) | ice40 | hx8k | 100.00Mhz | icestorm | ICE40HX8K FPGA development board | <img width="300" src="boards/Olimex-ICE40HX8K-EVB.png"> |
-| [ShrikeLite](boards/ShrikeLite.md) | SLG479 | SLG47910V | 27.00Mhz | greenpak | ShrikeLite | <img width="300" src="boards/ShrikeLite.png"> |
+| [ShrikeLite](boards/ShrikeLite.md) | SLG479 | SLG47910V | 50.00Mhz | greenpak | ShrikeLite | <img width="300" src="boards/ShrikeLite.png"> |
 | [Spartan6](boards/Spartan6.md) | xc6 | xc6slx9-2tqg144 | 50.00Mhz | ise | Spartan6 - only for testing the toolchain and porting old configs |  |
 | [TangNano1K](boards/TangNano1K.md) | GW1NZ-1 | GW1NZ-LV1QN48C6/I5 | 27.00Mhz | gowin (icestorm) | TangNano1K - cheap GW1NR-1 Devboard - usable as sat only | <img width="300" src="boards/TangNano1K.png"> |
 | [TangNano20K](boards/TangNano20K.md) | GW2AR-18C | GW2AR-LV18QN88C8/I7 | 27.00Mhz | gowin (icestorm) | TangNano20K - GW2AR-18 devboard | <img width="300" src="boards/TangNano20K.png"> |

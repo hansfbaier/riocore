@@ -8,7 +8,7 @@ ShrikeLite
 | --- | --- |
 | Family | SLG479 |
 | Type | SLG47910V |
-| Clock | 27.0 |
+| Clock | 50.0 |
 | Toolchain | greenpak |
 | URL | [link](https://github.com/vicharak-in/shrike) |
 
@@ -50,29 +50,36 @@ ShrikeLite
 | IO14 | RP:IO14 | all |
 | IO15 | RP:IO15 | all |
 | GND_5 | GND | all |
-| F17 | PIN_17 | all |
-| F18 | PIN_18 | all |
-| F0 | PIN_0 | all |
-| F1 | PIN_1 | all |
-| F2 | PIN_2 | all |
-| F7 | PIN_7 | all |
+| F17 | PIN_8 | all |
+| F18 | PIN_9 | all |
+| F0 | PIN_13 | all |
+| F1 | PIN_14 | all |
+| F2 | PIN_15 | all |
+| F7 | PIN_20 | all |
 
 ### PMOD
 
 
 | Name | Pin | Direction |
 | --- | --- | --- |
-| F14 | PIN_14 | all |
-| F12 | PIN_12 | all |
-| F10 | PIN_10 | all |
-| F8 | PIN_8 | all |
+| F14 | PIN_5 | all |
+| F12 | PIN_3 | all |
+| F10 | PIN_1 | all |
+| F8 | PIN_23 | all |
 | GND_1 | GND | all |
 | 3V2_1 | 3V2 | all |
-| F15 | PIN_15 | all |
-| F13 | PIN_13 | all |
-| F11 | PIN_11 | all |
-| F9 | PIN_9 | all |
+| F15 | PIN_6 | all |
+| F13 | PIN_4 | all |
+| F11 | PIN_2 | all |
+| F9 | PIN_24 | all |
 | GND_2 | GND | all |
 | 3V2_2 | 3V2 | all |
+
+### BLUE
+
+
+| Name | Pin | Direction |
+| --- | --- | --- |
+| L1 | PIN_7 | all |
 
 
