@@ -467,9 +467,12 @@ class gateware(generator_base):
 
         arguments_list = []
         if self.jdata["sysclk_pin"] != "internal":
-            arguments_list.append("input sysclk_in")
             if self.jdata.get("toolchain") == "greenpak":
-                arguments_list.append("output sysclk_in_en")
+                arguments_list.append("(* iopad_external_pin, clkbuf_inhibit *) input sysclk_in")
+                arguments_list.append("(* iopad_external_pin *) output sysclk_in_en")
+            else:
+                arguments_list.append("input sysclk_in")
+
         existing_pins = {}
         double_pins = {}
         for plugin_instance in self.parent.project.plugin_instances:
@@ -484,10 +487,13 @@ class gateware(generator_base):
                             double_pins[pin_config["pin"]] = []
                         double_pins[pin_config["pin"]].append(pin_config["varname"])
                     else:
-                        arguments_list.append(f"{pin_config['direction'].lower()} {pin_config['varname']}")
+                        prefix = ""
+                        if self.jdata.get("toolchain") == "greenpak":
+                            prefix = "(* iopad_external_pin *) "
+                        arguments_list.append(f"{prefix}{pin_config['direction'].lower()} {pin_config['varname']}")
                         existing_pins[pin_config["pin"]] = pin_config["varname"]
                         if self.jdata.get("toolchain") == "greenpak" and pin_config["direction"] == "output":
-                            arguments_list.append(f"output {pin_config['varname']}_OE")
+                            arguments_list.append(f"{prefix}output {pin_config['varname']}_OE")
 
         output.append("/*")
         output.append(f"    ######### {self.jdata['name']} #########")
@@ -518,8 +524,9 @@ class gateware(generator_base):
         output.append("/* verilator lint_off UNUSEDSIGNAL */")
         output.append("")
         if self.jdata.get("toolchain") == "greenpak":
-            output.append("(* top *)")
-        output.append("module rio (")
+            output.append("(* top *) module rio (")
+        else:
+            output.append("module rio (")
 
         for plugin_instance in self.parent.project.plugin_instances:
             if plugin_instance.master != self.instance.instances_name:
