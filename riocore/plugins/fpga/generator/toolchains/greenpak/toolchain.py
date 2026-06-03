@@ -50,7 +50,7 @@ using https://github.com/trholding/shrike-gen for makefile support
         ffpga_data = """<?xml version="1.0" encoding="UTF-8"?>
 <GPDProject version="40" oldestCompatibleVersion="32" GPDVersion="6.53.003" lastChange="1 Jun 2026 00:00:00" projectChecksumState="0" projectChecksum="00000000">
     <Metadata>
-        <LegalNotice>Generated with Vulcan's Shrike Gen. MIT Licensed. No warranties!</LegalNotice>
+        <LegalNotice>Generated with riocore</LegalNotice>
     </Metadata>
     <generalProjectSettings/>
     <chip family="04" type="06" friendlyName="FFPGA" partNumber="67" package="26">
@@ -93,22 +93,7 @@ using https://github.com/trholding/shrike-gen for makefile support
                 <module filename="main.v"/>
             </scr>
         </modules>
-        <io-spec-tool>
-            <records filter="126" filter1="16">
-                <record id="CLK_t[0:0]_W_in0">
-                    <port-name>clk</port-name>
-                </record>
-                <record id="IOB_t[0:0]_xy[0:25]_out0">
-                    <port-name>clk_en</port-name>
-                </record>
-                <record id="IOB_t[0:0]_xy[31:6]_out0">
-                    <port-name>LED</port-name>
-                </record>
-                <record id="IOB_t[0:0]_xy[31:6]_out1">
-                    <port-name>LED_en</port-name>
-                </record>
-            </records>
-        </io-spec-tool>
+        <io-spec-tool></io-spec-tool>
         <pllConfigurator>
             <pllConfiguratorDataVersion>1</pllConfiguratorDataVersion>
             <pllConfigurations>
@@ -163,7 +148,7 @@ using https://github.com/trholding/shrike-gen for makefile support
         makefile_data.append("")
         makefile_data.append("build:")
         makefile_data.append("	cat *.v > shrike/ffpga/src/main.v")
-        makefile_data.append("	cd shrike && make pnr")
+        makefile_data.append("	cd shrike && make update pnr")
         makefile_data.append("")
         open(os.path.join(path, "Makefile"), "w").write("\n".join(makefile_data))
 
@@ -173,192 +158,6 @@ using https://github.com/trholding/shrike-gen for makefile support
         floorplan_data.append("M")
         floorplan_data.append("")
         open(os.path.join(shrike_path, "ffpga", "build", "floorplanspec.fp"), "w").write("\n".join(floorplan_data))
-
-
-
-        specs_data = """EFLX_CLK chip_tile_x=0, chip_tile_y=0, clk_side=W
-    Input=0, pin=clk
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=2
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=3
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=4
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=5
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=6
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=7
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=8
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=9
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=10
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=11
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=12
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=13
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=14
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=15
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=16
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=17
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=18
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=19
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=20
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=21
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=22
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=23
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=24
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=25
-   Output=0, pin=clk_en, output_delay=-1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=26
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=27
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=28
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=29
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=0, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=1, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=1, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=1, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=1, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=2, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=2, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=2, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=2, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=3, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=3, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=3, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=3, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=4, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=4, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=4, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=4, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=5, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=5, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=5, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=5, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=6, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=6, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=6, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=6, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=7, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=7, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=7, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=7, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=8, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=8, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=8, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=8, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=9, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=9, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=9, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=9, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=10, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=10, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=10, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=10, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=11, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=11, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=11, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=11, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=12, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=12, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=12, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=12, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=13, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=13, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=13, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=13, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=14, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=14, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=14, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=14, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=15, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=15, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=15, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=15, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=16, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=16, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=16, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=16, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=17, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=17, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=17, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=17, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=18, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=18, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=18, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=18, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=19, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=19, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=19, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=19, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=20, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=20, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=20, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=20, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=21, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=21, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=21, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=21, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=22, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=22, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=22, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=22, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=23, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=23, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=23, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=23, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=24, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=24, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=25, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=25, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=25, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=25, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=26, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=26, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=26, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=26, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=27, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=27, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=27, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=27, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=28, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=28, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=28, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=28, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=29, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=29, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=29, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=29, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=30, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=30, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=30, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=30, chip_y=31
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=0
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=2
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=3
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=4
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=5
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=6
-   Output=0, pin=LED, output_delay=-1
-   Output=1, pin=LED_en, output_delay=-1
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=8
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=9
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=10
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=11
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=12
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=19
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=20
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=21
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=22
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=23
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=24
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=25
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=26
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=27
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=28
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=29
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=30
-EFLX_IOB chip_tile_x=0, chip_tile_y=0, chip_x=31, chip_y=31
-"""
-        open(os.path.join(shrike_path, "ffpga", "build", "io_spec_in.txt"), "w").write(specs_data)
-
 
         smake_data = """# Vulcan's Makefile for SLG47910V / Shrike Lite, part of shrike-gen
 #

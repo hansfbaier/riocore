@@ -7,7 +7,8 @@
   "toolchain": "greenpak",
   "package": "STQFN",
   "clock": {
-    "speed": "27000000"
+    "pin": "CLK",
+    "speed": "50000000"
   },
   "slots": [
     {

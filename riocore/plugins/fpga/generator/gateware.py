@@ -162,6 +162,9 @@ class gateware(generator_base):
         if self.jdata["sysclk_pin"] != "internal":
             self.jdata["pinlists"]["base"]["sysclk_in"] = {"direction": "input", "pull": None, "pin": self.jdata["sysclk_pin"], "varname": "sysclk_in"}
 
+        if self.jdata.get("toolchain") == "greenpak":
+            self.jdata["pinlists"]["base"]["sysclk_in_en"] = {"direction": "input", "pull": None, "pin": "OSC_EN", "varname": "sysclk_in_en"}
+
         self.jdata["timing_constraints"] = {}
         self.jdata["timing_constraints_instance"] = {}
         for plugin_instance in self.parent.project.plugin_instances:
@@ -465,6 +468,8 @@ class gateware(generator_base):
         arguments_list = []
         if self.jdata["sysclk_pin"] != "internal":
             arguments_list.append("input sysclk_in")
+            if self.jdata.get("toolchain") == "greenpak":
+                arguments_list.append("output sysclk_in_en")
         existing_pins = {}
         double_pins = {}
         for plugin_instance in self.parent.project.plugin_instances:
@@ -478,10 +483,12 @@ class gateware(generator_base):
                         if pin_config["pin"] not in double_pins:
                             double_pins[pin_config["pin"]] = []
                         double_pins[pin_config["pin"]].append(pin_config["varname"])
-
                     else:
                         arguments_list.append(f"{pin_config['direction'].lower()} {pin_config['varname']}")
                         existing_pins[pin_config["pin"]] = pin_config["varname"]
+                        if self.jdata.get("toolchain") == "greenpak":
+                            if pin_config["direction"] == "output":
+                                arguments_list.append(f"output {pin_config['varname']}_OE")
 
         output.append("/*")
         output.append(f"    ######### {self.jdata['name']} #########")
@@ -555,7 +562,22 @@ class gateware(generator_base):
         osc_clock = self.jdata["clock"].get("osc")
         speed = self.jdata["clock"].get("speed")
 
-        if self.jdata["sysclk_pin"] == "internal":
+        if self.jdata.get("toolchain") == "greenpak":
+            output.append("    wire sysclk;")
+            output.append("    assign sysclk = sysclk_in;")
+            output.append("    assign sysclk_in_en = 1'b1;")
+            output.append("")
+            for plugin_instance in self.parent.project.plugin_instances:
+                if plugin_instance.master != self.instance.instances_name:
+                    continue
+                for pin_config in plugin_instance.pins().values():
+                    if "pin" in pin_config and pin_config["pin"] not in self.parent.expansion_pins and pin_config["pin"] not in self.parent.virtual_pins:
+                        if pin_config.get("bus"):
+                            continue
+                        if pin_config["direction"] == "output":
+                            output.append(f"    assign {pin_config['varname']}_OE = 1'b1;")
+
+        elif self.jdata["sysclk_pin"] == "internal":
             if self.jdata["family"] == "ice40" and self.jdata["type"] == "up5k":
                 mapping = {48000000: "0b00", 24000000: "0b01", 12000000: "0b10", 6000000: "0b11"}
                 output.append("    // Instantiate the internal high-frequency oscillator")
