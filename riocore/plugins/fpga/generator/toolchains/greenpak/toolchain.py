@@ -20,6 +20,7 @@ class Toolchain:
             "info": "Renesas - GreenPack",
             "description": """
 using https://github.com/trholding/shrike-gen for makefile support
+Many Thanks to 'trholding'
 """,
         }
 
