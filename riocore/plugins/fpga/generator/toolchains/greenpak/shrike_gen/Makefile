@@ -3,7 +3,7 @@
 # Role-aware: automatically detects workspace vs project context.
 # A project directory is identified by the presence of a *.ffpga file.
 #
-# ── WORKSPACE MODE (no *.ffpga here) ─────────────────────────────────────────
+# ── WORKSPACE MODE (no *.ffpga here / shrike.mk) ─────────────────────────────
 #   make init                  create ./shrike-gen symlink + set up mpremote
 #   make project ProjectName   create a new project skeleton
 #   make project NAME=Name     (alternative syntax)
@@ -11,16 +11,18 @@
 #   make mpremote-install      install the flash tool (mpremote) into ~/.local
 #   make help                  show this message
 #
-# ── PROJECT MODE (*.ffpga present) ───────────────────────────────────────────
-#   make              update + full build
-#   make update       regenerate .ffpga and io_spec_in.txt from io_map.pcf
-#   make build        lint → synth → pnr → collect (skip update)
-#   make lint         verilator lint only
-#   make synth        synthesis only
-#   make flash        cp bitstream to MCU + shrike.flash() the FPGA
-
-#   make clean        remove all build outputs (keeps source + constraints)
-#   make help         show this message
+# ── PROJECT MODE (*.ffpga / shrike.mk present) ───────────────────────────────
+#   make                       update + full build (if top module annotated with (* top *))
+#   make top                   update + build with -top TOP from shrike.mk
+#   make top <TopModuleName>   update + build with -top <TopModuleName>
+#   make update                regenerate .ffpga and io_spec_in.txt from io_map.pcf
+#                              (also re-scans ffpga/src/*.v — picks up new/renamed files)
+#   make build                 lint → synth → pnr → collect (skip update)
+#   make lint                  verilator lint only
+#   make synth                 synthesis only
+#   make flash                 copy bitstream to MCU + shrike.flash() the FPGA
+#   make clean                 remove all build outputs (keeps source + constraints)
+#   make help                  show help message
 
 #Setting Up default shell as bash 
 SHELL := /bin/bash
@@ -169,7 +171,30 @@ export VERILATOR_ROOT
 export EFLX_COMPILER_INSTALL
 
 # ── Sources / constraints / outputs ───────────────────────────────────────────
-VSRC       := main.v
+# Discover all Verilog sources in SRC_DIR automatically
+VSRC_FILES     := $(wildcard $(SRC_DIR)/*.v)
+VSRC_BASENAMES := $(notdir $(VSRC_FILES))
+# Quoted paths for yosys read_verilog (relative from BUILD_DIR → ../src/)
+SYNTH_VFILES   := $(patsubst %,"../src/%",$(VSRC_BASENAMES))
+
+# ── Top-module handling ───────────────────────────────────────────────────────
+#   make                       → no -top flag (yosys auto-detects (* top *))
+#   make top                   → synth_xilinx ... -top TOP from shrike.mk
+#   make top <TopModuleName>   → synth_xilinx ... -top <TopModuleName>
+_KNOWN_MAKE_TARGETS := all update build lint synth pnr collect clean check-tools \
+                       flash check-mpremote help top mpremote-install
+_TOP_MODULE_ARG     := $(filter-out $(_KNOWN_MAKE_TARGETS),$(MAKECMDGOALS))
+
+ifeq (top,$(filter top,$(MAKECMDGOALS)))
+  ifneq (,$(_TOP_MODULE_ARG))
+    SYNTH_TOP_FLAG := -top $(_TOP_MODULE_ARG)
+  else
+    SYNTH_TOP_FLAG := -top $(TOP)
+  endif
+else
+  SYNTH_TOP_FLAG :=
+endif
+
 PCF        := $(PROJECT_DIR)/io_map.pcf
 IO_SPEC    := $(BUILD_DIR)/io_spec_in.txt
 FLOOR_PLAN := $(BUILD_DIR)/floorplanspec.fp
@@ -177,14 +202,22 @@ FFPGA      := $(PROJECT_DIR)/$(PROJECT).ffpga
 NETLIST    := $(BUILD_DIR)/netlist.edif
 SYNTH_YS   := $(BUILD_DIR)/synth_script.ys
 
-VSRCFILES  := $(foreach item,$(VSRC),../src/$(item))
-
 .DEFAULT_GOAL := all
 
-.PHONY: all update build lint synth pnr collect clean check-tools flash check-mpremote help
+.PHONY: all update build lint synth pnr collect clean check-tools flash check-mpremote help top
 
 # ── all: update then full build ───────────────────────────────────────────────
 all: update build
+
+# ── top: update then full build with explicit -top flag ───────────────────────
+# Usage: make top                  → -top TOP from shrike.mk
+#        make top <TopModuleName>  → -top <TopModuleName>
+# This is needed when the top module is not annotated with (* top *)
+top: update build
+
+# Swallow the positional module-name argument so Make doesn't error on it
+$(filter-out $(_KNOWN_MAKE_TARGETS),$(MAKECMDGOALS)):
+	@:
 
 # ── update: regenerate .ffpga and io_spec_in.txt from io_map.pcf ──────────────
 update: $(PCF) $(BUILD_DIR)
@@ -194,7 +227,7 @@ update: $(PCF) $(BUILD_DIR)
 		--out-iospec $(IO_SPEC)
 	python3 $(GEN_FFPGA) \
 		--project    $(PROJECT) \
-		--sources    $(VSRC) \
+		--sources    $(VSRC_BASENAMES) \
 		--pcf        $(PCF) \
 		--max-cpu    $$(nproc) \
 		--out        $(FFPGA)
@@ -220,15 +253,15 @@ lint: check-tools
 		-I$(SRC_DIR) \
 		--lint-only \
 		--timing \
-		$(VSRC)
+		$(VSRC_BASENAMES)
 	@echo "Lint OK"
 
 # ── synth ─────────────────────────────────────────────────────────────────────
 define SYNTH_SCRIPT
-read_verilog -sv $(VSRCFILES)
+read_verilog -sv $(SYNTH_VFILES)
 hierarchy -check
 flatten -noscopeinfo
-synth_xilinx -nobram -noiopad -nodsp -abc9 -top $(TOP)
+synth_xilinx -nobram -noiopad -nodsp -abc9$(if $(SYNTH_TOP_FLAG), $(SYNTH_TOP_FLAG))
 clean
 autoname
 write_verilog "post_synth_results.v"
@@ -237,9 +270,8 @@ tee -q -o post_synth_report.txt stat
 endef
 
 synth: $(NETLIST)
-netlist: $(NETLIST)
 
-$(NETLIST): $(BUILD_DIR)
+$(NETLIST): $(VSRC_FILES) | $(BUILD_DIR)
 	@echo "=== Synthesis ==="
 	$(file >$(SYNTH_YS),$(SYNTH_SCRIPT))
 	cd $(BUILD_DIR) && $(YOSYS) \
@@ -371,7 +403,9 @@ help:
 	@echo ""
 	@echo "  $(PROJECT) — SLG47910V (Shrike Lite) build"
 	@echo ""
-	@echo "  make                          update + full build"
+	@echo "  make                          update + full build [(* top *)]"
+	@echo "  make top                      update + build, set top module to TOP (shrike.mk)"
+	@echo "  make top <TopModuleName>      update + build, set top module to custom <TopModuleName>"
 	@echo "  make update                   regenerate .ffpga and io_spec_in.txt from io_map.pcf"
 	@echo "  make build                    lint → synth → pnr → collect (skip update)"
 	@echo "  make lint                     verilator lint only"
@@ -382,8 +416,10 @@ help:
 	@echo "  make clean                    remove build outputs"
 	@echo ""
 	@echo "  Edit files:"
-	@echo "    ffpga/src/main.v    Verilog source"
+	@echo "    ffpga/src/*.v       Verilog sources (all .v files are picked up automatically)"
 	@echo "    io_map.pcf          pin constraints"
+	@echo ""
+	@echo "  Sources detected: $(VSRC_BASENAMES)"
 	@echo ""
 	@echo "  Bitstreams land in: ffpga/build/bitstream/"
 	@echo "    FPGA_bitstream_MCU.bin"
