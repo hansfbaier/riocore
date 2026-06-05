@@ -18,7 +18,7 @@ class Toolchain:
         return {
             "url": "https://www.efinixinc.com/",
             "info": "Efinix - Efinity",
-            "description": "untested",
+            "description": "untested - https://www.efinixinc.com/dl/efinity-2025.2.288.2.10-linux-x64.tar.bz2",
         }
 
     def pll(self, clock_in, clock_out):
