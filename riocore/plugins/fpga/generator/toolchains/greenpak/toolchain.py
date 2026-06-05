@@ -138,6 +138,8 @@ Many Thanks to 'trholding'
         makefile_data = []
         makefile_data.append("")
         makefile_data.append('GCSW := "/usr/local/go-configure-sw-hub/bin/external"')
+        #makefile_data.append('VERILATOR="/opt/oss-cad-suite/share/verilator/bin/verilator"')
+        #makefile_data.append('VERILATOR_ROOT=/opt/oss-cad-suite/share/verilator/')
         makefile_data.append("")
         makefile_data.append("all: build")
         makefile_data.append("")
@@ -148,7 +150,8 @@ Many Thanks to 'trholding'
         makefile_data.append("")
         makefile_data.append("pnr:")
         makefile_data.append("	ln -f *.v shrike/ffpga/src/")
-        makefile_data.append("	cd shrike && make update top GCSW=$(GCSW)")
+        #makefile_data.append("	cd shrike && make update top GCSW=$(GCSW) VERILATOR=$(VERILATOR) VERILATOR_ROOT=$(VERILATOR_ROOT)")
+        makefile_data.append("	cd shrike && make update top GCSW=$(GCSW) VERILATOR=''")
         makefile_data.append("")
         makefile_data.append("usage:")
         makefile_data.append("	@echo ''")

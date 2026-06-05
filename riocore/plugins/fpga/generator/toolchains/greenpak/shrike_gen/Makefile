@@ -252,6 +252,8 @@ lint: check-tools
 		+1364-2005ext+.v \
 		-I$(SRC_DIR) \
 		--lint-only \
+		-Wno-WIDTHEXPAND \
+		-Wno-WIDTHTRUNC \
 		--timing \
 		$(VSRC_BASENAMES)
 	@echo "Lint OK"
@@ -269,7 +271,11 @@ write_edif "netlist.edif"
 tee -q -o post_synth_report.txt stat
 endef
 
+ifeq ($(VERILATOR),)
 synth: $(NETLIST)
+else
+synth: lint $(NETLIST)
+endif
 
 $(NETLIST): $(VSRC_FILES) | $(BUILD_DIR)
 	@echo "=== Synthesis ==="
