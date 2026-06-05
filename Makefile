@@ -8,7 +8,7 @@ clean:
 	rm -rf dist *.egg-info
 
 format:
-	ruff format bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins
+	ruff format bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins --exclude riocore/plugins/fpga/generator/toolchains/greenpak/shrike_gen/
 
 check:
 	ruff check bin/rio* riocore/*.py riocore/configs riocore/files riocore/generator riocore/gui riocore/plugins --exclude riocore/plugins/fpga/generator/toolchains/greenpak/shrike_gen/
