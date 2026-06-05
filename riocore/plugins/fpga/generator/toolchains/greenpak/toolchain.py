@@ -148,7 +148,7 @@ Many Thanks to 'trholding'
         makefile_data.append("")
         makefile_data.append("pnr:")
         makefile_data.append("	ln -f *.v shrike/ffpga/src/")
-        makefile_data.append("	cd shrike && make update top GCSW=$(GCSW) VERILATOR=''")
+        makefile_data.append("	cd shrike && make top GCSW=$(GCSW) VERILATOR=''")
         makefile_data.append("")
         makefile_data.append("usage:")
         makefile_data.append("	@echo ''")
