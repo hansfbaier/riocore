@@ -177,6 +177,8 @@ FFPGA      := $(PROJECT_DIR)/$(PROJECT).ffpga
 NETLIST    := $(BUILD_DIR)/netlist.edif
 SYNTH_YS   := $(BUILD_DIR)/synth_script.ys
 
+VSRCFILES  := $(foreach item,$(VSRC),../src/$(item))
+
 .DEFAULT_GOAL := all
 
 .PHONY: all update build lint synth pnr collect clean check-tools flash check-mpremote help
@@ -223,7 +225,7 @@ lint: check-tools
 
 # ── synth ─────────────────────────────────────────────────────────────────────
 define SYNTH_SCRIPT
-read_verilog -sv "../src/main.v"
+read_verilog -sv $(VSRCFILES)
 hierarchy -check
 flatten -noscopeinfo
 synth_xilinx -nobram -noiopad -nodsp -abc9 -top $(TOP)
@@ -234,9 +236,10 @@ write_edif "netlist.edif"
 tee -q -o post_synth_report.txt stat
 endef
 
-synth: lint $(NETLIST)
+synth: $(NETLIST)
+netlist: $(NETLIST)
 
-$(NETLIST): $(SRC_DIR)/$(VSRC) | $(BUILD_DIR)
+$(NETLIST): $(BUILD_DIR)
 	@echo "=== Synthesis ==="
 	$(file >$(SYNTH_YS),$(SYNTH_SCRIPT))
 	cd $(BUILD_DIR) && $(YOSYS) \
