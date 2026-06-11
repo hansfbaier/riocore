@@ -504,7 +504,7 @@ for signal_name, parts in signals.items():
         if args.elabel:
             elabel = signal_name
 
-        source_name = source.split("=")[0]
+        source_name = source.split("=", 1)[0]
 
         if source.startswith("pyvcp"):
             gAll.edge(target_name, source_name, dir="back", label=elabel)

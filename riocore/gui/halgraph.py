@@ -148,7 +148,7 @@ class HalGraph:
                     if not target_name:
                         continue
 
-                    source_name = source.split("=")[0]
+                    source_name = source.split("=", maxsplit=1)[0]
                     eid = source_name.replace(":", ".")
                     if source.startswith("pyvcp"):
                         self.gAll.edge(target_name, source_name, dir="back", label=elabel, id=eid, penwidth="2", color=colors["edge"])

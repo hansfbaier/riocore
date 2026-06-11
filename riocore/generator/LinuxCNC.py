@@ -2608,7 +2608,7 @@ if __name__ == "__main__":
                                         riocore.log("ERROR: can not use this as feedback (no input signal):", sub_signal_config)
                                         exit(1)
                                     feedback_halname = f"{prefix}{sub_signal_config['halname']}"
-                                    feedback_signal = feedback_halname.split(".")[-1]
+                                    feedback_signal = feedback_halname.rsplit(".", 1)[-1]
                                     sub_signals_setup = sub_instance.plugin_setup.get("signals", {})
                                     feedback_scale = float(sub_signals_setup.get(feedback_signal, {}).get("scale", 1.0))
                                     if "signals" not in sub_instance.plugin_setup:

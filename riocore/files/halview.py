@@ -400,7 +400,7 @@ class MainWindow(QMainWindow):
                 if not target_name:
                     continue
 
-                source_name = source.split("=")[0]
+                source_name = source.split("=", 1)[0]
                 eid = source_name.replace(":", ".")
                 if source.startswith("pyvcp"):
                     self.gAll.edge(target_name, source_name, dir="back", id=eid, penwidth="2", color=colors["edge"])
