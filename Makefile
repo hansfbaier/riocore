@@ -29,12 +29,6 @@ readmes:
 dist:
 	python3 setup.py sdist
 
-pypi: clean dist
-	$(eval VERSION = v$(shell ls dist/riocore-*.tar.gz | cut -d"-" -f2 | cut -d"." -f1-3))
-	twine upload --verbose dist/riocore-*.tar.gz
-	git tag -a ${VERSION} -m "version ${VERSION}"
-	git push origin ${VERSION}
-
 exifclean:
 	#exiftool -all= riocore/configs/*/*.png
 	#rm -rf riocore/configs/*/*.png_original
