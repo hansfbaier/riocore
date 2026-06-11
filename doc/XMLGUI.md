@@ -22,7 +22,7 @@ all other tab's will be append at the end
 
 * you can link this signals to all real hal-pins in linuxcnc
 
-* this is a plugin (signal) and can be added/configure via rio-setup
+* this is a plugin (signal) and can be added/configure via rio-flow
 
 
 Example:

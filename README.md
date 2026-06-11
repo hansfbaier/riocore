@@ -194,7 +194,7 @@ you need the toolchain for your FPGA or in some cases the https://github.com/Yos
 ### Generator
 ```mermaid
 graph LR;
-    BOARD.JSON--rio-setup-->CONFIG.JSON;
+    BOARD.JSON--rio-flow-->CONFIG.JSON;
     CONFIG.JSON--rio-generator-->/Output;
     /Output-->/Gateware;
     /Gateware-->Makefile;

@@ -56,7 +56,7 @@ pyvenv_test_generator:
 	pyvenv/bin/python bin/rio-generator Altera10M08Eval/config.json
 
 pyvenv_test_setup:
-	pyvenv/bin/python bin/rio-setup Altera10M08Eval/config.json
+	pyvenv/bin/python bin/rio-flow Altera10M08Eval/config.json
 
 docker-build-debian11_deb:
 	sudo rm -rf dist/ deb_dist/
@@ -73,7 +73,7 @@ docker-run-debian11_deb:
 	#docker build --no-cache -t riocore_debian11 -f dockerfiles/Dockerfile.debian11-min .
 	docker build -t riocore_debian11 -f dockerfiles/Dockerfile.debian11-min .
 	docker rm riocore_debian11 || true
-	docker run --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore_debian11 -v $(CURDIR):/usr/src/riocore -t -i riocore_debian11 /bin/bash -c "cd /usr/src/riocore; apt-get install --no-install-recommends -y ./debian-packages/python3-riocore_*-bullseye_all.deb; cd ~ ; PATH=$$PATH:/opt/oss-cad-suite/bin/ rio-setup"
+	docker run --net=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore_debian11 -v $(CURDIR):/usr/src/riocore -t -i riocore_debian11 /bin/bash -c "cd /usr/src/riocore; apt-get install --no-install-recommends -y ./debian-packages/python3-riocore_*-bullseye_all.deb; cd ~ ; PATH=$$PATH:/opt/oss-cad-suite/bin/ rio-flow"
 
 docker-build-debian12_deb:
 	sudo rm -rf dist/ deb_dist/
@@ -90,24 +90,24 @@ docker-run-debian12_deb:
 	#docker build --no-cache -t riocore_debian12 -f dockerfiles/Dockerfile.debian12-min .
 	docker build -t riocore_debian12 -f dockerfiles/Dockerfile.debian12-min .
 	docker rm riocore_debian12 || true
-	docker run --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore_debian12 -v $(CURDIR):/usr/src/riocore -t -i riocore_debian12 /bin/bash -c "cd /usr/src/riocore; apt-get install --no-install-recommends -y ./debian-packages/python3-riocore_*-bookworm_all.deb; cd ~ ; PATH=$$PATH:/opt/oss-cad-suite/bin/ rio-setup"
+	docker run --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore_debian12 -v $(CURDIR):/usr/src/riocore -t -i riocore_debian12 /bin/bash -c "cd /usr/src/riocore; apt-get install --no-install-recommends -y ./debian-packages/python3-riocore_*-bookworm_all.deb; cd ~ ; PATH=$$PATH:/opt/oss-cad-suite/bin/ rio-flow"
 
 docker-run:
 	docker build -t riocore-run -f dockerfiles/Dockerfile.debian12-run .
 	docker rm -f riocore-run || true
-	docker run --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run -t -i riocore-run /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/ bin/rio-setup $(CONFIG)"
+	docker run --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run -t -i riocore-run /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/ bin/rio-flow $(CONFIG)"
 	docker rm -f riocore-run || true
 
 docker-run-rpi:
 	docker build -t riocore-run -f dockerfiles/Dockerfile.debian12-run-rpi .
 	docker rm -f riocore-run || true
-	docker run --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run -t -i riocore-run /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/ bin/rio-setup $(CONFIG)"
+	docker run --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run -t -i riocore-run /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/ bin/rio-flow $(CONFIG)"
 	docker rm -f riocore-run || true
 
 docker-run-gowin:
 	docker build -t riocore-run-gowin -f dockerfiles/Dockerfile.debian12-run-gowin .
 	docker rm -f riocore-run-gowin || true
-	docker run  --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run-gowin -t -i riocore-run-gowin /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/:/opt/gowin/IDE/bin/ bin/rio-setup $(CONFIG)"
+	docker run  --privileged --net=host -v /tmp/.X12-unix:/tmp/.X12-unix -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority -v $(CURDIR):/usr/src/riocore -v $(CURDIR):/workspace -e DISPLAY=$$DISPLAY -v $$HOME/.Xauthority:/root/.Xauthority --name riocore-run-gowin -t -i riocore-run-gowin /bin/bash -c "cd /usr/src/riocore; PATH=$$PATH:/opt/oss-cad-suite/bin/:/opt/gowin/IDE/bin/ bin/rio-flow $(CONFIG)"
 	docker rm -f riocore-run-gowin || true
 
 update:
