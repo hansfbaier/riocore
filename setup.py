@@ -12,11 +12,16 @@ from riocore.VERSION import VERSION
 scripts = []
 package_data = {
     "riocore": [
+        "kicad-images.json",
+        "modifiers.py",
+        "halpins.py",
+        "checksums.py",
         "files/*",
         "boards/*",
         "boards/*/*",
         "modules/*/*",
         "configs/*/*",
+        "plugins/fpga/*/*",
     ],
 }
 packages = ["riocore"]
@@ -24,13 +29,15 @@ packages = ["riocore"]
 for script in glob.glob("bin/*"):
     scripts.append(script)
 
-for folder in ("riocore/plugins/*", "riocore/generator/*"):
+for folder in ("riocore/plugins/*", "riocore/generator/*", "riocore/gui/*"):
     packages.append(folder.replace("/*", "").replace("/", "."))
     for module in glob.glob(folder):
         if "__" not in module and not module.endswith(".py") and not module.endswith(".md"):
             module_name = module.replace("/", ".")
             packages.append(module_name)
             package_data[module_name] = ["*.c", "*.v", "*.png", "*.md"]
+
+package_data["riocore.plugins.fpga.generator"] = ["*.c", "*.v", "*.png", "*.md"]
 
 setup(
     name="riocore",
