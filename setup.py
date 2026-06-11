@@ -10,34 +10,19 @@ from setuptools import setup
 from riocore.VERSION import VERSION
 
 scripts = []
-package_data = {
-    "riocore": [
-        "kicad-images.json",
-        "modifiers.py",
-        "halpins.py",
-        "checksums.py",
-        "files/*",
-        "boards/*",
-        "boards/*/*",
-        "modules/*/*",
-        "configs/*/*",
-        "plugins/fpga/*/*",
-    ],
-}
 packages = ["riocore"]
+package_data = {}
+for package in packages:
+    package_data = {package: ["*"]}
+    for folder in glob.glob(f"{package}/*"):
+        if os.path.isdir(folder) and folder[-1] != "_":
+            package_data[package].append(f"{folder.split('/')[-1]}/*")
+            package_data[package].append(f"{folder.split('/')[-1]}/**/*")
 
 for script in glob.glob("bin/*"):
     scripts.append(script)
 
-for folder in ("riocore/plugins/*", "riocore/generator/*", "riocore/gui/*"):
-    packages.append(folder.replace("/*", "").replace("/", "."))
-    for module in glob.glob(folder):
-        if "__" not in module and not module.endswith(".py") and not module.endswith(".md"):
-            module_name = module.replace("/", ".")
-            packages.append(module_name)
-            package_data[module_name] = ["*.c", "*.v", "*.png", "*.md"]
-
-package_data["riocore.plugins.fpga.generator"] = ["*.c", "*.v", "*.png", "*.md"]
+deps = [pkg for pkg in open("requirements.txt", "r").read().split("\n") if pkg]
 
 setup(
     name="riocore",
@@ -49,8 +34,8 @@ setup(
     scripts=scripts,
     url="https://github.com/multigcs/riocore/",
     license="LICENSE",
-    description="riocore",
+    description="Realtime-IO for Motion-Control - FPGA/MC generator",
     long_description=open("README.md").read(),
-    install_requires=["PyQt5>=5.15", "graphviz>=0.20", "pyqtgraph>=0.13.3"],
+    install_requires=deps,
     include_package_data=True,
 )
