@@ -10,7 +10,7 @@ then
 fi
 
 
-PWD="`pwd`"
+RIOFOLDER="`pwd`"
 SYSTEM="arm64"
 SYSTEM2="arm64"
 if test "`uname -m`" = "x86_64"
@@ -130,7 +130,7 @@ then
 	else
 		echo "icestorm already installed"
 	fi
-	TC_ICESTORM="$PWD/riocore/toolchains/oss-cad-suite"
+	TC_ICESTORM="$RIOFOLDER/riocore/toolchains/oss-cad-suite"
 fi
 
 if grep -s -q '"gowin"' in $TEMPFILE
@@ -142,14 +142,58 @@ then
 			mkdir -p riocore/toolchains/gowin
 			cd riocore/toolchains/gowin || doexit 1
 			wget "https://cdn.gowinsemi.com.cn/Gowin_V1.9.10.03_Education_linux.tar.gz" || doexit 1
-			# wget "https://cdn.gowinsemi.com.cn/Gowin_V1.9.11.03_Education_Linux.tar.gz" || doexit 1
 			tar xzvpf Gowin_V1.9.10.03_Education_linux.tar.gz || doexit 1
 			rm -rf Gowin_V1.9.10.03_Education_linux.tar.gz
 		)
 	else
 		echo "gowin already installed"
 	fi
-	TC_GOWIN="$PWD/riocore/toolchains/gowin/IDE"
+	TC_GOWIN="$RIOFOLDER/riocore/toolchains/gowin/IDE"
+fi
+
+if grep -s -q '"quartus"' in $TEMPFILE
+then
+	if ! test -d riocore/toolchains/altera/quartus/bin
+	then
+		echo "installing altera/quartus"
+		(
+			mkdir -p riocore/toolchains/altera/installer
+			cd riocore/toolchains/altera/installer || doexit 1
+            if ! test -e Quartus-lite-17.0.0.595-linux.tar
+            then
+    			wget "https://downloads.intel.com/akdlm/software/acdsinst/17.0std/595/ib_tar/Quartus-lite-17.0.0.595-linux.tar" || doexit 1
+            fi
+			tar xzvpf Quartus-lite-17.0.0.595-linux.tar || doexit 1
+			#rm -rf Quartus-lite-17.0.0.595-linux.tar
+            #bash setup.sh --mode unattended --unattendedmodeui minimalWithDialogs --installdir $RIOFOLDER/riocore/toolchains/altera --disable-components modelsim_ase,modelsim_ae,quartus_update,arria_lite,quartus_help
+            bash setup.sh --unattendedmodeui minimalWithDialogs --installdir $RIOFOLDER/riocore/toolchains/altera --disable-components modelsim_ase,modelsim_ae,quartus_update,arria_lite,quartus_help
+            cd .. || doexit 1
+            #rm -rf installer
+		)
+	else
+		echo "altera/quartus already installed"
+	fi
+	TC_QUARTUS="$RIOFOLDER/riocore/toolchains/altera/quartus"
+fi
+
+if grep -s -q '"greenpak"' in $TEMPFILE
+then
+	if ! test -e /usr/local/go-configure-sw-hub/bin
+	then
+		echo "installing greenpak/go-configure-sw-hub"
+		(
+			cd /tmp
+            if ! test -e go-configure-sw-hub-v6.53.003-debian-12-amd64.deb
+            then
+    			wget "https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v6.53/go-configure-sw-hub-v6.53.003-debian-12-amd64.deb" || doexit 1
+            fi
+			dpkg -i go-configure-sw-hub-v6.53.003-debian-12-amd64.deb || doexit 1
+            rm -rf go-configure-sw-hub-v6.53.003-debian-12-amd64.deb
+		)
+	else
+		echo "greenpak/go-configure-sw-hub already installed"
+	fi
+	TC_GREENPACK="$RIOFOLDER/riocore/toolchains/altera/quartus"
 fi
 
 if grep -s -q '"pico-dev"' in $TEMPFILE
@@ -168,8 +212,8 @@ then
     else
         echo "pico-sdk already installed"
     fi
-    TC_PICO="$PWD/riocore/toolchains/pico-sdk"
-    export PICO_SDK_PATH=$PWD/riocore/toolchains/pico-sdk/
+    TC_PICO="$RIOFOLDER/riocore/toolchains/pico-sdk"
+    export PICO_SDK_PATH=$RIOFOLDER/riocore/toolchains/pico-sdk/
 fi
 
 
