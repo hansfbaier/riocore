@@ -311,7 +311,7 @@ rm -rf Gowin_V*_Education_Linux.tar.gz
         prj_data.append("    <FileList>")
         for verilog in verilogs.split():
             prj_data.append(f'        <File path="{verilog}" type="file.verilog" enable="1"/>')
-        prj_data.append('    <File path="pins.cst" type="file.cst" enable="1"/>')
+        prj_data.append('        <File path="pins.cst" type="file.cst" enable="1"/>')
         prj_data.append("    </FileList>")
         prj_data.append("</Project>")
         open(os.path.join(path, "rio.gprj"), "w").write("\n".join(prj_data))
