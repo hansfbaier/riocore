@@ -354,10 +354,14 @@ class gateware(generator_base):
 
         output = []
         input_variables_list = []
+        input_interface_description = []
         if use_header:
             input_variables_list.append("HEADER_TX[7:0], HEADER_TX[15:8], HEADER_TX[23:16], HEADER_TX[31:24]")
+            input_interface_description.append({"bits": 32, "name": "HEADER"})
         if self.instance.fmaster is None and use_timestamp:
             input_variables_list.append("timestamp[7:0], timestamp[15:8], timestamp[23:16], timestamp[31:24]")
+            input_interface_description.append({"bits": 32, "name": "STAMP"})
+
         output_variables_list = []
         self.parent.iface_in = []
         self.parent.iface_out = []
@@ -437,6 +441,7 @@ class gateware(generator_base):
                         pack_list.append(f"{variable_name}")
                     input_variables_list.append(f"{', '.join(pack_list)}")
                     self.parent.iface_in.append([variable_name, size])
+                    input_interface_description.append({"bits": size, "name": data_name})
             elif data_config["direction"] == "output" and not data_config.get("expansion"):
                 pack_list = []
                 if size >= 8:
@@ -456,6 +461,36 @@ class gateware(generator_base):
             diff = self.buffer_size_in - self.input_size
             if diff:
                 input_variables_list.append(f"{diff}'d0")
+                input_interface_description.append({"bits": diff, "name": "PAD"})
+
+        # print("{reg:[")
+        # for part in input_interface_description:
+        #    print(f"    {part}")
+        # print("  ],")
+        # print("}")
+
+        interface_html = []
+        interface_html.append("<h1>Device-&gt;Host</h1>")
+        interface_html.append("<table border=1><tr>")
+        bitpos = 0
+        interface_html.append(' <tr style="font-size:11px;">')
+        for part in input_interface_description:
+            if part["bits"] == 1:
+                interface_html.append(f'  <td width="{part["bits"] * 20}px">{bitpos}</td>')
+            else:
+                interface_html.append(f'  <td width="{part["bits"] * 20}px"><div style="float:left;width:50%;">{bitpos}</div><div style="float:right;text-align:right;width:50%;">{bitpos + part["bits"] - 1}</div></td>')
+            bitpos += part["bits"]
+        interface_html.append(" </tr>")
+        interface_html.append(' <tr style="font-size:11px;">')
+        for part in input_interface_description:
+            interface_html.append(f'  <td align="center">{part["bits"]}bit</td>')
+        interface_html.append(" </tr>")
+        interface_html.append(" <tr>")
+        for part in input_interface_description:
+            interface_html.append(f'  <td align="center">{part["name"]}</td>')
+        interface_html.append(" </tr>")
+        interface_html.append("</table>")
+        open(os.path.join(self.jdata["output_path"], "interface.html"), "w").write("\n".join(interface_html))
 
         diff = self.buffer_size_out - self.output_size
         if self.buffer_size_out > self.output_size:
