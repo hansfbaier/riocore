@@ -530,6 +530,9 @@ class gateware(generator_base):
                         if self.jdata.get("toolchain") == "greenpak" and pin_config["direction"] == "output":
                             arguments_list.append(f"{prefix}output {pin_config['varname']}_OE")
 
+        output.append("")
+        output.append("/* verilator lint_off UNUSEDSIGNAL */")
+        output.append("")
         output.append("/*")
         output.append(f"    ######### {self.jdata['name']} #########")
         output.append("")
@@ -555,8 +558,6 @@ class gateware(generator_base):
                         output.append(f"    {pin_config['varname']} <> {pin_config['pin']} {pull}")
         output.append("")
         output.append("*/")
-        output.append("")
-        output.append("/* verilator lint_off UNUSEDSIGNAL */")
         output.append("")
         if self.jdata.get("toolchain") == "greenpak":
             output.append("(* top *) module rio (")
