@@ -2521,7 +2521,7 @@ class Window(QMainWindow):
                 x_pos_list = []
                 y_pos_list = []
                 for edge_item in self.scene.items():
-                    if isinstance(edge_item, NodeEdge) and edge_item._target_node == item:
+                    if isinstance(edge_item, NodeEdge) and edge_item._target_node == item and edge_item._source_node is not None:
                         pos = edge_item._source_node.port_pos(edge_item._source_port)
                         x_pos_list.append(pos.x())
                         y_pos_list.append(pos.y())
