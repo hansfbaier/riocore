@@ -1,12 +1,11 @@
 {
     "name": "rioctrl-baierio",
-    "flashcmd": "sudo /opt/oss-cad-suite/bin//openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
     "plugins": [
         {
             "type": "fpga",
             "node_type": "rioctrl",
             "toolchain": "icestorm",
-            "flashcmd": "",
+            "flashcmd": "openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
             "protocol": "UDP",
             "uid": "board0",
             "pos": [
@@ -17,10 +16,10 @@
             "sub": {
                 "board0_w5500": {
                     "gw": "192.168.11.1",
-                    "ip": "192.168.11.194"
+                    "ip": "192.168.11.66"
                 }
             },
-            "chip_type": "25k"
+            "chip_type": "12k"
         },
         {
             "type": "blink",
