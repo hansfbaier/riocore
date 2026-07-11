@@ -1,0 +1,180 @@
+{
+  "comment": "baier-spindle-v1.0",
+  "needs": [
+    "rioctrl"
+  ],
+  "main": {
+    "S0": {
+      "pin": "T13",
+      "pos": [
+        10,
+        255
+      ]
+    },
+    "S1": {
+      "pin": "T14",
+      "pos": [
+        10,
+        240
+      ]
+    },
+    "S2": {
+      "pin": "T15",
+      "pos": [
+        10,
+        225
+      ]
+    },
+    "S3": {
+      "pin": "P13",
+      "pos": [
+        10,
+        210
+      ]
+    },
+    "S4": {
+      "pin": "R16",
+      "pos": [
+        10,
+        195
+      ]
+    },
+    "S5": {
+      "pin": "P15",
+      "pos": [
+        10,
+        180
+      ]
+    },
+    "S6": {
+      "pin": "R13",
+      "pos": [
+        20,
+        255
+      ]
+    },
+    "S7": {
+      "pin": "R14",
+      "pos": [
+        20,
+        240
+      ]
+    },
+    "S8": {
+      "pin": "R15",
+      "pos": [
+        20,
+        225
+      ]
+    },
+    "S9": {
+      "pin": "P14",
+      "pos": [
+        20,
+        210
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "PWM",
+      "comment": "enable output is inverted by hardware",
+      "default": "pwmout",
+      "pins": {
+        "pwm": {
+          "pin": "S0",
+          "pos": [
+            37,
+            46
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S5",
+          "pos": [
+            37,
+            66
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "PWM_N",
+      "comment": "inverted PWM output (S1)",
+      "default": "bitout",
+      "pins": {
+        "bit": {
+          "pin": "S1",
+          "pos": [
+            62,
+            46
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "MODBUS",
+      "comment": "",
+      "default": "modbus",
+      "pins": {
+        "tx": {
+          "pin": "S2",
+          "pos": [
+            37,
+            141
+          ],
+          "direction": "output"
+        },
+        "rx": {
+          "pin": "S3",
+          "pos": [
+            37,
+            161
+          ],
+          "direction": "input"
+        },
+        "tx_enable": {
+          "pin": "S4",
+          "pos": [
+            37,
+            181
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "ENCODER",
+      "comment": "",
+      "default": "quadencoderz",
+      "pins": {
+        "a": {
+          "pin": "S7",
+          "pos": [
+            37,
+            260
+          ],
+          "direction": "input"
+        },
+        "b": {
+          "pin": "S8",
+          "pos": [
+            37,
+            280
+          ],
+          "direction": "input"
+        },
+        "z": {
+          "pin": "S9",
+          "pos": [
+            37,
+            300
+          ],
+          "direction": "input"
+        }
+      }
+    }
+  ]
+}

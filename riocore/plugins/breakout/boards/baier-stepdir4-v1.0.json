@@ -1,0 +1,206 @@
+{
+  "comment": "baier-stepdir4-v1.0",
+  "needs": [
+    "rioctrl"
+  ],
+  "main": {
+    "S0": {
+      "pos": [
+        10,
+        255
+      ]
+    },
+    "S1": {
+      "pos": [
+        10,
+        240
+      ]
+    },
+    "S2": {
+      "pos": [
+        10,
+        225
+      ]
+    },
+    "S3": {
+      "pos": [
+        10,
+        210
+      ]
+    },
+    "S4": {
+      "pos": [
+        10,
+        195
+      ]
+    },
+    "S5": {
+      "pos": [
+        10,
+        180
+      ]
+    },
+    "S6": {
+      "pos": [
+        20,
+        255
+      ]
+    },
+    "S7": {
+      "pos": [
+        20,
+        240
+      ]
+    },
+    "S8": {
+      "pos": [
+        20,
+        225
+      ]
+    },
+    "S9": {
+      "pos": [
+        20,
+        210
+      ]
+    },
+    "S10": {
+      "pos": [
+        20,
+        195
+      ]
+    },
+    "S11": {
+      "pos": [
+        20,
+        180
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "JOINT0",
+      "comment": "",
+      "default": "stepdir",
+      "pins": {
+        "step": {
+          "pin": "S0",
+          "pos": [
+            37,
+            46
+          ],
+          "direction": "output"
+        },
+        "dir": {
+          "pin": "S1",
+          "pos": [
+            37,
+            66
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S2",
+          "pos": [
+            37,
+            86
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "JOINT1",
+      "comment": "",
+      "default": "stepdir",
+      "pins": {
+        "step": {
+          "pin": "S3",
+          "pos": [
+            37,
+            141
+          ],
+          "direction": "output"
+        },
+        "dir": {
+          "pin": "S4",
+          "pos": [
+            37,
+            161
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S5",
+          "pos": [
+            37,
+            181
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "JOINT2",
+      "comment": "",
+      "default": "stepdir",
+      "pins": {
+        "step": {
+          "pin": "S6",
+          "pos": [
+            37,
+            239
+          ],
+          "direction": "output"
+        },
+        "dir": {
+          "pin": "S7",
+          "pos": [
+            37,
+            259
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S8",
+          "pos": [
+            37,
+            279
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "JOINT3",
+      "comment": "",
+      "default": "stepdir",
+      "pins": {
+        "step": {
+          "pin": "S9",
+          "pos": [
+            37,
+            336
+          ],
+          "direction": "output"
+        },
+        "dir": {
+          "pin": "S10",
+          "pos": [
+            37,
+            356
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S11",
+          "pos": [
+            37,
+            376
+          ],
+          "direction": "output"
+        }
+      }
+    }
+  ]
+}

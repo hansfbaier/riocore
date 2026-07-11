@@ -1,0 +1,262 @@
+{
+  "comment": "baier-directio-v1.0\n4 optically isolated outputs\n8 optically isolated inputs (inverted by hardware)\nall directly connected to the FPGA",
+  "needs": [
+    "rioctrl"
+  ],
+  "main": {
+    "S0": {
+      "pos": [
+        10,
+        255
+      ]
+    },
+    "S1": {
+      "pos": [
+        10,
+        240
+      ]
+    },
+    "S2": {
+      "pos": [
+        10,
+        225
+      ]
+    },
+    "S3": {
+      "pos": [
+        10,
+        210
+      ]
+    },
+    "S4": {
+      "pos": [
+        10,
+        195
+      ]
+    },
+    "S5": {
+      "pos": [
+        10,
+        180
+      ]
+    },
+    "S6": {
+      "pos": [
+        20,
+        255
+      ]
+    },
+    "S7": {
+      "pos": [
+        20,
+        240
+      ]
+    },
+    "S8": {
+      "pos": [
+        20,
+        225
+      ]
+    },
+    "S9": {
+      "pos": [
+        20,
+        210
+      ]
+    },
+    "S10": {
+      "pos": [
+        20,
+        195
+      ]
+    },
+    "S11": {
+      "pos": [
+        20,
+        180
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "IN0",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S3",
+          "pos": [
+            37,
+            46
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN1",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S2",
+          "pos": [
+            62,
+            46
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN2",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S1",
+          "pos": [
+            37,
+            86
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN3",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S0",
+          "pos": [
+            62,
+            86
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN4",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S4",
+          "pos": [
+            37,
+            126
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN5",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S5",
+          "pos": [
+            62,
+            126
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN6",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S6",
+          "pos": [
+            37,
+            166
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "IN7",
+      "comment": "inverted input",
+      "default": "bitin",
+      "pins": {
+        "bit": {
+          "pin": "S7",
+          "pos": [
+            62,
+            166
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "OUT0",
+      "comment": "",
+      "default": "bitout",
+      "pins": {
+        "bit": {
+          "pin": "S11",
+          "pos": [
+            37,
+            260
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "OUT1",
+      "comment": "",
+      "default": "bitout",
+      "pins": {
+        "bit": {
+          "pin": "S10",
+          "pos": [
+            62,
+            260
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "OUT2",
+      "comment": "",
+      "default": "bitout",
+      "pins": {
+        "bit": {
+          "pin": "S9",
+          "pos": [
+            37,
+            300
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "OUT3",
+      "comment": "",
+      "default": "bitout",
+      "pins": {
+        "bit": {
+          "pin": "S8",
+          "pos": [
+            62,
+            300
+          ],
+          "direction": "output"
+        }
+      }
+    }
+  ]
+}

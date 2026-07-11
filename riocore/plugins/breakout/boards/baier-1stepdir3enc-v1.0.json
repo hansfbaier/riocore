@@ -1,0 +1,206 @@
+{
+  "comment": "baier-1stepdir3enc-v1.0",
+  "needs": [
+    "rioctrl"
+  ],
+  "main": {
+    "S0": {
+      "pos": [
+        10,
+        255
+      ]
+    },
+    "S1": {
+      "pos": [
+        10,
+        240
+      ]
+    },
+    "S2": {
+      "pos": [
+        10,
+        225
+      ]
+    },
+    "S3": {
+      "pos": [
+        10,
+        210
+      ]
+    },
+    "S4": {
+      "pos": [
+        10,
+        195
+      ]
+    },
+    "S5": {
+      "pos": [
+        10,
+        180
+      ]
+    },
+    "S6": {
+      "pos": [
+        20,
+        255
+      ]
+    },
+    "S7": {
+      "pos": [
+        20,
+        240
+      ]
+    },
+    "S8": {
+      "pos": [
+        20,
+        225
+      ]
+    },
+    "S9": {
+      "pos": [
+        20,
+        210
+      ]
+    },
+    "S10": {
+      "pos": [
+        20,
+        195
+      ]
+    },
+    "S11": {
+      "pos": [
+        20,
+        180
+      ]
+    }
+  },
+  "slots": [
+    {
+      "name": "JOINT0",
+      "comment": "",
+      "default": "stepdir",
+      "pins": {
+        "step": {
+          "pin": "S0",
+          "pos": [
+            37,
+            46
+          ],
+          "direction": "output"
+        },
+        "dir": {
+          "pin": "S1",
+          "pos": [
+            37,
+            66
+          ],
+          "direction": "output"
+        },
+        "en": {
+          "pin": "S2",
+          "pos": [
+            37,
+            86
+          ],
+          "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "ENC0",
+      "comment": "",
+      "default": "quadencoderz",
+      "pins": {
+        "a": {
+          "pin": "S5",
+          "pos": [
+            37,
+            141
+          ],
+          "direction": "input"
+        },
+        "b": {
+          "pin": "S4",
+          "pos": [
+            37,
+            161
+          ],
+          "direction": "input"
+        },
+        "z": {
+          "pin": "S3",
+          "pos": [
+            37,
+            181
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "ENC1",
+      "comment": "",
+      "default": "quadencoderz",
+      "pins": {
+        "a": {
+          "pin": "S8",
+          "pos": [
+            37,
+            239
+          ],
+          "direction": "input"
+        },
+        "b": {
+          "pin": "S7",
+          "pos": [
+            37,
+            259
+          ],
+          "direction": "input"
+        },
+        "z": {
+          "pin": "S6",
+          "pos": [
+            37,
+            279
+          ],
+          "direction": "input"
+        }
+      }
+    },
+    {
+      "name": "ENC2",
+      "comment": "",
+      "default": "quadencoderz",
+      "pins": {
+        "a": {
+          "pin": "S11",
+          "pos": [
+            37,
+            336
+          ],
+          "direction": "input"
+        },
+        "b": {
+          "pin": "S10",
+          "pos": [
+            37,
+            356
+          ],
+          "direction": "input"
+        },
+        "z": {
+          "pin": "S9",
+          "pos": [
+            37,
+            376
+          ],
+          "direction": "input"
+        }
+      }
+    }
+  ]
+}

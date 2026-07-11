@@ -9,6 +9,11 @@
 ## Node-Types
 | Name | Image |
 | --- | --- |
+| baier-1stepdir3enc-v1.0 | - |
+| baier-directio-v1.0 | - |
+| baier-shiftio-16o32ie | <img height="48" src="boards/baier-shiftio-16o32ie.png"> |
+| baier-spindle-v1.0 | - |
+| baier-stepdir4-v1.0 | - |
 | china-bob5x | <img height="48" src="boards/china-bob5x.png"> |
 | db25-1205 | <img height="48" src="boards/db25-1205.png"> |
 | db25 | <img height="48" src="boards/db25.png"> |
@@ -255,7 +260,7 @@ board type
 
  * type: select
  * default: china-bob5x
- * options: china-bob5x, db25-1205, db25, rio-icebreaker3x, rioctrl-quadenc4, rioctrl-shiftio, rioctrl-stepdir, rpi-db25hat
+ * options: baier-1stepdir3enc-v1.0, baier-directio-v1.0, baier-shiftio-16o32ie, baier-spindle-v1.0, baier-stepdir4-v1.0, china-bob5x, db25-1205, db25, rio-icebreaker3x, rioctrl-quadenc4, rioctrl-shiftio, rioctrl-stepdir, rpi-db25hat
 
 
 ## Signals:
@@ -264,4 +269,5 @@ board type
 
 ## Interfaces:
 *transport layer*
+
 
