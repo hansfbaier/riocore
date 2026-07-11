@@ -81,9 +81,9 @@
     {
       "name": "JOINT0",
       "comment": "",
-      "default": "stepdir",
+      "default": "",
       "pins": {
-        "step": {
+        "STEP": {
           "pin": "S0",
           "pos": [
             37,
@@ -91,7 +91,7 @@
           ],
           "direction": "output"
         },
-        "dir": {
+        "DIR": {
           "pin": "S1",
           "pos": [
             37,
@@ -99,7 +99,7 @@
           ],
           "direction": "output"
         },
-        "en": {
+        "EN": {
           "pin": "S2",
           "pos": [
             37,
@@ -112,9 +112,9 @@
     {
       "name": "JOINT1",
       "comment": "",
-      "default": "stepdir",
+      "default": "",
       "pins": {
-        "step": {
+        "STEP": {
           "pin": "S3",
           "pos": [
             37,
@@ -122,7 +122,7 @@
           ],
           "direction": "output"
         },
-        "dir": {
+        "DIR": {
           "pin": "S4",
           "pos": [
             37,
@@ -130,7 +130,7 @@
           ],
           "direction": "output"
         },
-        "en": {
+        "EN": {
           "pin": "S5",
           "pos": [
             37,
@@ -143,9 +143,9 @@
     {
       "name": "JOINT2",
       "comment": "",
-      "default": "stepdir",
+      "default": "",
       "pins": {
-        "step": {
+        "STEP": {
           "pin": "S6",
           "pos": [
             37,
@@ -153,7 +153,7 @@
           ],
           "direction": "output"
         },
-        "dir": {
+        "DIR": {
           "pin": "S7",
           "pos": [
             37,
@@ -161,7 +161,7 @@
           ],
           "direction": "output"
         },
-        "en": {
+        "EN": {
           "pin": "S8",
           "pos": [
             37,
@@ -174,9 +174,9 @@
     {
       "name": "JOINT3",
       "comment": "",
-      "default": "stepdir",
+      "default": "",
       "pins": {
-        "step": {
+        "STEP": {
           "pin": "S9",
           "pos": [
             37,
@@ -184,7 +184,7 @@
           ],
           "direction": "output"
         },
-        "dir": {
+        "DIR": {
           "pin": "S10",
           "pos": [
             37,
@@ -192,7 +192,7 @@
           ],
           "direction": "output"
         },
-        "en": {
+        "EN": {
           "pin": "S11",
           "pos": [
             37,
