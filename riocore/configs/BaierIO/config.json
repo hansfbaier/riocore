@@ -828,7 +828,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O0"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O0"
                 }
             }
         },
@@ -841,7 +841,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O1"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O1"
                 }
             }
         },
@@ -854,7 +854,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O2"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O2"
                 }
             }
         },
@@ -867,7 +867,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O3"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O3"
                 }
             }
         },
@@ -880,7 +880,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O4"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O4"
                 }
             }
         },
@@ -893,7 +893,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O5"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O5"
                 }
             }
         },
@@ -906,7 +906,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O6"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O6"
                 }
             }
         },
@@ -919,7 +919,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O7"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O7"
                 }
             }
         },
@@ -932,7 +932,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O8"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O8"
                 }
             }
         },
@@ -945,7 +945,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O9"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O9"
                 }
             }
         },
@@ -958,7 +958,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O10"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O10"
                 }
             }
         },
@@ -971,7 +971,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O11"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O11"
                 }
             }
         },
@@ -984,7 +984,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O12"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O12"
                 }
             }
         },
@@ -997,7 +997,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O13"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O13"
                 }
             }
         },
@@ -1010,7 +1010,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O14"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O14"
                 }
             }
         },
@@ -1023,7 +1023,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:OUT:O15"
+                    "pin": "baier_shiftio_16o32ie0:OUT:O15"
                 }
             }
         },
@@ -1036,7 +1036,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I0"
+                    "pin": "baier_shiftio_16o32ie0:IN:I0"
                 }
             }
         },
@@ -1049,7 +1049,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I1"
+                    "pin": "baier_shiftio_16o32ie0:IN:I1"
                 }
             }
         },
@@ -1062,7 +1062,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I2"
+                    "pin": "baier_shiftio_16o32ie0:IN:I2"
                 }
             }
         },
@@ -1075,7 +1075,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I3"
+                    "pin": "baier_shiftio_16o32ie0:IN:I3"
                 }
             }
         },
@@ -1088,7 +1088,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I4"
+                    "pin": "baier_shiftio_16o32ie0:IN:I4"
                 }
             }
         },
@@ -1101,7 +1101,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I5"
+                    "pin": "baier_shiftio_16o32ie0:IN:I5"
                 }
             }
         },
@@ -1114,7 +1114,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I6"
+                    "pin": "baier_shiftio_16o32ie0:IN:I6"
                 }
             }
         },
@@ -1127,7 +1127,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I7"
+                    "pin": "baier_shiftio_16o32ie0:IN:I7"
                 }
             }
         },
@@ -1140,7 +1140,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I8"
+                    "pin": "baier_shiftio_16o32ie0:IN:I8"
                 }
             }
         },
@@ -1153,7 +1153,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I9"
+                    "pin": "baier_shiftio_16o32ie0:IN:I9"
                 }
             }
         },
@@ -1166,7 +1166,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I10"
+                    "pin": "baier_shiftio_16o32ie0:IN:I10"
                 }
             }
         },
@@ -1179,7 +1179,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I11"
+                    "pin": "baier_shiftio_16o32ie0:IN:I11"
                 }
             }
         },
@@ -1192,7 +1192,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I12"
+                    "pin": "baier_shiftio_16o32ie0:IN:I12"
                 }
             }
         },
@@ -1205,7 +1205,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I13"
+                    "pin": "baier_shiftio_16o32ie0:IN:I13"
                 }
             }
         },
@@ -1218,7 +1218,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I14"
+                    "pin": "baier_shiftio_16o32ie0:IN:I14"
                 }
             }
         },
@@ -1231,7 +1231,7 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I15"
+                    "pin": "baier_shiftio_16o32ie0:IN:I15"
                 }
             }
         },
@@ -1244,202 +1244,202 @@
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I16"
+                    "pin": "baier_shiftio_16o32ie0:IN:I16"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:17",
+            "uid": "shiftio_in17",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I17"
+                    "pin": "baier_shiftio_16o32ie0:IN:I17"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:18",
+            "uid": "shiftio_in18",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I18"
+                    "pin": "baier_shiftio_16o32ie0:IN:I18"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:19",
+            "uid": "shiftio_in19",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I19"
+                    "pin": "baier_shiftio_16o32ie0:IN:I19"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:20",
+            "uid": "shiftio_in20",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I20"
+                    "pin": "baier_shiftio_16o32ie0:IN:I20"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:21",
+            "uid": "shiftio_in21",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I21"
+                    "pin": "baier_shiftio_16o32ie0:IN:I21"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:22",
+            "uid": "shiftio_in22",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I22"
+                    "pin": "baier_shiftio_16o32ie0:IN:I22"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:23",
+            "uid": "shiftio_in23",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I23"
+                    "pin": "baier_shiftio_16o32ie0:IN:I23"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:24",
+            "uid": "shiftio_in24",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I24"
+                    "pin": "baier_shiftio_16o32ie0:IN:I24"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:25",
+            "uid": "shiftio_in25",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I25"
+                    "pin": "baier_shiftio_16o32ie0:IN:I25"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:26",
+            "uid": "shiftio_in26",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I26"
+                    "pin": "baier_shiftio_16o32ie0:IN:I26"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:27",
+            "uid": "shiftio_in27",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I27"
+                    "pin": "baier_shiftio_16o32ie0:IN:I27"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:28",
+            "uid": "shiftio_in28",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I28"
+                    "pin": "baier_shiftio_16o32ie0:IN:I28"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:29",
+            "uid": "shiftio_in29",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I29"
+                    "pin": "baier_shiftio_16o32ie0:IN:I29"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:30",
+            "uid": "shiftio_in30",
             "pos": [
                 1790.0,
                 140.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I30"
+                    "pin": "baier_shiftio_16o32ie0:IN:I30"
                 }
             }
         },
         {
             "type": "bitin",
-            "uid": "shiftio_in1:31",
+            "uid": "shiftio_in31",
             "pos": [
-                1790.0,
-                140.0
+                1800.0,
+                160.0
             ],
             "pins": {
                 "bit": {
-                    "pin": "baier-shiftio-16o32ie0:IN:I31"
+                    "pin": "baier_shiftio_16o32ie0:IN:I31"
                 }
             }
         },
@@ -1467,10 +1467,10 @@
     "protocol": "UDP",
     "flow": {
         "view": {
-            "scale": 0.56,
+            "scale": 0.88,
             "pos": [
-                -264,
-                -195
+                123,
+                -52
             ]
         },
         "board": {
