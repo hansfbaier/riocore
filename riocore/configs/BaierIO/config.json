@@ -547,19 +547,19 @@
         {
             "type": "breakout",
             "node_type": "baier-shiftio-16o32ie",
-            "uid": "baier-shiftio-16o32ie0",
+            "uid": "baier_shiftio_16o32ie0",
             "pos": [
                 1440.0,
                 90.0
             ],
             "sub": {
-                "baier-shiftio-16o32ie0_shiftout": {
+                "baier_shiftio_16o32ie0_shiftout": {
                     "bits": 16
                 },
-                "baier-shiftio-16o32ie0_shiftina": {
+                "baier_shiftio_16o32ie0_shiftina": {
                     "bits": 16
                 },
-                "baier-shiftio-16o32ie0_shiftinb": {
+                "baier_shiftio_16o32ie0_shiftinb": {
                     "bits": 16
                 }
             },
@@ -612,13 +612,13 @@
             ],
             "pins": {
                 "a": {
-                    "pin": "baier-shiftio-16o32ie0:ENCODER:a"
+                    "pin": "baier_shiftio_16o32ie0:ENCODER:a"
                 },
                 "b": {
-                    "pin": "baier-shiftio-16o32ie0:ENCODER:b"
+                    "pin": "baier_shiftio_16o32ie0:ENCODER:b"
                 },
                 "z": {
-                    "pin": "baier-shiftio-16o32ie0:ENCODER:z"
+                    "pin": "baier_shiftio_16o32ie0:ENCODER:z"
                 }
             },
             "name": ""
