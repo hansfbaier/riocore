@@ -1,0 +1,1494 @@
+{
+    "name": "rioctrl",
+    "flashcmd": "sudo /opt/oss-cad-suite/bin//openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
+    "plugins": [
+        {
+            "type": "fpga",
+            "node_type": "rioctrl",
+            "toolchain": "icestorm",
+            "flashcmd": "",
+            "protocol": "UDP",
+            "uid": "board0",
+            "pos": [
+                110.0,
+                330.0
+            ],
+            "rotate": 0,
+            "sub": {
+                "board0_w5500": {
+                    "gw": "192.168.11.1",
+                    "ip": "192.168.11.194"
+                }
+            },
+            "chip_type": "25k"
+        },
+        {
+            "type": "blink",
+            "pins": {
+                "led": {
+                    "pin": "board0:LED:ERR",
+                    "modifier": [
+                        {
+                            "type": "onerror",
+                            "invert": true,
+                            "pos": [
+                                -200.0,
+                                640.0
+                            ]
+                        }
+                    ]
+                }
+            },
+            "frequency": 10.0,
+            "uid": "blink0",
+            "pos": [
+                -230.0,
+                680.0
+            ]
+        },
+        {
+            "type": "blink",
+            "pins": {
+                "led": {
+                    "pin": "board0:LED:OK",
+                    "modifier": [
+                        {
+                            "type": "onerror",
+                            "invert": false,
+                            "pos": [
+                                -200.0,
+                                770.0
+                            ]
+                        }
+                    ]
+                }
+            },
+            "uid": "blink1",
+            "pos": [
+                -250.0,
+                830.0
+            ]
+        },
+        {
+            "name": "joint-0",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir0",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pos": [
+                -410.0,
+                -280.0
+            ],
+            "joint": {
+                "pid_p": 320.0,
+                "pid_i": 100.0,
+                "pid_d": 1.0,
+                "scale": 2000.0,
+                "max_velocity": 200.0
+            },
+            "pulse_len": 1.0,
+            "pins": {
+                "step": {
+                    "pin": "baier-stepdir4-v1.00:JOINT0:STEP"
+                },
+                "dir": {
+                    "pin": "baier-stepdir4-v1.00:JOINT0:DIR"
+                },
+                "en": {
+                    "pin": "baier-stepdir4-v1.00:JOINT0:EN"
+                }
+            },
+            "image": "stepper",
+            "rotate": -90
+        },
+        {
+            "name": "joint-1",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir1",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pos": [
+                -130.0,
+                -280.0
+            ],
+            "pulse_len": 1.0,
+            "pins": {
+                "step": {
+                    "pin": "baier-stepdir4-v1.00:JOINT1:STEP"
+                },
+                "dir": {
+                    "pin": "baier-stepdir4-v1.00:JOINT1:DIR"
+                },
+                "en": {
+                    "pin": "baier-stepdir4-v1.00:JOINT1:EN"
+                }
+            },
+            "image": "stepper",
+            "rotate": -90
+        },
+        {
+            "name": "joint-2",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir2",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pos": [
+                170.0,
+                -290.0
+            ],
+            "pulse_len": 1.0,
+            "pins": {
+                "step": {
+                    "pin": "baier-stepdir4-v1.00:JOINT2:STEP"
+                },
+                "dir": {
+                    "pin": "baier-stepdir4-v1.00:JOINT2:DIR"
+                },
+                "en": {
+                    "pin": "baier-stepdir4-v1.00:JOINT2:EN"
+                }
+            },
+            "image": "stepper",
+            "rotate": -90
+        },
+        {
+            "name": "joint-3",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir3",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pos": [
+                500.0,
+                -290.0
+            ],
+            "pulse_len": 1.0,
+            "pins": {
+                "step": {
+                    "pin": "baier-stepdir4-v1.00:JOINT3:STEP"
+                },
+                "dir": {
+                    "pin": "baier-stepdir4-v1.00:JOINT3:DIR"
+                },
+                "en": {
+                    "pin": "baier-stepdir4-v1.00:JOINT3:EN"
+                }
+            },
+            "image": "stepper",
+            "rotate": -90
+        },
+        {
+            "type": "bitout",
+            "uid": "bitout0",
+            "pos": [
+                -190.0,
+                420.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "board0:SlotControl:EN"
+                }
+            },
+            "signals": {
+                "bit": {
+                    "net": "halui.machine.is-on"
+                }
+            }
+        },
+        {
+            "type": "breakout",
+            "node_type": "baier-stepdir4-v1.0",
+            "uid": "baier-stepdir4-v1.00",
+            "pos": [
+                190.0,
+                -40.0
+            ],
+            "pins": {
+                "SLOT:S0": {
+                    "pin": "board0:SA:S0"
+                },
+                "SLOT:S1": {
+                    "pin": "board0:SA:S1"
+                },
+                "SLOT:S2": {
+                    "pin": "board0:SA:S2"
+                },
+                "SLOT:S3": {
+                    "pin": "board0:SA:S3"
+                },
+                "SLOT:S4": {
+                    "pin": "board0:SA:S4"
+                },
+                "SLOT:S5": {
+                    "pin": "board0:SA:S5"
+                },
+                "SLOT:S6": {
+                    "pin": "board0:SA:S6"
+                },
+                "SLOT:S7": {
+                    "pin": "board0:SA:S7"
+                },
+                "SLOT:S8": {
+                    "pin": "board0:SA:S8"
+                },
+                "SLOT:S9": {
+                    "pin": "board0:SA:S9"
+                },
+                "SLOT:S10": {
+                    "pin": "board0:SA:S10"
+                },
+                "SLOT:S11": {
+                    "pin": "board0:SA:S11"
+                }
+            }
+        },
+        {
+            "type": "breakout",
+            "node_type": "baier-1stepdir3enc-v1.0",
+            "uid": "baier-1stepdir3enc-v1.00",
+            "pos": [
+                610.0,
+                -50.0
+            ],
+            "pins": {
+                "SLOT:S0": {
+                    "pin": "board0:SB:S0"
+                },
+                "SLOT:S1": {
+                    "pin": "board0:SB:S1"
+                },
+                "SLOT:S2": {
+                    "pin": "board0:SB:S2"
+                },
+                "SLOT:S3": {
+                    "pin": "board0:SB:S3"
+                },
+                "SLOT:S4": {
+                    "pin": "board0:SB:S4"
+                },
+                "SLOT:S5": {
+                    "pin": "board0:SB:S5"
+                },
+                "SLOT:S6": {
+                    "pin": "board0:SB:S6"
+                },
+                "SLOT:S7": {
+                    "pin": "board0:SB:S7"
+                },
+                "SLOT:S8": {
+                    "pin": "board0:SB:S8"
+                },
+                "SLOT:S9": {
+                    "pin": "board0:SB:S9"
+                },
+                "SLOT:S10": {
+                    "pin": "board0:SB:S10"
+                },
+                "SLOT:S11": {
+                    "pin": "board0:SB:S11"
+                }
+            }
+        },
+        {
+            "name": "joint-4",
+            "type": "stepdir",
+            "is_joint": true,
+            "uid": "stepdir4",
+            "signals": {
+                "velocity": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "position": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                },
+                "enable": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            },
+            "pos": [
+                830.0,
+                -290.0
+            ],
+            "pulse_len": 1.0,
+            "pins": {
+                "step": {
+                    "pin": "baier-1stepdir3enc-v1.00:JOINT0:step"
+                },
+                "dir": {
+                    "pin": "baier-1stepdir3enc-v1.00:JOINT0:dir"
+                },
+                "en": {
+                    "pin": "baier-1stepdir3enc-v1.00:JOINT0:en"
+                }
+            },
+            "image": "stepper",
+            "rotate": -90,
+            "axis": ""
+        },
+        {
+            "type": "quadencoderz",
+            "uid": "quadencoderz0",
+            "image": "encoder",
+            "pos": [
+                910.0,
+                -10.0
+            ],
+            "pins": {
+                "a": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC0:a"
+                },
+                "b": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC0:b"
+                },
+                "z": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC0:z"
+                }
+            }
+        },
+        {
+            "type": "quadencoderz",
+            "uid": "quadencoderz1",
+            "image": "encoder",
+            "pos": [
+                910.0,
+                80.0
+            ],
+            "pins": {
+                "a": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC1:a"
+                },
+                "b": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC1:b"
+                },
+                "z": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC1:z"
+                }
+            },
+            "name": ""
+        },
+        {
+            "type": "quadencoderz",
+            "uid": "quadencoderz2",
+            "image": "encoder",
+            "pos": [
+                940.0,
+                190.0
+            ],
+            "pins": {
+                "a": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC2:a"
+                },
+                "b": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC2:b"
+                },
+                "z": {
+                    "pin": "baier-1stepdir3enc-v1.00:ENC2:z"
+                }
+            },
+            "name": ""
+        },
+        {
+            "type": "breakout",
+            "node_type": "baier-spindle-v1.0",
+            "uid": "baier-spindle-v1.00",
+            "pos": [
+                80.0,
+                850.0
+            ],
+            "pins": {
+                "SLOT:S0": {
+                    "pin": "board0:SC:S0"
+                },
+                "SLOT:S1": {
+                    "pin": "board0:SC:S1"
+                },
+                "SLOT:S2": {
+                    "pin": "board0:SC:S2"
+                },
+                "SLOT:S3": {
+                    "pin": "board0:SC:S3"
+                },
+                "SLOT:S4": {
+                    "pin": "board0:SC:S4"
+                },
+                "SLOT:S5": {
+                    "pin": "board0:SC:S5"
+                },
+                "SLOT:S6": {
+                    "pin": "board0:SC:S6"
+                },
+                "SLOT:S7": {
+                    "pin": "board0:SC:S7"
+                },
+                "SLOT:S8": {
+                    "pin": "board0:SC:S8"
+                },
+                "SLOT:S9": {
+                    "pin": "board0:SC:S9"
+                }
+            }
+        },
+        {
+            "type": "breakout",
+            "node_type": "baier-directio-v1.0",
+            "uid": "baier-directio-v1.00",
+            "pos": [
+                840.0,
+                840.0
+            ],
+            "pins": {
+                "SLOT:S0": {
+                    "pin": "board0:SD:S0"
+                },
+                "SLOT:S1": {
+                    "pin": "board0:SD:S1"
+                },
+                "SLOT:S2": {
+                    "pin": "board0:SD:S2"
+                },
+                "SLOT:S3": {
+                    "pin": "board0:SD:S3"
+                },
+                "SLOT:S4": {
+                    "pin": "board0:SD:S4"
+                },
+                "SLOT:S5": {
+                    "pin": "board0:SD:S5"
+                },
+                "SLOT:S6": {
+                    "pin": "board0:SD:S6"
+                },
+                "SLOT:S7": {
+                    "pin": "board0:SD:S7"
+                },
+                "SLOT:S8": {
+                    "pin": "board0:SD:S8"
+                },
+                "SLOT:S9": {
+                    "pin": "board0:SD:S9"
+                },
+                "SLOT:S10": {
+                    "pin": "board0:SD:S10"
+                },
+                "SLOT:S11": {
+                    "pin": "board0:SD:S11"
+                }
+            }
+        },
+        {
+            "type": "breakout",
+            "node_type": "baier-shiftio-16o32ie",
+            "uid": "baier-shiftio-16o32ie0",
+            "pos": [
+                1440.0,
+                90.0
+            ],
+            "sub": {
+                "baier-shiftio-16o32ie0_shiftout": {
+                    "bits": 16
+                },
+                "baier-shiftio-16o32ie0_shiftina": {
+                    "bits": 16
+                },
+                "baier-shiftio-16o32ie0_shiftinb": {
+                    "bits": 16
+                }
+            },
+            "pins": {
+                "SLOT:S0": {
+                    "pin": "board0:SF:S0"
+                },
+                "SLOT:S1": {
+                    "pin": "board0:SF:S1"
+                },
+                "SLOT:S2": {
+                    "pin": "board0:SF:S2"
+                },
+                "SLOT:S3": {
+                    "pin": "board0:SF:S3"
+                },
+                "SLOT:S4": {
+                    "pin": "board0:SF:S4"
+                },
+                "SLOT:S5": {
+                    "pin": "board0:SF:S5"
+                },
+                "SLOT:S6": {
+                    "pin": "board0:SF:S6"
+                },
+                "SLOT:S7": {
+                    "pin": "board0:SF:S7"
+                },
+                "SLOT:S8": {
+                    "pin": "board0:SF:S8"
+                },
+                "SLOT:S9": {
+                    "pin": "board0:SF:S9"
+                },
+                "SLOT:S10": {
+                    "pin": "board0:SF:S10"
+                },
+                "SLOT:S11": {
+                    "pin": "board0:SF:S11"
+                }
+            }
+        },
+        {
+            "type": "quadencoderz",
+            "uid": "quadencoderz3",
+            "image": "encoder",
+            "pos": [
+                1720.0,
+                1020.0
+            ],
+            "pins": {
+                "a": {
+                    "pin": "baier-shiftio-16o32ie0:ENCODER:a"
+                },
+                "b": {
+                    "pin": "baier-shiftio-16o32ie0:ENCODER:b"
+                },
+                "z": {
+                    "pin": "baier-shiftio-16o32ie0:ENCODER:z"
+                }
+            },
+            "name": ""
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit0",
+            "pos": [
+                1100.0,
+                600.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN0:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit1",
+            "pos": [
+                1100.0,
+                680.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN1:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit2",
+            "pos": [
+                1100.0,
+                760.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN2:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit3",
+            "pos": [
+                1100.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN3:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit4",
+            "pos": [
+                1100.0,
+                920.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN4:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit5",
+            "pos": [
+                1100.0,
+                1000.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN5:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit6",
+            "pos": [
+                1100.0,
+                1180.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN6:bit"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "directin-bit7",
+            "pos": [
+                1100.0,
+                1090.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:IN7:bit"
+                }
+            }
+        },
+        {
+            "type": "quadencoderz",
+            "uid": "quadencoderz4",
+            "image": "encoder_optical",
+            "pos": [
+                290.0,
+                1130.0
+            ],
+            "pins": {
+                "a": {
+                    "pin": "baier-spindle-v1.00:ENCODER:a"
+                },
+                "b": {
+                    "pin": "baier-spindle-v1.00:ENCODER:b"
+                },
+                "z": {
+                    "pin": "baier-spindle-v1.00:ENCODER:z"
+                }
+            },
+            "name": ""
+        },
+        {
+            "type": "mbus",
+            "uid": "mbus0",
+            "pos": [
+                370.0,
+                990.0
+            ],
+            "pins": {
+                "rx": {
+                    "pin": "baier-spindle-v1.00:MODBUS:rx"
+                },
+                "tx": {
+                    "pin": "baier-spindle-v1.00:MODBUS:tx"
+                },
+                "tx_enable": {
+                    "pin": "baier-spindle-v1.00:MODBUS:tx_enable"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "directout-bit0",
+            "pos": [
+                1100.0,
+                1270.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:OUT0:bit"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "directout-bit1",
+            "pos": [
+                1100.0,
+                1370.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:OUT1:bit"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "directout-bit2",
+            "pos": [
+                1100.0,
+                1460.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:OUT2:bit"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "directout-bit3",
+            "pos": [
+                1100.0,
+                1560.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-directio-v1.00:OUT3:bit"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out0",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O0"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out1",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O1"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out2",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O2"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out3",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O3"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out4",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O4"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out5",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O5"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out6",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O6"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out7",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O7"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out8",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O8"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out9",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O9"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out10",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O10"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out11",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O11"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out12",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O12"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out13",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O13"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out14",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O14"
+                }
+            }
+        },
+        {
+            "type": "bitout",
+            "uid": "shiftio-out15",
+            "pos": [
+                1800.0,
+                840.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:OUT:O15"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in0",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I0"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I1"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in2",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I2"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in3",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I3"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in4",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I4"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in5",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I5"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in6",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I6"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in7",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I7"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in8",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I8"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in9",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I9"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in10",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I10"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in11",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I11"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in12",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I12"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in13",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I13"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in14",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I14"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in15",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I15"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in16",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I16"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:17",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I17"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:18",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I18"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:19",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I19"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:20",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I20"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:21",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I21"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:22",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I22"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:23",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I23"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:24",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I24"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:25",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I25"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:26",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I26"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:27",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I27"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:28",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I28"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:29",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I29"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:30",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I30"
+                }
+            }
+        },
+        {
+            "type": "bitin",
+            "uid": "shiftio-in1:31",
+            "pos": [
+                1790.0,
+                140.0
+            ],
+            "pins": {
+                "bit": {
+                    "pin": "baier-shiftio-16o32ie0:IN:I31"
+                }
+            }
+        },
+        {
+            "type": "pwmout",
+            "uid": "pwmout0",
+            "image": "spindle500w",
+            "pos": [
+                370.0,
+                880.0
+            ],
+            "pins": {
+                "pwm": {
+                    "pin": "baier-spindle-v1.00:PWM:pwm"
+                },
+                "dir": {
+                    "pin": "baier-spindle-v1.00:PWM_N:bit"
+                },
+                "en": {
+                    "pin": "baier-spindle-v1.00:PWM:en"
+                }
+            }
+        }
+    ],
+    "protocol": "UDP",
+    "flow": {
+        "view": {
+            "scale": 0.56,
+            "pos": [
+                -264,
+                -195
+            ]
+        },
+        "board": {
+            "pos": [
+                120.0,
+                220.0
+            ],
+            "rotate": 0
+        }
+    },
+    "linuxcnc": {
+        "ini": {
+            "DISPLAY": {
+                "MAX_LINEAR_VELOCITY": 300.0
+            },
+            "TRAJ": {
+                "MAX_LINEAR_VELOCITY": 300.0
+            }
+        }
+    }
+}
