@@ -187,37 +187,6 @@
       }
     },
     {
-      "name": "ENCODER",
-      "comment": "",
-      "default": "quadencoderz",
-      "pins": {
-        "a": {
-          "pin": "S8",
-          "pos": [
-            37,
-            46
-          ],
-          "direction": "input"
-        },
-        "b": {
-          "pin": "S7",
-          "pos": [
-            37,
-            66
-          ],
-          "direction": "input"
-        },
-        "z": {
-          "pin": "S6",
-          "pos": [
-            37,
-            86
-          ],
-          "direction": "input"
-        }
-      }
-    },
-    {
       "name": "IN",
       "comment": "inverted inputs",
       "default": "",
@@ -612,6 +581,37 @@
             621
           ],
           "direction": "output"
+        }
+      }
+    },
+    {
+      "name": "ENCODER",
+      "comment": "",
+      "default": "quadencoderz",
+      "pins": {
+        "a": {
+          "pin": "S8",
+          "pos": [
+            37,
+            46
+          ],
+          "direction": "input"
+        },
+        "b": {
+          "pin": "S7",
+          "pos": [
+            37,
+            66
+          ],
+          "direction": "input"
+        },
+        "z": {
+          "pin": "S6",
+          "pos": [
+            37,
+            86
+          ],
+          "direction": "input"
         }
       }
     }
