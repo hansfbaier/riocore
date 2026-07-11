@@ -1,5 +1,5 @@
 {
-    "name": "rioctrl",
+    "name": "rioctrl-baierio",
     "flashcmd": "sudo /opt/oss-cad-suite/bin//openFPGALoader -c dirtyJtag --write-flash --unprotect-flash rio.bit",
     "plugins": [
         {
