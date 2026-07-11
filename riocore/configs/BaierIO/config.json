@@ -625,7 +625,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit0",
+            "uid": "directin_bit0",
             "pos": [
                 1100.0,
                 600.0
@@ -638,7 +638,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit1",
+            "uid": "directin_bit1",
             "pos": [
                 1100.0,
                 680.0
@@ -651,7 +651,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit2",
+            "uid": "directin_bit2",
             "pos": [
                 1100.0,
                 760.0
@@ -664,7 +664,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit3",
+            "uid": "directin_bit3",
             "pos": [
                 1100.0,
                 840.0
@@ -677,7 +677,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit4",
+            "uid": "directin_bit4",
             "pos": [
                 1100.0,
                 920.0
@@ -690,7 +690,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit5",
+            "uid": "directin_bit5",
             "pos": [
                 1100.0,
                 1000.0
@@ -703,7 +703,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit6",
+            "uid": "directin_bit6",
             "pos": [
                 1100.0,
                 1180.0
@@ -716,7 +716,7 @@
         },
         {
             "type": "bitin",
-            "uid": "directin-bit7",
+            "uid": "directin_bit7",
             "pos": [
                 1100.0,
                 1090.0
@@ -769,7 +769,7 @@
         },
         {
             "type": "bitout",
-            "uid": "directout-bit0",
+            "uid": "directout_bit0",
             "pos": [
                 1100.0,
                 1270.0
@@ -782,7 +782,7 @@
         },
         {
             "type": "bitout",
-            "uid": "directout-bit1",
+            "uid": "directout_bit1",
             "pos": [
                 1100.0,
                 1370.0
@@ -795,7 +795,7 @@
         },
         {
             "type": "bitout",
-            "uid": "directout-bit2",
+            "uid": "directout_bit2",
             "pos": [
                 1100.0,
                 1460.0
@@ -808,7 +808,7 @@
         },
         {
             "type": "bitout",
-            "uid": "directout-bit3",
+            "uid": "directout_bit3",
             "pos": [
                 1100.0,
                 1560.0
