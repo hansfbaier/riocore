@@ -821,7 +821,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out0",
+            "uid": "shiftio_out0",
             "pos": [
                 1800.0,
                 840.0
@@ -834,7 +834,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out1",
+            "uid": "shiftio_out1",
             "pos": [
                 1800.0,
                 840.0
@@ -847,7 +847,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out2",
+            "uid": "shiftio_out2",
             "pos": [
                 1800.0,
                 840.0
@@ -860,7 +860,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out3",
+            "uid": "shiftio_out3",
             "pos": [
                 1800.0,
                 840.0
@@ -873,7 +873,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out4",
+            "uid": "shiftio_out4",
             "pos": [
                 1800.0,
                 840.0
@@ -886,7 +886,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out5",
+            "uid": "shiftio_out5",
             "pos": [
                 1800.0,
                 840.0
@@ -899,7 +899,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out6",
+            "uid": "shiftio_out6",
             "pos": [
                 1800.0,
                 840.0
@@ -912,7 +912,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out7",
+            "uid": "shiftio_out7",
             "pos": [
                 1800.0,
                 840.0
@@ -925,7 +925,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out8",
+            "uid": "shiftio_out8",
             "pos": [
                 1800.0,
                 840.0
@@ -938,7 +938,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out9",
+            "uid": "shiftio_out9",
             "pos": [
                 1800.0,
                 840.0
@@ -951,7 +951,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out10",
+            "uid": "shiftio_out10",
             "pos": [
                 1800.0,
                 840.0
@@ -964,7 +964,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out11",
+            "uid": "shiftio_out11",
             "pos": [
                 1800.0,
                 840.0
@@ -977,7 +977,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out12",
+            "uid": "shiftio_out12",
             "pos": [
                 1800.0,
                 840.0
@@ -990,7 +990,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out13",
+            "uid": "shiftio_out13",
             "pos": [
                 1800.0,
                 840.0
@@ -1003,7 +1003,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out14",
+            "uid": "shiftio_out14",
             "pos": [
                 1800.0,
                 840.0
@@ -1016,7 +1016,7 @@
         },
         {
             "type": "bitout",
-            "uid": "shiftio-out15",
+            "uid": "shiftio_out15",
             "pos": [
                 1800.0,
                 840.0
@@ -1029,7 +1029,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in0",
+            "uid": "shiftio_in0",
             "pos": [
                 1790.0,
                 140.0
@@ -1042,7 +1042,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1",
+            "uid": "shiftio_in1",
             "pos": [
                 1790.0,
                 140.0
@@ -1055,7 +1055,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in2",
+            "uid": "shiftio_in2",
             "pos": [
                 1790.0,
                 140.0
@@ -1068,7 +1068,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in3",
+            "uid": "shiftio_in3",
             "pos": [
                 1790.0,
                 140.0
@@ -1081,7 +1081,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in4",
+            "uid": "shiftio_in4",
             "pos": [
                 1790.0,
                 140.0
@@ -1094,7 +1094,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in5",
+            "uid": "shiftio_in5",
             "pos": [
                 1790.0,
                 140.0
@@ -1107,7 +1107,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in6",
+            "uid": "shiftio_in6",
             "pos": [
                 1790.0,
                 140.0
@@ -1120,7 +1120,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in7",
+            "uid": "shiftio_in7",
             "pos": [
                 1790.0,
                 140.0
@@ -1133,7 +1133,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in8",
+            "uid": "shiftio_in8",
             "pos": [
                 1790.0,
                 140.0
@@ -1146,7 +1146,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in9",
+            "uid": "shiftio_in9",
             "pos": [
                 1790.0,
                 140.0
@@ -1159,7 +1159,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in10",
+            "uid": "shiftio_in10",
             "pos": [
                 1790.0,
                 140.0
@@ -1172,7 +1172,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in11",
+            "uid": "shiftio_in11",
             "pos": [
                 1790.0,
                 140.0
@@ -1185,7 +1185,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in12",
+            "uid": "shiftio_in12",
             "pos": [
                 1790.0,
                 140.0
@@ -1198,7 +1198,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in13",
+            "uid": "shiftio_in13",
             "pos": [
                 1790.0,
                 140.0
@@ -1211,7 +1211,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in14",
+            "uid": "shiftio_in14",
             "pos": [
                 1790.0,
                 140.0
@@ -1224,7 +1224,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in15",
+            "uid": "shiftio_in15",
             "pos": [
                 1790.0,
                 140.0
@@ -1237,7 +1237,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in16",
+            "uid": "shiftio_in16",
             "pos": [
                 1790.0,
                 140.0
@@ -1250,7 +1250,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:17",
+            "uid": "shiftio_in1:17",
             "pos": [
                 1790.0,
                 140.0
@@ -1263,7 +1263,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:18",
+            "uid": "shiftio_in1:18",
             "pos": [
                 1790.0,
                 140.0
@@ -1276,7 +1276,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:19",
+            "uid": "shiftio_in1:19",
             "pos": [
                 1790.0,
                 140.0
@@ -1289,7 +1289,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:20",
+            "uid": "shiftio_in1:20",
             "pos": [
                 1790.0,
                 140.0
@@ -1302,7 +1302,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:21",
+            "uid": "shiftio_in1:21",
             "pos": [
                 1790.0,
                 140.0
@@ -1315,7 +1315,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:22",
+            "uid": "shiftio_in1:22",
             "pos": [
                 1790.0,
                 140.0
@@ -1328,7 +1328,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:23",
+            "uid": "shiftio_in1:23",
             "pos": [
                 1790.0,
                 140.0
@@ -1341,7 +1341,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:24",
+            "uid": "shiftio_in1:24",
             "pos": [
                 1790.0,
                 140.0
@@ -1354,7 +1354,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:25",
+            "uid": "shiftio_in1:25",
             "pos": [
                 1790.0,
                 140.0
@@ -1367,7 +1367,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:26",
+            "uid": "shiftio_in1:26",
             "pos": [
                 1790.0,
                 140.0
@@ -1380,7 +1380,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:27",
+            "uid": "shiftio_in1:27",
             "pos": [
                 1790.0,
                 140.0
@@ -1393,7 +1393,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:28",
+            "uid": "shiftio_in1:28",
             "pos": [
                 1790.0,
                 140.0
@@ -1406,7 +1406,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:29",
+            "uid": "shiftio_in1:29",
             "pos": [
                 1790.0,
                 140.0
@@ -1419,7 +1419,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:30",
+            "uid": "shiftio_in1:30",
             "pos": [
                 1790.0,
                 140.0
@@ -1432,7 +1432,7 @@
         },
         {
             "type": "bitin",
-            "uid": "shiftio-in1:31",
+            "uid": "shiftio_in1:31",
             "pos": [
                 1790.0,
                 140.0
