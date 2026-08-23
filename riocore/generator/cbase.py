@@ -931,54 +931,55 @@ class cbase:
         output.append("    *data->duration = timestamp - fpga_stamp_last;")
         output.append("    fpga_stamp_last = timestamp;")
 
-        conn_mode = "estop"  # always
-        if conn_mode == "estop":
-            if self.rtapi_mode:
-                output.append("    if (*data->sys_enable == 1 && *data->sys_status == 1) {")
-            else:
-                output.append("    if (1) {")
-        else:
-            if self.rtapi_mode:
-                output.append("    if (*data->sys_enable == 0 || *data->sys_status == 0) {")
-                output.append("        *data->sys_status = 0;")
-                output.append("    }")
-                output.append("    if (1) {")
-
-        output.append("        pkg_counter += 1;")
-        output.append("        convert_outputs();")
-        output.append("        if (*data->sys_simulation != 1) {")
+        # always talk to the FPGA so that inputs (estop-in, limit/home switches, ...)
+        # stay live even while the machine is not enabled; outputs are forced to a
+        # safe (all-zero) frame while the machine is disabled
+        output.append("    // always talk to the FPGA so that inputs (estop-in, limit/home switches, ...)")
+        output.append("    // stay live even while the machine is not enabled; outputs are forced to a")
+        output.append("    // safe (all-zero) frame while the machine is disabled")
+        output.append("    pkg_counter += 1;")
+        output.append("    if (*data->sys_simulation != 1) {")
+        output.append("        if (*data->sys_enable == 1) {")
+        output.append("            convert_outputs();")
         output.append("            write_txbuffer(txBuffer);")
+        output.append("        } else {")
+        output.append("            // machine disabled: send a safe (all-zero) output frame")
+        output.append("            write_txbuffer(txBuffer);")
+        output.append("            memset(&txBuffer[4], 0, BUFFER_SIZE - 4);")
+        output.append("        }")
 
         if protocol == "UART":
-            output.append("            uart_trx(txBuffer, rxBuffer, BUFFER_SIZE);")
+            output.append("        uart_trx(txBuffer, rxBuffer, BUFFER_SIZE);")
         elif protocol == "SPI":
-            output.append("            spi_trx(txBuffer, rxBuffer, BUFFER_SIZE);")
+            output.append("        spi_trx(txBuffer, rxBuffer, BUFFER_SIZE);")
 
         elif protocol == "UDP":
             output.append("#ifdef UDP_ASYNC")
-            output.append("            ret = udp_rx(rxBuffer, BUFFER_SIZE, 1);")
-            output.append("            udp_tx(txBuffer, BUFFER_SIZE);")
+            output.append("        ret = udp_rx(rxBuffer, BUFFER_SIZE, 1);")
+            output.append("        udp_tx(txBuffer, BUFFER_SIZE);")
             output.append("#else")
-            output.append("            udp_tx(txBuffer, BUFFER_SIZE);")
-            output.append("            ret = udp_rx(rxBuffer, BUFFER_SIZE, 0);")
+            output.append("        udp_tx(txBuffer, BUFFER_SIZE);")
+            output.append("        ret = udp_rx(rxBuffer, BUFFER_SIZE, 0);")
             output.append("#endif")
         else:
             print("ERROR: unsupported interface")
             sys.exit(1)
 
         if protocol == "UDP":
-            output.append("            if (ret == BUFFER_SIZE && rxBuffer[0] == 97 && rxBuffer[1] == 116 && rxBuffer[2] == 97 && rxBuffer[3] == 100) {")
+            output.append("        if (ret == BUFFER_SIZE && rxBuffer[0] == 97 && rxBuffer[1] == 116 && rxBuffer[2] == 97 && rxBuffer[3] == 100) {")
         else:
-            output.append("            if (rxBuffer[0] == 97 && rxBuffer[1] == 116 && rxBuffer[2] == 97 && rxBuffer[3] == 100) {")
-        output.append("                if (err_counter > 0) {")
-        output.append("                    err_counter = 0;")
-        output.append(f'                    {self.printf}("recovered..\\n");')
-        output.append("                }")
-        output.append("                read_rxbuffer(rxBuffer);")
-        output.append("                convert_inputs();")
-        output.append("            } else {")
-        output.append("                err_counter += 1;")
-        output.append("                err_total += 1;")
+            output.append("        if (rxBuffer[0] == 97 && rxBuffer[1] == 116 && rxBuffer[2] == 97 && rxBuffer[3] == 100) {")
+        output.append("            if (err_counter > 0) {")
+        output.append("                err_counter = 0;")
+        output.append(f'                {self.printf}("recovered..\\n");')
+        output.append("            }")
+        output.append("            read_rxbuffer(rxBuffer);")
+        output.append("            convert_inputs();")
+        output.append("        } else {")
+        output.append("            err_counter += 1;")
+        output.append("            err_total += 1;")
+        output.append("            // only log a burst once while the machine is disabled")
+        output.append("            if (err_counter == 1 || *data->sys_enable == 1) {")
         if protocol == "UDP":
             output.append("                if (ret != BUFFER_SIZE) {")
             output.append(
@@ -990,7 +991,7 @@ class cbase:
             )
             output.append("                }")
         else:
-            output.append(f'            {self.printf}("wronng data (%i/3): ", err_counter);')
+            output.append(f'                {self.printf}("wronng data (%i/3): ", err_counter);')
         if protocol == "UDP":
             output.append("                for (i = 0; i < ret; i++) {")
         else:
@@ -998,15 +999,23 @@ class cbase:
         output.append(f'                    {self.printf}("%d ",rxBuffer[i]);')
         output.append("                }")
         output.append(f'                {self.printf}("\\n");')
-        output.append("                if (err_counter > 3) {")
-        output.append(f'                    {self.printf}("too many errors..\\n");')
-        output.append("                    *data->sys_status = 0;")
-        output.append("                }")
         output.append("            }")
-        output.append("        } else {")
-        output.append("            convert_inputs();")
+        output.append("            if (err_counter > 3) {")
+        output.append("                if (err_counter == 4) {")
+        output.append(f'                    {self.printf}("too many errors..\\n");')
+        output.append("                }")
+        output.append("                *data->sys_status = 0;")
+        output.append("            }")
         output.append("        }")
         output.append("    } else {")
+        output.append("        if (*data->sys_enable == 1 && *data->sys_status == 1) {")
+        output.append("            convert_outputs();")
+        output.append("            convert_inputs();")
+        output.append("        }")
+        output.append("    }")
+        output.append("    // only report 'ready' (sys-status) while the machine is enabled")
+        output.append("    // and communication is healthy")
+        output.append("    if (*data->sys_enable != 1 || *data->sys_status != 1) {")
         output.append("        *data->sys_status = 0;")
         output.append("    }")
         output.append("}")
