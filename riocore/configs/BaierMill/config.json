@@ -727,6 +727,23 @@
             }
         },
         {
+            "type": "bitout",
+            "name": "spindle-position-home",
+            "pins": {
+                "bit": {
+                    "pin": "SHIFTOUT_OUTPUT[5]"
+                }
+            },
+            "uid": "bitout12",
+            "signals": {
+                "bit": {
+                    "net": "",
+                    "function": "",
+                    "setp": ""
+                }
+            }
+        },
+        {
             "name": "encoder-x",
             "type": "quadencoderz",
             "pins": {
