@@ -38,7 +38,12 @@
             "name": "SlotEN",
             "pins": {
                 "bit": {
-                    "pin": "SlotControl:EN"
+                    "pin": "SlotControl:EN",
+                    "modifier": [
+                        {
+                            "type": "onerror"
+                        }
+                    ]
                 }
             }
         },
