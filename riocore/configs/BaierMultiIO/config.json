@@ -630,6 +630,12 @@
                         }
                     },
                     "uid": "bitcopy0"
+                },
+                "pwm_n": {
+                    "type": "bitcopy",
+                    "origin": "PINOUT_PWMOUT0_PWM_RAW",
+                    "name": "pwm_n",
+                    "uid": "bitcopy0"
                 }
             }
         },
