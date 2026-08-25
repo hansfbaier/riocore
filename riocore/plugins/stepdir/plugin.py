@@ -91,14 +91,14 @@ class Plugin(PluginBase):
     def convert(self, signal_name, signal_setup, value):
         if signal_name == "velocity":
             if value != 0:
-                value = self.system_setup["speed"] / value / 2
+                value = self.system_setup["speed"] / value
         return value
 
     def convert_c(self, signal_name, signal_setup):
         if signal_name == "velocity":
             return """
             if (value != 0) {
-                value = OSC_CLOCK / value / 2;
+                value = OSC_CLOCK / value;
             }
             """
         return ""
