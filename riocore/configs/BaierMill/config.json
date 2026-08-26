@@ -773,7 +773,7 @@
                 "position": {
                     "net": "",
                     "function": "",
-                    "scale": 2500,
+                    "scale": -500,
                     "setp": ""
                 },
                 "rps": {
@@ -818,7 +818,7 @@
                 "position": {
                     "net": "",
                     "function": "",
-                    "scale": 2500,
+                    "scale": -500,
                     "setp": ""
                 },
                 "rps": {
@@ -863,7 +863,7 @@
                 "position": {
                     "net": "",
                     "function": "",
-                    "scale": 2500,
+                    "scale": -250,
                     "setp": ""
                 },
                 "rps": {
